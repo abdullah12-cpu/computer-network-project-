@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# data comes from Kaggle; results are written to Drive on Colab
+data/raw/
+results/
+
+# the base paper repo has its own git history (github.com/Mi12Mi12Cu/Explainable-IoT-IDS)
+baseline_repo/
+
+xda_ids.zip

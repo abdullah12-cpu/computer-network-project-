@@ -1,0 +1,50 @@
+# XDA-IDS default configuration.
+# Paths are relative to the project root.
+
+# Each entry is either a local path, or {kaggle: [mirrors...], file: name}, which is
+# fetched with kagglehub (first mirror that works). Local example:
+#   unsw_train: data/raw/unsw/UNSW_NB15_training-set.csv
+data:
+  unsw_train:   # 175,341 rows (what the base paper actually used)
+    kaggle: [mrwellsdavid/unsw-nb15]
+    file: UNSW_NB15_training-set.csv
+  unsw_test:    # 82,332 rows
+    kaggle: [mrwellsdavid/unsw-nb15]
+    file: UNSW_NB15_testing-set.csv
+  wustl:
+    kaggle: [annaamalaiu/wustl-iiot-2021-dataset, mostafa2372/wustl-iiot-2021]
+    file: wustl_iiot_2021.csv
+  ciciot_dir: data/raw/ciciot2023   # a few CSV parts, subsampled later
+
+seeds: [1, 2, 3, 4, 5]
+
+split:
+  test_size: 0.30
+  val_size: 0.10          # carved out of the training part, used for early stopping only
+
+train:
+  batch_size: 128
+  lr: 1.0e-3
+  max_epochs: 100
+  patience: 10            # early stopping on validation Macro-F1
+
+cnn:
+  conv1: 64
+  conv2: 128
+  kernel: 3
+  dense: 64
+  dropout: 0.5
+
+focal:
+  gamma: 2.0
+  beta: 0.9999            # class-balanced weighting (Cui et al., 2019)
+
+shap:
+  background: 100
+  reference_size: 500
+  window_sample: 300
+
+monitor:
+  window: 5000
+  alpha: 0.01             # family-wise; Bonferroni-divided by number of features
+  target_far: 0.05        # false-alarm rate used to calibrate m and tau
