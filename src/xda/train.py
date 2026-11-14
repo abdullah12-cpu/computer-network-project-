@@ -44,29 +44,34 @@ def fit(model: nn.Module, X_train: np.ndarray, y_train: np.ndarray,
     opt = torch.optim.Adam(model.parameters(), lr=lr)
     Xt = torch.from_numpy(X_train)
     yt = torch.from_numpy(y_train.astype(np.int64))
+    # Keep the whole training set on the GPU when it fits (UNSW ~20 MB, WUSTL ~120 MB):
+    # per-batch CPU->GPU copies otherwise dominate the run time of this small CNN.
+    if dev.type == "cuda" and Xt.element_size() * Xt.nelement() < 1.5 * 2**30:
+        Xt, yt = Xt.to(dev), yt.to(dev)
 
     best_f1, best_state, wait, history = -1.0, None, 0, []
     t0 = time.perf_counter()
     for epoch in range(1, max_epochs + 1):
         model.train()
-        perm = torch.randperm(len(Xt))
-        running = 0.0
+        perm = torch.randperm(len(Xt), device=Xt.device)
+        running = torch.zeros((), device=dev)
         for i in range(0, len(perm), batch_size):
             b = perm[i:i + batch_size]
             if len(b) < 2:   # BatchNorm needs more than one sample
                 continue
-            xb, yb = Xt[b].to(dev), yt[b].to(dev)
+            xb, yb = Xt[b].to(dev, non_blocking=True), yt[b].to(dev, non_blocking=True)
             opt.zero_grad()
             loss = loss_fn(model(xb), yb)
             loss.backward()
             opt.step()
-            running += loss.item() * len(b)
+            running += loss.detach() * len(b)    # no .item() per step: avoids a GPU sync each batch
 
         val_pred = predict_proba(model, X_val, dev=dev).argmax(1)
         val_f1 = f1_score(y_val, val_pred, average=f1_average, zero_division=0)
-        history.append({"epoch": epoch, "loss": running / len(perm), "val_f1": val_f1})
+        epoch_loss = running.item() / len(perm)
+        history.append({"epoch": epoch, "loss": epoch_loss, "val_f1": val_f1})
         if verbose:
-            print(f"  epoch {epoch:3d}  loss {running / len(perm):.4f}  val_f1 {val_f1:.4f}", flush=True)
+            print(f"  epoch {epoch:3d}  loss {epoch_loss:.4f}  val_f1 {val_f1:.4f}", flush=True)
 
         if val_f1 > best_f1:
             best_f1, best_state, wait = val_f1, copy.deepcopy(model.state_dict()), 0

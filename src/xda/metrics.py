@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import tempfile
 import time
 
 import numpy as np
@@ -74,13 +75,14 @@ def efficiency(model, n_features: int, n_flows: int = 2000) -> dict:
             with torch.no_grad():
                 per_flow, thr = _time_per_flow(lambda a: model(torch.from_numpy(a)), x, n_flows)
             params = sum(p.numel() for p in model.parameters())
-            path = "/tmp/_xda_size.pt"
+            path = os.path.join(tempfile.gettempdir(), "_xda_size.pt")
             torch.save(model.state_dict(), path)
         else:
             per_flow, thr = _time_per_flow(model.predict_proba, x, min(n_flows, 500))
             params = None
-            path = "/tmp/_xda_size.pkl"
-            pickle.dump(model, open(path, "wb"))
+            path = os.path.join(tempfile.gettempdir(), "_xda_size.pkl")
+            with open(path, "wb") as fh:   # closed before os.remove (required on Windows)
+                pickle.dump(model, fh)
         size_mb = os.path.getsize(path) / 2**20
         os.remove(path)
     finally:

@@ -14,6 +14,7 @@ import argparse
 import glob
 import json
 import os
+import sys
 from collections import defaultdict
 
 import numpy as np
@@ -21,6 +22,9 @@ import pandas as pd
 from scipy.stats import friedmanchisquare, ttest_rel, wilcoxon
 from sklearn.metrics import f1_score
 from statsmodels.stats.contingency_tables import mcnemar
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+from xda.report import tee_stdout  # noqa: E402
 
 REFERENCE = "xda_full"
 
@@ -142,9 +146,12 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--static", default="results/static")
     ap.add_argument("--drift", default="results/drift")
+    ap.add_argument("--report", default=None, help="default: <results>/stats_report.txt")
     args = ap.parse_args()
-    static_stats(args.static)
-    drift_stats(args.drift)
+    report = args.report or os.path.join(os.path.dirname(os.path.normpath(args.static)), "stats_report.txt")
+    with tee_stdout(report):
+        static_stats(args.static)
+        drift_stats(args.drift)
 
 
 if __name__ == "__main__":

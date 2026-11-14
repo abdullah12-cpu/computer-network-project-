@@ -1,12 +1,21 @@
-torch
-shap
-scikit-learn
-pandas
-numpy
-scipy
-pyyaml
-matplotlib
-seaborn
-statsmodels
-river
-xgboost
+# XDA-IDS dependencies (Python 3.11 or 3.12).
+#
+# PyTorch is NOT listed here: the GPU (CUDA) build must come from PyTorch's own index.
+# setup_gpu.bat / setup_gpu.sh install it first, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+# then install this file:
+#   pip install -r requirements.txt
+
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+pyyaml>=6.0
+shap>=0.45
+xgboost>=2.0
+river>=0.21
+statsmodels>=0.14
+scikit-posthocs>=0.9
+matplotlib>=3.8
+seaborn>=0.13
+kagglehub>=0.3

@@ -1,0 +1,255 @@
+Outputs of the base paper's own notebooks (github.com/Mi12Mi12Cu/Explainable-IoT-IDS),
+run unchanged except for loading the data from Kaggle. Kept as evidence for the base-paper comparison.
+UNSW test sets have 52,603 flows (30% of the 175,341-row training CSV); WUSTL has 238,893 (20% split).
+
+==========================================================================================
+Manuscript notebook (produced the paper's Fig. 4 and Fig. 6)
+Enhancing_IDS_UNSW_Binary_Multi_Manuscript.ipynb
+==========================================================================================
+
+--- cell: # Reports
+=== Binary CNN ===
+              precision    recall  f1-score   support
+
+           0       0.98      0.92      0.95     16772
+           1       0.96      0.99      0.98     35831
+
+    accuracy                           0.97     52603
+   macro avg       0.97      0.95      0.96     52603
+weighted avg       0.97      0.97      0.97     52603
+
+Confusion Matrix:
+ [[15367  1405]
+ [  269 35562]]
+
+--- cell: print("\n=== Binary LSTM ===")
+
+=== Binary LSTM ===
+              precision    recall  f1-score   support
+
+           0       0.95      0.89      0.92     16772
+           1       0.95      0.98      0.96     35831
+
+    accuracy                           0.95     52603
+   macro avg       0.95      0.94      0.94     52603
+weighted avg       0.95      0.95      0.95     52603
+
+Confusion Matrix:
+ [[15005  1767]
+ [  785 35046]]
+
+--- cell: # Reports
+
+=== Multiclass CNN ===
+                precision    recall  f1-score   support
+
+      Analysis       0.85      0.07      0.12       598
+      Backdoor       0.00      0.00      0.00       529
+           DoS       0.57      0.00      0.00      3568
+      Exploits       0.57      0.96      0.71     10158
+       Fuzzers       0.69      0.78      0.73      5382
+       Generic       1.00      0.97      0.99     12075
+        Normal       0.99      0.91      0.95     16772
+Reconnaissance       0.76      0.50      0.60      3115
+     Shellcode       0.00      0.00      0.00       368
+         Worms       0.00      0.00      0.00        38
+
+      accuracy                           0.81     52603
+     macro avg       0.54      0.42      0.41     52603
+  weighted avg       0.82      0.81      0.78     52603
+
+Confusion Matrix:
+ [[   40     0     0   481     1     0    65    11     0     0]
+ [    0     0     0   486    12     0     1    30     0     0]
+ [    0     0     4  3434    40     0     2    88     0     0]
+ [    0     0     0  9735   289     0    16   118     0     0]
+ [    1     0     0  1064  4201     3    26    87     0     0]
+ [    0     0     1   285    45 11738     1     5     0     0]
+ [    6     1     0   136  1282     0 15332    15     0     0]
+ [    0     0     2  1359   197     0     3  1554     0     0]
+ [    0     0     0   189    44     0     0   135     0     0]
+ [    0     0     0    38     0     0     0     0     0     0]]
+
+=== Multiclass LSTM ===
+                precision    recall  f1-score   support
+
+      Analysis       0.78      0.06      0.12       598
+      Backdoor       0.00      0.00      0.00       529
+           DoS       0.28      0.03      0.06      3568
+      Exploits       0.57      0.87      0.69     10158
+       Fuzzers       0.62      0.55      0.58      5382
+       Generic       0.98      0.97      0.98     12075
+        Normal       0.94      0.91      0.92     16772
+Reconnaissance       0.53      0.62      0.57      3115
+     Shellcode       0.00      0.00      0.00       368
+         Worms       0.00      0.00      0.00        38
+
+      accuracy                           0.78     52603
+     macro avg       0.47      0.40      0.39     52603
+  weighted avg       0.76      0.78      0.75     52603
+
+Confusion Matrix:
+ [[   38     0    25   454     1    11    49    20     0     0]
+ [    0     0    17   402    17     9     6    78     0     0]
+ [    0     0   118  3036    67    68    20   259     0     0]
+ [    0     0   140  8854   403    57   124   580     0     0]
+ [    0     0    33  1151  2979    35   733   451     0     0]
+ [    0     0    48   213    45 11730     0    39     0     0]
+ [   11     0     0   442  1002     0 15195   122     0     0]
+ [    0     0    41   842   230     8    53  1941     0     0]
+ [    0     0     0   109    55     0    11   193     0     0]
+ [    0     0     0    31     4     0     1     2     0     0]]
+
+==========================================================================================
+CNN + SHAP notebook
+CNN_model_for_UNSW_NB15_Dataset_with_SHAP.ipynb
+==========================================================================================
+
+--- cell: # Evaluation
+1644/1644 ━━━━━━━━━━━━━━━━━━━━ 3s 2ms/step
+              precision    recall  f1-score   support
+
+           0       0.98      0.97      0.98     35831
+           1       0.95      0.96      0.95     16772
+
+    accuracy                           0.97     52603
+   macro avg       0.96      0.97      0.97     52603
+weighted avg       0.97      0.97      0.97     52603
+
+Accuracy: 0.9697925973803776
+
+--- cell: # Print confusion matrix as array
+Confusion Matrix:
+[[34934   897]
+ [  692 16080]]
+
+--- cell: # Evaluation
+Classification Report:
+                 precision    recall  f1-score   support
+
+      Analysis       0.56      0.12      0.20       598
+      Backdoor       0.00      0.00      0.00       529
+           DoS       0.37      0.10      0.16      3568
+      Exploits       0.62      0.90      0.73     10158
+       Fuzzers       0.70      0.79      0.74      5382
+       Generic       1.00      0.97      0.99     12075
+        Normal       0.98      0.92      0.95     16772
+Reconnaissance       0.73      0.70      0.71      3115
+     Shellcode       0.71      0.11      0.19       368
+         Worms       0.00      0.00      0.00        38
+
+      accuracy                           0.82     52603
+     macro avg       0.57      0.46      0.47     52603
+  weighted avg       0.81      0.82      0.80     52603
+
+Accuracy: 0.821778225576488
+
+==========================================================================================
+LSTM + SHAP notebook
+LSTM_Model_for_UNSW_NB15_with_SHAP.ipynb
+==========================================================================================
+
+--- cell: # Metrics
+Classification Report:
+               precision    recall  f1-score   support
+
+      Normal       0.94      0.96      0.95     16772
+      Attack       0.98      0.97      0.98     35831
+
+    accuracy                           0.97     52603
+   macro avg       0.96      0.96      0.96     52603
+weighted avg       0.97      0.97      0.97     52603
+
+Accuracy: 0.9677584928616239
+
+--- cell: # Evaluation
+Classification Report:
+                 precision    recall  f1-score   support
+
+      Analysis       0.11      0.27      0.15       598
+      Backdoor       0.05      0.65      0.08       529
+           DoS       0.26      0.06      0.09      3568
+      Exploits       0.87      0.35      0.50     10158
+       Fuzzers       0.56      0.63      0.59      5382
+       Generic       0.99      0.97      0.98     12075
+        Normal       1.00      0.80      0.89     16772
+Reconnaissance       0.31      0.09      0.14      3115
+     Shellcode       0.07      0.78      0.13       368
+         Worms       0.01      0.74      0.02        38
+
+      accuracy                           0.63     52603
+     macro avg       0.42      0.53      0.36     52603
+  weighted avg       0.81      0.63      0.68     52603
+
+Accuracy: 0.6338801969469422
+
+==========================================================================================
+WUSTL-IIoT notebook (keeps the 'Target' label column as an input)
+wustl_iiot_2021_for_IDS_in_IoT_using.ipynb
+==========================================================================================
+
+--- cell: # CNN
+7466/7466 ━━━━━━━━━━━━━━━━━━━━ 18s 2ms/step
+
+===== 📊 CNN CLASSIFICATION REPORT =====
+              precision    recall  f1-score   support
+
+    Backdoor       1.00      0.81      0.89        42
+     CommInj       0.82      0.90      0.86        52
+         DoS       1.00      1.00      1.00     15661
+      Reconn       1.00      1.00      1.00      1648
+      normal       1.00      1.00      1.00    221490
+
+    accuracy                           1.00    238893
+   macro avg       0.96      0.94      0.95    238893
+weighted avg       1.00      1.00      1.00    238893
+
+--- cell: # CNN
+7466/7466 ━━━━━━━━━━━━━━━━━━━━ 18s 2ms/step
+
+===== 📊 CNN CLASSIFICATION REPORT =====
+              precision    recall  f1-score   support
+
+    Backdoor       0.94      0.76      0.84        42
+     CommInj       0.84      0.94      0.89        52
+         DoS       1.00      1.00      1.00     15661
+      Reconn       1.00      1.00      1.00      1648
+      normal       1.00      1.00      1.00    221490
+
+    accuracy                           1.00    238893
+   macro avg       0.96      0.94      0.95    238893
+weighted avg       1.00      1.00      1.00    238893
+
+--- cell: # LSTM
+7466/7466 ━━━━━━━━━━━━━━━━━━━━ 112s 15ms/step
+
+===== 📊 LSTM CLASSIFICATION REPORT =====
+              precision    recall  f1-score   support
+
+    Backdoor       1.00      0.71      0.83        42
+     CommInj       0.68      1.00      0.81        52
+         DoS       1.00      1.00      1.00     15661
+      Reconn       1.00      0.99      1.00      1648
+      normal       1.00      1.00      1.00    221490
+
+    accuracy                           1.00    238893
+   macro avg       0.94      0.94      0.93    238893
+weighted avg       1.00      1.00      1.00    238893
+
+--- cell: # LSTM
+✅ Confusion matrices saved as cnn_confusion.png and lstm_confusion.png
+7466/7466 ━━━━━━━━━━━━━━━━━━━━ 110s 15ms/step
+
+===== 📊 LSTM CLASSIFICATION REPORT =====
+              precision    recall  f1-score   support
+
+    Backdoor       0.94      0.79      0.86        42
+     CommInj       0.87      0.90      0.89        52
+         DoS       1.00      1.00      1.00     15661
+      Reconn       1.00      1.00      1.00      1648
+      normal       1.00      1.00      1.00    221490
+
+    accuracy                           1.00    238893
+   macro avg       0.96      0.94      0.95    238893
+weighted avg       1.00      1.00      1.00    238893
+

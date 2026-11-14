@@ -59,6 +59,8 @@ def main() -> None:
          "--out", f"{tmp}/explain"],
         [py, "scripts/stats.py", "--static", f"{tmp}/static", "--drift", f"{tmp}/drift"],
         [py, "scripts/analyze_errors.py", "--static", f"{tmp}/static", "--drift", f"{tmp}/drift"],
+        [py, "scripts/make_figures.py", "--results", tmp, "--out", f"{tmp}/figures"],
+        [py, "scripts/compare_base.py", "--results", tmp],
     ):
         print("\n$", " ".join(cmd[1:]), flush=True)
         subprocess.run(cmd, cwd=root, check=True)

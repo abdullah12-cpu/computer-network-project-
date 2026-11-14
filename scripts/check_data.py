@@ -14,13 +14,19 @@ import yaml
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from xda.data import class_counts, load_unsw, load_wustl  # noqa: E402
+from xda.report import tee_stdout  # noqa: E402
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/default.yaml")
-    cfg = yaml.safe_load(open(ap.parse_args().config))["data"]
+    ap.add_argument("--report", default="results/data_check.txt")
+    args = ap.parse_args()
+    with tee_stdout(args.report):
+        check(yaml.safe_load(open(args.config))["data"])
 
+
+def check(cfg: dict) -> None:
     for split in ("unsw_train", "unsw_test"):
         try:
             ds = load_unsw(cfg[split], keep_id=True)

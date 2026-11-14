@@ -15,34 +15,46 @@ class Explainer:
                    PyTorch model; method="deep" uses shap.DeepExplainer (DeepLIFT-SHAP,
                    the base paper's choice); method="gxi" uses gradient x (input - baseline),
                    a cheap fallback with the same output shape.
+    Only the predicted class is explained (ranked_outputs=1), on the GPU when there is one.
     """
 
-    def __init__(self, model: nn.Module, background: np.ndarray, method: str = "shap"):
-        self.model = model.to("cpu").eval()
-        self.method = method
+    def __init__(self, model: nn.Module, background: np.ndarray, method: str = "shap", nsamples: int = 50):
+        self.dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = model.to(self.dev).eval()
+        self.method, self.nsamples = method, nsamples
         self.background = torch.from_numpy(background)
+        bg = self.background.to(self.dev)
         if method == "shap":
             import shap
-            self._shap = shap.GradientExplainer(self.model, self.background)
+            self._shap = shap.GradientExplainer(self.model, bg)
         elif method == "deep":
             import shap
-            self._shap = shap.DeepExplainer(self.model, self.background)
+            self._shap = shap.DeepExplainer(self.model, bg)
 
     def attributions(self, X: np.ndarray, seed: int = 0) -> tuple[np.ndarray, np.ndarray]:
         """Returns (attributions (N, F) for each flow's predicted class, predicted class (N,))."""
-        x = torch.from_numpy(X)
+        x = torch.from_numpy(X).to(self.dev)
         with torch.no_grad():
-            pred = self.model(x).argmax(1).numpy()
+            pred = self.model(x).argmax(1).cpu().numpy()
         if self.method in ("shap", "deep"):
-            sv = (self._shap.shap_values(x, rseed=seed) if self.method == "shap"
-                  else self._shap.shap_values(x, check_additivity=False))
-            sv = np.stack(sv, -1) if isinstance(sv, list) else np.asarray(sv)   # (N, F, C)
-            return sv[np.arange(len(X)), :, pred], pred
+            if self.method == "shap":
+                sv, idx = self._shap.shap_values(x, nsamples=self.nsamples, ranked_outputs=1,
+                                                 output_rank_order="max", rseed=seed)
+            else:
+                sv, idx = self._shap.shap_values(x, ranked_outputs=1, output_rank_order="max",
+                                                 check_additivity=False)
+            sv = np.asarray(sv[0] if isinstance(sv, list) else sv)
+            if sv.ndim == 3:                       # (N, F, 1) in newer shap versions
+                sv = sv[..., 0]
+            if sv.shape != X.shape:
+                raise ValueError(f"unexpected SHAP output shape {sv.shape} for input {X.shape}")
+            idx = idx.cpu().numpy() if torch.is_tensor(idx) else np.asarray(idx)
+            return sv, idx.reshape(len(X), -1)[:, 0].astype(int)
         x = x.clone().requires_grad_(True)
         logits = self.model(x)
-        logits.gather(1, torch.from_numpy(pred)[:, None]).sum().backward()
-        base = self.background.mean(0, keepdim=True)
-        return (x.grad * (x - base)).detach().numpy(), pred
+        logits.gather(1, torch.from_numpy(pred).to(self.dev)[:, None]).sum().backward()
+        base = self.background.to(self.dev).mean(0, keepdim=True)
+        return (x.grad * (x - base)).detach().cpu().numpy(), pred
 
 
 def global_ranking(attr: np.ndarray, feature_names: list[str]) -> list[tuple[str, float]]:

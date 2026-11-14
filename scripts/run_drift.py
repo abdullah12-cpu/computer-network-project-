@@ -60,7 +60,7 @@ class Context:
         self.rng = np.random.default_rng(seed)
         sc, mc = cfg["shap"], cfg["monitor"]
         bg = prep.X_train[self.rng.choice(len(prep.X_train), sc["background"], replace=False)]
-        self.expl = Explainer(model, bg, method)
+        self.expl = Explainer(model, bg, method, sc.get("nsamples", 50))
 
         # Disjoint validation flows for the reference profile and for calibration windows.
         perm = self.rng.permutation(len(prep.X_val))
@@ -162,7 +162,7 @@ def run_stream(stream, ctx: Context, adapt: bool):
             ya = np.concatenate([y_idx, prep.y_train[replay]])
             fine_tune(model, Xa, ya, focal_loss(ya, len(class_names), ctx.cfg))
             model.cpu().eval()
-            ctx.expl = Explainer(model, ctx.expl.background.numpy(), ctx.method)
+            ctx.expl = Explainer(model, ctx.expl.background.numpy(), ctx.method, ctx.expl.nsamples)
             ref_X = np.concatenate([ctx.ref.inputs[: len(ctx.ref.inputs) // 2], X[s][: len(ctx.ref.inputs) // 2]])
             ctx.shap_mon.ref = ReferenceProfile.build(ctx.expl, ref_X)
             ctx.shap_mon.ref_share = np.abs(ctx.shap_mon.ref.shap).mean(0) / np.abs(ctx.shap_mon.ref.shap).mean(0).sum()
@@ -172,7 +172,8 @@ def run_stream(stream, ctx: Context, adapt: bool):
     post = log[stream.onset:]
     summary = {
         "diagnosis_accuracy": diagnosis_accuracy(results, stream.onset, stream.expected),
-        "localisation_mean": float(np.nanmean([w["localisation"] for w in post if w["alarms"]["xda"]] or [np.nan])),
+        "localisation_mean": (float(np.mean([w["localisation"] for w in post if w["alarms"]["xda"]]))
+                              if stream.perturbed and any(w["alarms"]["xda"] for w in post) else None),
         "shap_seconds_per_window": float(np.mean([w["shap_seconds"] for w in log])),
         "monitor_seconds_per_window": float(np.mean([w["monitor_seconds"] for w in log])),
         "monitor_peak_mb": float(np.max([w["monitor_peak_mb"] for w in log])),

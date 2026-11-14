@@ -24,6 +24,7 @@ import time
 import numpy as np
 import pandas as pd
 import yaml
+import torch
 from torch import nn
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
@@ -120,9 +121,15 @@ def main() -> None:
             t0 = time.perf_counter()
             proba = proba_fn(prep.X_test)
             test_seconds = time.perf_counter() - t0
+            if isinstance(model, nn.Module):   # keep trained CNN/LSTM weights (a few MB each)
+                os.makedirs(os.path.join(args.out, "models"), exist_ok=True)
+                torch.save({"state_dict": model.state_dict(), "features": prep.feature_names,
+                            "class_names": prep.class_names, "variant": variant, "seed": seed},
+                           os.path.join(args.out, "models", tag + ".pt"))
             m = detection_metrics(prep.y_test, proba, prep.class_names, prep.normal_index)
-            if hasattr(model, "model") and hasattr(model.model, "n_jobs"):
-                model.model.n_jobs = 1   # single-thread latency, like the CNN
+            for est in (getattr(model, a, None) for a in ("model", "rf", "iso")):
+                if est is not None and hasattr(est, "set_params") and "n_jobs" in est.get_params():
+                    est.set_params(n_jobs=1)   # single-thread latency, like the CNN
             m.update(efficiency(model, len(prep.feature_names)))
             m.update({"dataset": args.dataset, "task": args.task, "variant": variant, "seed": seed,
                       "n_features": len(prep.feature_names), "n_train": len(prep.y_train),

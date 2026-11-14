@@ -89,7 +89,7 @@ def main() -> None:
     rng = np.random.default_rng(args.seed)
     bg = prep.X_train[rng.choice(len(prep.X_train), cfg["shap"]["background"], replace=False)]
     idx = rng.choice(len(prep.X_test), min(args.n_explain, len(prep.X_test)), replace=False)
-    attr, _ = Explainer(model, bg, args.explainer).attributions(prep.X_test[idx], seed=args.seed)
+    attr, _ = Explainer(model, bg, args.explainer, cfg["shap"].get("nsamples", 50)).attributions(prep.X_test[idx], seed=args.seed)
     ranking = global_ranking(attr, prep.feature_names)
     predict = lambda X: predict_proba(model, X).argmax(1)  # noqa: E731
 

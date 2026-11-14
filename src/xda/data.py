@@ -17,14 +17,15 @@ import pandas as pd
 NORMAL = "Normal"
 
 
-def resolve(spec: str | dict) -> str:
-    """Turn a config entry into a local file path.
+def resolve_all(spec: str | dict) -> list[str]:
+    """Turn a config entry into local file paths.
 
-    A plain string is used as-is. A dict {"kaggle": [datasets...], "file": name}
-    downloads the first Kaggle dataset that contains `file` (cached by kagglehub).
+    A string is a path or glob pattern. A dict {"kaggle": [datasets...], "file": name-or-pattern}
+    downloads the first Kaggle dataset that contains matching files (cached by kagglehub).
     """
     if isinstance(spec, str):
-        return spec
+        hits = sorted(glob.glob(spec))
+        return hits or [spec]
     import kagglehub
     for ds in spec["kaggle"]:
         try:
@@ -32,11 +33,15 @@ def resolve(spec: str | dict) -> str:
         except Exception as e:  # dataset missing or needs login: try the next mirror
             print(f"[kaggle] {ds}: {e}")
             continue
-        hits = glob.glob(os.path.join(root, "**", spec["file"]), recursive=True)
+        hits = sorted(glob.glob(os.path.join(root, "**", spec["file"]), recursive=True))
         if hits:
-            return hits[0]
+            return hits
         print(f"[kaggle] {ds}: {spec['file']} not found, files: {os.listdir(root)}")
     raise FileNotFoundError(spec["file"])
+
+
+def resolve(spec: str | dict) -> str:
+    return resolve_all(spec)[0]
 
 
 @dataclass
@@ -115,7 +120,7 @@ def load_ciciot(paths: list[str], n_rows: int | None = 500_000, seed: int = 0) -
     """
     df = pd.concat([pd.read_csv(p, low_memory=False) for p in paths], ignore_index=True)
     df.columns = [c.strip() for c in df.columns]
-    label_col = "label" if "label" in df.columns else "Label"
+    label_col = next(c for c in df.columns if c.lower() == "label")
     fine = df[label_col].astype(str).str.strip()
     y_multi = fine.map(_ciciot_category)
     if n_rows is not None and len(df) > n_rows:

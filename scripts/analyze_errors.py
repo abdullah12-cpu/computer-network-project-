@@ -14,9 +14,13 @@ import argparse
 import glob
 import json
 import os
+import sys
 
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+from xda.report import tee_stdout  # noqa: E402
 
 
 def confusions(folder: str, variants=("base_clean", "xda_full"), top: int = 8) -> None:
@@ -67,9 +71,12 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--static", default="results/static")
     ap.add_argument("--drift", default="results/drift")
+    ap.add_argument("--report", default=None, help="default: <results>/failure_analysis.txt")
     args = ap.parse_args()
-    confusions(args.static)
-    monitor_failures(args.drift)
+    report = args.report or os.path.join(os.path.dirname(os.path.normpath(args.static)), "failure_analysis.txt")
+    with tee_stdout(report):
+        confusions(args.static)
+        monitor_failures(args.drift)
 
 
 if __name__ == "__main__":

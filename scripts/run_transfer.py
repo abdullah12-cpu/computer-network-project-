@@ -4,12 +4,12 @@ Only semantically equivalent features are kept (Step 3.8). The mapping is
 approximate; check it against the CICIoT2023 feature description before reporting.
 Reports in-domain vs cross-domain performance and whether the SHAP monitor fires.
 
-    python scripts/run_transfer.py --ciciot "data/raw/ciciot2023/*.csv" --seed 1
+    python scripts/run_transfer.py --seed 1                       # CICIoT2023 from Kaggle
+    python scripts/run_transfer.py --ciciot "my/ciciot/*.csv"     # or local CSV parts
 """
 from __future__ import annotations
 
 import argparse
-import glob
 import json
 import os
 import sys
@@ -19,7 +19,7 @@ import pandas as pd
 import yaml
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-from xda.data import Dataset, load_ciciot, load_unsw  # noqa: E402
+from xda.data import Dataset, load_ciciot, load_unsw, resolve_all  # noqa: E402
 from xda.explain import Explainer, ReferenceProfile  # noqa: E402
 from xda.losses import FocalLoss, class_balanced_weights  # noqa: E402
 from xda.metrics import detection_metrics  # noqa: E402
@@ -42,23 +42,35 @@ def harmonise_unsw(ds: Dataset) -> Dataset:
     return Dataset("unsw_h", H, ds.y_bin, ds.y_bin.map({0: "Normal", 1: "Attack"}), ["proto", "service"])
 
 
+def _col(X: pd.DataFrame, name: str, default=None) -> pd.Series:
+    """Column lookup that ignores case, spaces and underscores (mirrors rename columns)."""
+    key = lambda c: str(c).lower().replace(" ", "").replace("_", "")  # noqa: E731
+    found = {key(c): c for c in X.columns}.get(key(name))
+    if found is not None:
+        return X[found]
+    if default is None:
+        raise KeyError(f"CICIoT2023 column '{name}' not found; columns are: {list(X.columns)}")
+    return pd.Series(default, index=X.index)
+
+
 def harmonise_ciciot(ds: Dataset) -> Dataset:
     X = ds.X
-    col = lambda name: X[name] if name in X.columns else 0  # noqa: E731
-    proto = np.select([col("TCP") == 1, col("UDP") == 1, col("ICMP") == 1], ["tcp", "udp", "icmp"], "other")
-    service = np.select([(col("HTTP") == 1) | (col("HTTPS") == 1), col("DNS") == 1, col("SSH") == 1,
-                         col("SMTP") == 1], ["http", "dns", "ssh", "smtp"], "other")
+    flag = lambda name: _col(X, name, 0) == 1  # noqa: E731
+    proto = np.select([flag("TCP"), flag("UDP"), flag("ICMP")], ["tcp", "udp", "icmp"], "other")
+    service = np.select([flag("HTTP") | flag("HTTPS"), flag("DNS"), flag("SSH"), flag("SMTP")],
+                        ["http", "dns", "ssh", "smtp"], "other")
     H = pd.DataFrame({
-        "duration": X["flow_duration"], "rate": X["Rate"],
-        "ttl": X["Duration"],          # CICIoT2023 'Duration' is the packet TTL
-        "mean_pkt": X["AVG"], "tot_bytes": X["Tot sum"], "proto": proto, "service": service,
+        "duration": _col(X, "flow_duration"), "rate": _col(X, "Rate"),
+        "ttl": _col(X, "Duration"),    # CICIoT2023 'Duration' is the packet TTL
+        "mean_pkt": _col(X, "AVG"), "tot_bytes": _col(X, "Tot sum"), "proto": proto, "service": service,
     })
     return Dataset("ciciot_h", H, ds.y_bin, ds.y_bin.map({0: "Normal", 1: "Attack"}), ["proto", "service"])
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ciciot", required=True, help='glob of CICIoT2023 CSV parts, e.g. "data/raw/ciciot2023/*.csv"')
+    ap.add_argument("--ciciot", default=None,
+                    help='local CICIoT2023 CSV glob; default: the Kaggle source in the config')
     ap.add_argument("--rows", type=int, default=500_000, help="stratified subsample of CICIoT2023")
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--max-epochs", type=int, default=None)
@@ -70,7 +82,12 @@ def main() -> None:
     max_epochs = args.max_epochs or cfg["train"]["max_epochs"]
     os.makedirs(args.out, exist_ok=True)
     unsw = clean(harmonise_unsw(load_unsw([cfg["data"]["unsw_train"], cfg["data"]["unsw_test"]])))
-    cic = clean(harmonise_ciciot(load_ciciot(sorted(glob.glob(args.ciciot)), args.rows, args.seed)))
+    files = resolve_all(args.ciciot or cfg["data"]["ciciot"])
+    print(f"CICIoT2023 files: {[os.path.basename(f) for f in files]}")
+    raw = load_ciciot(files, args.rows, args.seed)
+    # Only the binary benign-vs-attack split is used, so check it looks right.
+    print("CICIoT2023 classes:", raw.y_multi.value_counts().to_dict())
+    cic = clean(harmonise_ciciot(raw))
     print(f"UNSW {len(unsw.X):,} rows, CICIoT2023 {len(cic.X):,} rows, shared features {SHARED}")
 
     results = {}
@@ -95,7 +112,8 @@ def main() -> None:
         # Does the SHAP monitor notice the domain change? Calibrate on source, test target windows.
         rng = np.random.default_rng(args.seed)
         n = cfg["shap"]["window_sample"]
-        expl = Explainer(model, prep.X_train[rng.choice(len(prep.X_train), cfg["shap"]["background"], replace=False)])
+        expl = Explainer(model, prep.X_train[rng.choice(len(prep.X_train), cfg["shap"]["background"], replace=False)],
+                         nsamples=cfg["shap"].get("nsamples", 50))
         perm = rng.permutation(len(prep.X_val))
         ref = ReferenceProfile.build(expl, prep.X_val[perm[:cfg["shap"]["reference_size"]]], k=5)
         mon = ShapDriftMonitor(ref, prep.feature_names, cfg["monitor"]["alpha"], k=5)

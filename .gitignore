@@ -3,11 +3,6 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# data comes from Kaggle; results are written to Drive on Colab
-data/raw/
+# outputs (datasets are fetched from Kaggle into the kagglehub cache)
 results/
-
-# the base paper repo has its own git history (github.com/Mi12Mi12Cu/Explainable-IoT-IDS)
-baseline_repo/
-
-xda_ids.zip
+results_quick/

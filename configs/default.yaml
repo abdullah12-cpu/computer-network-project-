@@ -14,7 +14,9 @@ data:
   wustl:
     kaggle: [annaamalaiu/wustl-iiot-2021-dataset, mostafa2372/wustl-iiot-2021]
     file: wustl_iiot_2021.csv
-  ciciot_dir: data/raw/ciciot2023   # a few CSV parts, subsampled later
+  ciciot:       # E5 only: 1M-row CICIoT2023 sample (fallback: 3-file mirror), subsampled further
+    kaggle: [ioannispan/ciciot2023-1m, himadri07/ciciot2023]
+    file: "*.csv"
 
 seeds: [1, 2, 3, 4, 5]
 
@@ -43,6 +45,7 @@ shap:
   background: 100
   reference_size: 500
   window_sample: 300
+  nsamples: 50            # expected-gradient samples per flow (shap default is 200)
 
 monitor:
   window: 5000
