@@ -1,0 +1,7 @@
+,accuracy,accuracy,macro_f1,macro_f1,weighted_f1,weighted_f1,fpr,fpr,mcc,mcc,pr_auc,pr_auc,latency_ms_per_flow,latency_ms_per_flow,recall_Backdoor,recall_Backdoor,recall_CommInj,recall_CommInj,recall_DoS,recall_DoS,recall_Normal,recall_Normal,recall_Reconn,recall_Reconn
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+variant,,,,,,,,,,,,,,,,,,,,,,,,
+hybrid_rf_if,0.9906,,0.7994,,0.9951,,0.0098,,0.9166,,0.8814,,14.7882,,0.7656,,0.974,,0.9997,,0.9902,,0.999,
+lstm,0.9994,,0.92,,0.9994,,0.0002,,0.9936,,0.9368,,0.1798,,0.5625,,0.8182,,0.9937,,0.9998,,0.999,
+rf,0.9999,,0.9635,,0.9999,,0.0,,0.9992,,0.9741,,7.1858,,0.7656,,0.974,,0.9997,,1.0,,0.999,
+xgb,1.0,,0.9795,,0.9999,,0.0,,0.9995,,0.9958,,0.3828,,0.8281,,1.0,,0.9998,,1.0,,0.999,

@@ -1,0 +1,94 @@
+{
+ "accuracy": 0.9998246461301413,
+ "macro_f1": 0.9991103079759818,
+ "weighted_f1": 0.999824703422579,
+ "macro_precision": 0.9987844037957124,
+ "macro_recall": 0.9994366907550789,
+ "mcc": 0.9982208814325128,
+ "fpr": 0.00013038204972710735,
+ "detection_rate": 0.9990037635598848,
+ "pr_auc": 0.9999814441350616,
+ "per_class": {
+  "Attack": {
+   "precision": 0.9976233902614271,
+   "recall": 0.9990037635598848,
+   "f1": 0.9983130997483477,
+   "support": 18068
+  },
+  "Normal": {
+   "precision": 0.9999454173299978,
+   "recall": 0.9998696179502728,
+   "f1": 0.999907516203616,
+   "support": 329800
+  }
+ },
+ "confusion_matrix": [
+  [
+   18050,
+   18
+  ],
+  [
+   43,
+   329757
+  ]
+ ],
+ "latency_ms_per_flow": 0.22152435000316473,
+ "throughput_flows_s": 30779.411652167866,
+ "params": 156610,
+ "model_mb": 0.6051301956176758,
+ "dataset": "wustl",
+ "task": "binary",
+ "variant": "xda_no_focal",
+ "seed": 1,
+ "n_features": 39,
+ "n_train": 730522,
+ "n_test": 347868,
+ "epochs": 10,
+ "train_seconds": 39.08936250000261,
+ "test_seconds": 0.39344610000262037,
+ "class_names": [
+  "Attack",
+  "Normal"
+ ],
+ "features": [
+  "Mean",
+  "SrcPkts",
+  "DstPkts",
+  "TotPkts",
+  "DstBytes",
+  "SrcBytes",
+  "TotBytes",
+  "SrcLoad",
+  "DstLoad",
+  "Load",
+  "SrcRate",
+  "DstRate",
+  "Rate",
+  "SrcLoss",
+  "DstLoss",
+  "Loss",
+  "pLoss",
+  "SrcJitter",
+  "DstJitter",
+  "SIntPkt",
+  "DIntPkt",
+  "Proto",
+  "Dur",
+  "TcpRtt",
+  "IdleTime",
+  "Sum",
+  "Min",
+  "Max",
+  "sDSb",
+  "sTtl",
+  "dTtl",
+  "SAppBytes",
+  "DAppBytes",
+  "TotAppByte",
+  "SynAck",
+  "RunTime",
+  "sTos",
+  "SrcJitAct",
+  "DstJitAct"
+ ]
+}

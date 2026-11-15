@@ -1,0 +1,153 @@
+
+$ python scripts/stats.py --static results_quick/static --drift results_quick/drift
+
+================ unsw / binary
+variant                base_clean  base_repro  xda_full  xda_no_cat  xda_no_focal
+accuracy                   0.8989      0.9855    0.8971      0.8875        0.9016
+macro_f1                   0.8986      0.9854    0.8970      0.8875        0.9014
+weighted_f1                0.8989      0.9855    0.8972      0.8876        0.9016
+fpr                        0.0999      0.0259    0.1188      0.1350        0.1082
+mcc                        0.7973      0.9709    0.7948      0.7765        0.8033
+recall_Analysis               NaN         NaN       NaN         NaN           NaN
+recall_Attack              0.8975      0.9949    0.9147      0.9125        0.9124
+recall_Backdoor               NaN         NaN       NaN         NaN           NaN
+recall_CommInj                NaN         NaN       NaN         NaN           NaN
+recall_DoS                    NaN         NaN       NaN         NaN           NaN
+recall_Exploits               NaN         NaN       NaN         NaN           NaN
+recall_Fuzzers                NaN         NaN       NaN         NaN           NaN
+recall_Generic                NaN         NaN       NaN         NaN           NaN
+recall_Normal              0.9001      0.9741    0.8812      0.8650        0.8918
+recall_Reconn                 NaN         NaN       NaN         NaN           NaN
+recall_Reconnaissance         NaN         NaN       NaN         NaN           NaN
+recall_Shellcode              NaN         NaN       NaN         NaN           NaN
+recall_Worms                  NaN         NaN       NaN         NaN           NaN
+
+Macro-F1 bootstrap 95% CI (mean over seeds): {'base_clean': (np.float64(0.8961), np.float64(0.9015)), 'base_repro': (np.float64(0.9838), np.float64(0.9868)), 'xda_full': (np.float64(0.8944), np.float64(0.8998)), 'xda_no_cat': (np.float64(0.8848), np.float64(0.8903)), 'xda_no_focal': (np.float64(0.8989), np.float64(0.9043))}
+McNemar seed 1: xda right/base wrong=879, xda wrong/base right=967, p=4.29e-02
+
+================ unsw / multiclass
+variant                base_clean  base_repro  hybrid_rf_if    lstm      rf  xda_full  xda_no_cat  xda_no_focal     xgb
+accuracy                   0.7438      0.8572        0.8127  0.7320  0.8168    0.6684      0.7357        0.7714  0.8232
+macro_f1                   0.3562      0.4335        0.5431  0.3483  0.5441    0.4095      0.4094        0.3846  0.5842
+weighted_f1                0.7307      0.8497        0.8074  0.7030  0.8096    0.7035      0.7213        0.7445  0.8186
+fpr                        0.1445      0.0212        0.0686  0.0786  0.0602    0.2645      0.0868        0.0733  0.0520
+mcc                        0.6267      0.8009        0.7180  0.5865  0.7232    0.5652      0.5963        0.6514  0.7328
+recall_Analysis            0.0000      0.0000        0.0492  0.0590  0.0475    0.8049      0.5475        0.0213  0.1148
+recall_Attack                 NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Backdoor            0.0000      0.0000        0.1206  0.0355  0.1206    0.0762      0.0762        0.0053  0.1277
+recall_CommInj                NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_DoS                 0.0000      0.3586        0.2061  0.0194  0.2061    0.0248      0.0067        0.0012  0.2200
+recall_Exploits            0.7731      0.7802        0.8514  0.8095  0.8514    0.5834      0.7817        0.8564  0.8499
+recall_Fuzzers             0.5763      0.6586        0.6054  0.2995  0.6023    0.8329      0.3494        0.4720  0.5948
+recall_Generic             0.7890      0.9537        0.8667  0.8149  0.8667    0.8083      0.7711        0.8079  0.8811
+recall_Normal              0.8555      0.9788        0.9314  0.9214  0.9398    0.7355      0.9132        0.9267  0.9480
+recall_Reconn                 NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Reconnaissance      0.8435      0.6330        0.7377  0.5189  0.7377    0.3413      0.5269        0.6420  0.7431
+recall_Shellcode           0.0000      0.0000        0.6362  0.0000  0.6362    0.4485      0.1648        0.0755  0.7002
+recall_Worms               0.0000      0.0000        0.2353  0.0000  0.2353    0.8824      0.1373        0.0000  0.5686
+
+Macro-F1 bootstrap 95% CI (mean over seeds): {'base_clean': (np.float64(0.3538), np.float64(0.3585)), 'base_repro': (np.float64(0.429), np.float64(0.4379)), 'hybrid_rf_if': (np.float64(0.5283), np.float64(0.5581)), 'lstm': (np.float64(0.3436), np.float64(0.3528)), 'rf': (np.float64(0.5292), np.float64(0.5587)), 'xda_full': (np.float64(0.4038), np.float64(0.4153)), 'xda_no_cat': (np.float64(0.4015), np.float64(0.418)), 'xda_no_focal': (np.float64(0.3794), np.float64(0.3895)), 'xgb': (np.float64(0.5717), np.float64(0.5961))}
+McNemar seed 1: xda right/base wrong=2855, xda wrong/base right=6534, p=0.00e+00
+
+================ wustl / binary
+variant                base_clean  base_repro  xda_full  xda_no_cat  xda_no_focal
+accuracy                   0.9998      1.0000    0.9998      0.9998        0.9998
+macro_f1                   0.9989      1.0000    0.9990      0.9991        0.9991
+weighted_f1                0.9998      1.0000    0.9998      0.9998        0.9998
+fpr                        0.0001      0.0000    0.0002      0.0001        0.0001
+mcc                        0.9979      0.9999    0.9979      0.9981        0.9982
+recall_Analysis               NaN         NaN       NaN         NaN           NaN
+recall_Attack              0.9987      1.0000    0.9989      0.9991        0.9990
+recall_Backdoor               NaN         NaN       NaN         NaN           NaN
+recall_CommInj                NaN         NaN       NaN         NaN           NaN
+recall_DoS                    NaN         NaN       NaN         NaN           NaN
+recall_Exploits               NaN         NaN       NaN         NaN           NaN
+recall_Fuzzers                NaN         NaN       NaN         NaN           NaN
+recall_Generic                NaN         NaN       NaN         NaN           NaN
+recall_Normal              0.9999      1.0000    0.9998      0.9999        0.9999
+recall_Reconn                 NaN         NaN       NaN         NaN           NaN
+recall_Reconnaissance         NaN         NaN       NaN         NaN           NaN
+recall_Shellcode              NaN         NaN       NaN         NaN           NaN
+recall_Worms                  NaN         NaN       NaN         NaN           NaN
+
+Macro-F1 bootstrap 95% CI (mean over seeds): {'base_clean': (np.float64(0.9987), np.float64(0.9992)), 'base_repro': (np.float64(0.9999), np.float64(1.0)), 'xda_full': (np.float64(0.9987), np.float64(0.9992)), 'xda_no_cat': (np.float64(0.9988), np.float64(0.9993)), 'xda_no_focal': (np.float64(0.9989), np.float64(0.9993))}
+McNemar seed 1: xda right/base wrong=7, xda wrong/base right=5, p=7.73e-01
+
+================ wustl / multiclass
+variant                base_clean  base_repro  hybrid_rf_if    lstm      rf  xda_full  xda_no_cat  xda_no_focal     xgb
+accuracy                   0.9997      0.9999        0.9906  0.9994  0.9999    0.9989      0.9990        0.9998  1.0000
+macro_f1                   0.9473      0.9341        0.7994  0.9200  0.9635    0.9399      0.9425        0.9424  0.9795
+weighted_f1                0.9997      0.9999        0.9951  0.9994  0.9999    0.9989      0.9990        0.9998  0.9999
+fpr                        0.0002      0.0000        0.0098  0.0002  0.0000    0.0003      0.0003        0.0001  0.0000
+mcc                        0.9967      0.9994        0.9166  0.9936  0.9992    0.9891      0.9895        0.9976  0.9995
+recall_Analysis               NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Attack                 NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Backdoor            0.7188      0.6875        0.7656  0.5625  0.7656    0.7188      0.6875        0.6719  0.8281
+recall_CommInj             0.8961      0.9231        0.9740  0.8182  0.9740    0.8961      0.8961        0.8961  1.0000
+recall_DoS                 0.9989      1.0000        0.9997  0.9937  0.9997    0.9847      0.9855        0.9990  0.9998
+recall_Exploits               NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Fuzzers                NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Generic                NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Normal              0.9998      1.0000        0.9902  0.9998  1.0000    0.9997      0.9997        0.9999  1.0000
+recall_Reconn              0.9990      0.9996        0.9990  0.9990  0.9990    0.9990      0.9990        0.9990  0.9990
+recall_Reconnaissance         NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Shellcode              NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+recall_Worms                  NaN         NaN           NaN     NaN     NaN       NaN         NaN           NaN     NaN
+
+Macro-F1 bootstrap 95% CI (mean over seeds): {'base_clean': (np.float64(0.9268), np.float64(0.9641)), 'base_repro': (np.float64(0.9094), np.float64(0.9579)), 'hybrid_rf_if': (np.float64(0.794), np.float64(0.804)), 'lstm': (np.float64(0.8957), np.float64(0.9405)), 'rf': (np.float64(0.9468), np.float64(0.9777)), 'xda_full': (np.float64(0.9191), np.float64(0.957)), 'xda_no_cat': (np.float64(0.9224), np.float64(0.9599)), 'xda_no_focal': (np.float64(0.9204), np.float64(0.9602)), 'xgb': (np.float64(0.968), np.float64(0.9891))}
+McNemar seed 1: xda right/base wrong=9, xda wrong/base right=269, p=2.05e-54
+
+================ drift monitors
+               mean_delay  missed  mean_false_alarm
+xda                 0.273       0             0.233
+shap                0.364       0             0.192
+shap_ks_only        0.545       0             0.092
+input_ks            1.000       1             0.083
+kswin               1.000       0             0.275
+confidence_ks       4.091       4             0.014
+ddm                 6.364       7             0.316
+adwin               7.000       5             0.004
+
+per-scenario summary:
+                 scenario  diagnosis_accuracy  localisation_mean  shap_seconds_per_window  monitor_seconds_per_window  monitor_peak_mb  detector_acc_pre  detector_acc_post  online_knn_acc_post adapted_at detector_acc_after_adapt       online_learner
+           E3_unsw_DoS_s1                 0.8                NaN                   10.020                       0.547            0.404             0.859              0.880                0.835       None                     None KNN (sliding window)
+      E3_unsw_Exploits_s1                 1.0                NaN                   10.120                       0.438            0.402             0.828              0.860                0.825       None                     None KNN (sliding window)
+ E4_unsw_class_mix_DoS_s1                 1.0                NaN                    9.979                       0.581            0.422             0.859              0.919                0.897       None                     None KNN (sliding window)
+       E4_unsw_gradual_s1                 0.0              0.844                    9.996                       0.577            0.423             0.859              0.855                0.827       None                     None KNN (sliding window)
+   E4_unsw_incremental_s1                 0.1              0.820                   10.000                       0.583            0.419             0.859              0.855                0.828       None                     None KNN (sliding window)
+     E4_unsw_recurring_s1                 0.0              0.733                   10.038                       0.575            0.419             0.859              0.855                0.821       None                     None KNN (sliding window)
+        E4_unsw_sudden_s1                 0.0              0.860                   10.052                       0.579            0.422             0.859              0.853                0.825       None                     None KNN (sliding window)
+E4_wustl_chronological_s1                 NaN                NaN                    9.831                       0.290            0.444             1.000                NaN                  NaN       None                     None KNN (sliding window)
+      E4_wustl_gradual_s1                 0.3              0.660                   10.159                       0.304            0.441             1.000              0.999                0.995       None                     None KNN (sliding window)
+  E4_wustl_incremental_s1                 0.1              0.620                    9.989                       0.298            0.439             1.000              0.999                0.995       None                     None KNN (sliding window)
+    E4_wustl_recurring_s1                 0.0              0.600                   10.094                       0.296            0.441             1.000              0.999                0.995       None                     None KNN (sliding window)
+       E4_wustl_sudden_s1                 0.0              0.660                    9.965                       0.298            0.441             1.000              0.999                0.995       None                     None KNN (sliding window)
+
+Friedman (delay): chi2=23.92, p=0.00118
+mean ranks (lower is better): {'xda': 3.36, 'shap': 3.68, 'input_ks': 3.73, 'shap_ks_only': 3.82, 'kswin': 3.95, 'confidence_ks': 5.27, 'adwin': 6.09, 'ddm': 6.09}
+                 xda   shap  shap_ks_only  ...  kswin  adwin    ddm
+xda            1.000  1.000         1.000  ...  0.999  0.152  0.152
+shap           1.000  1.000         1.000  ...  1.000  0.290  0.290
+shap_ks_only   1.000  1.000         1.000  ...  1.000  0.366  0.366
+input_ks       1.000  1.000         1.000  ...  1.000  0.314  0.314
+confidence_ks  0.601  0.795         0.861  ...  0.913  0.994  0.994
+kswin          0.999  1.000         1.000  ...  1.000  0.451  0.451
+adwin          0.152  0.290         0.366  ...  0.451  1.000  1.000
+ddm            0.152  0.290         0.366  ...  0.451  1.000  1.000
+
+[8 rows x 8 columns]
+
+Friedman (false-alarm rate): chi2=59.54, p=1.86e-10
+mean ranks (lower is better): {'adwin': 2.58, 'confidence_ks': 2.88, 'input_ks': 3.0, 'shap_ks_only': 3.21, 'ddm': 4.58, 'shap': 5.96, 'xda': 6.58, 'kswin': 7.21}
+                 xda   shap  shap_ks_only  ...  kswin  adwin    ddm
+xda            1.000  0.999         0.017  ...  0.999  0.002  0.482
+shap           0.999  1.000         0.108  ...  0.917  0.017  0.869
+shap_ks_only   0.017  0.108         1.000  ...  0.002  0.999  0.869
+input_ks       0.008  0.062         1.000  ...  0.001  1.000  0.761
+confidence_ks  0.005  0.043         1.000  ...  0.000  1.000  0.682
+kswin          0.999  0.917         0.002  ...  1.000  0.000  0.147
+adwin          0.002  0.017         0.999  ...  0.000  1.000  0.482
+ddm            0.482  0.869         0.869  ...  0.147  0.482  1.000
+
+[8 rows x 8 columns]
+report saved to results_quick\stats_report.txt

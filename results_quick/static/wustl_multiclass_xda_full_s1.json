@@ -1,0 +1,142 @@
+{
+ "accuracy": 0.9989220048984098,
+ "macro_f1": 0.9398557560004479,
+ "weighted_f1": 0.9989155192207197,
+ "macro_precision": 0.9643547431196687,
+ "macro_recall": 0.9196570647698004,
+ "mcc": 0.98905252723683,
+ "fpr": 0.0002698605215281989,
+ "detection_rate": 0.9849457604604827,
+ "pr_auc": 0.9575032669717629,
+ "per_class": {
+  "Backdoor": {
+   "precision": 0.9019607843137255,
+   "recall": 0.71875,
+   "f1": 0.8,
+   "support": 64
+  },
+  "CommInj": {
+   "precision": 0.9324324324324325,
+   "recall": 0.8961038961038961,
+   "f1": 0.9139072847682119,
+   "support": 77
+  },
+  "DoS": {
+   "precision": 0.9948524570539294,
+   "recall": 0.9846563981042654,
+   "f1": 0.9897281686366749,
+   "support": 16880
+  },
+  "Normal": {
+   "precision": 0.9991757151125967,
+   "recall": 0.9997301394784718,
+   "f1": 0.9994528504068761,
+   "support": 329800
+  },
+  "Reconn": {
+   "precision": 0.99335232668566,
+   "recall": 0.9990448901623686,
+   "f1": 0.9961904761904762,
+   "support": 1047
+  }
+ },
+ "confusion_matrix": [
+  [
+   46,
+   5,
+   1,
+   12,
+   0
+  ],
+  [
+   0,
+   69,
+   0,
+   2,
+   6
+  ],
+  [
+   2,
+   0,
+   16621,
+   257,
+   0
+  ],
+  [
+   3,
+   0,
+   85,
+   329711,
+   1
+  ],
+  [
+   0,
+   0,
+   0,
+   1,
+   1046
+  ]
+ ],
+ "latency_ms_per_flow": 0.23581560000457102,
+ "throughput_flows_s": 28914.85443158225,
+ "params": 156805,
+ "model_mb": 0.6058626174926758,
+ "dataset": "wustl",
+ "task": "multiclass",
+ "variant": "xda_full",
+ "seed": 1,
+ "n_features": 39,
+ "n_train": 730522,
+ "n_test": 347868,
+ "epochs": 10,
+ "train_seconds": 42.02164280001307,
+ "test_seconds": 0.4011555000033695,
+ "class_names": [
+  "Backdoor",
+  "CommInj",
+  "DoS",
+  "Normal",
+  "Reconn"
+ ],
+ "features": [
+  "Mean",
+  "SrcPkts",
+  "DstPkts",
+  "TotPkts",
+  "DstBytes",
+  "SrcBytes",
+  "TotBytes",
+  "SrcLoad",
+  "DstLoad",
+  "Load",
+  "SrcRate",
+  "DstRate",
+  "Rate",
+  "SrcLoss",
+  "DstLoss",
+  "Loss",
+  "pLoss",
+  "SrcJitter",
+  "DstJitter",
+  "SIntPkt",
+  "DIntPkt",
+  "Proto",
+  "Dur",
+  "TcpRtt",
+  "IdleTime",
+  "Sum",
+  "Min",
+  "Max",
+  "sDSb",
+  "sTtl",
+  "dTtl",
+  "SAppBytes",
+  "DAppBytes",
+  "TotAppByte",
+  "SynAck",
+  "RunTime",
+  "sTos",
+  "SrcJitAct",
+  "DstJitAct"
+ ]
+}

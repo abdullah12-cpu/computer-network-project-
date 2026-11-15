@@ -25,8 +25,8 @@ split:
   val_size: 0.10          # carved out of the training part, used for early stopping only
 
 train:
-  batch_size: 128
-  lr: 1.0e-3
+  batch_size: 512         # base paper: 128; raised for speed on the GTX 1660 Ti
+  lr: 2.0e-3              # base paper: 1.0e-3; scaled up with the batch size
   max_epochs: 100
   patience: 10            # early stopping on validation Macro-F1
 

@@ -1,0 +1,665 @@
+{
+ "ranking": [
+  [
+   "sttl",
+   2.2826938651282345
+  ],
+  [
+   "dttl",
+   1.6287631369512845
+  ],
+  [
+   "service",
+   0.8044033190399715
+  ],
+  [
+   "dload",
+   0.717940819890552
+  ],
+  [
+   "proto",
+   0.6017509420298267
+  ],
+  [
+   "smean",
+   0.5698633582087808
+  ],
+  [
+   "ct_state_ttl",
+   0.5548603504731547
+  ],
+  [
+   "ct_srv_dst",
+   0.5106807408363201
+  ],
+  [
+   "swin",
+   0.47582883996033276
+  ],
+  [
+   "ct_dst_src_ltm",
+   0.47259592556237356
+  ],
+  [
+   "state",
+   0.34154272160704896
+  ],
+  [
+   "ct_srv_src",
+   0.30455262181677956
+  ],
+  [
+   "dmean",
+   0.3034937923258223
+  ],
+  [
+   "stcpb",
+   0.2087439270680157
+  ],
+  [
+   "ct_dst_sport_ltm",
+   0.18251434394468377
+  ],
+  [
+   "dwin",
+   0.17870940439613245
+  ],
+  [
+   "ct_src_dport_ltm",
+   0.13805842937930543
+  ],
+  [
+   "dtcpb",
+   0.12547213537541743
+  ],
+  [
+   "rate",
+   0.11818325724357873
+  ],
+  [
+   "ct_flw_http_mthd",
+   0.08458054031898059
+  ],
+  [
+   "tcprtt",
+   0.08369180807841385
+  ],
+  [
+   "sload",
+   0.0797516220468351
+  ],
+  [
+   "ct_dst_ltm",
+   0.07563984356527267
+  ],
+  [
+   "ct_src_ltm",
+   0.05904360288142534
+  ],
+  [
+   "synack",
+   0.04972828263565842
+  ],
+  [
+   "ackdat",
+   0.04943102163632397
+  ],
+  [
+   "sinpkt",
+   0.025132828776213898
+  ],
+  [
+   "is_ftp_login",
+   0.022871115236356862
+  ],
+  [
+   "dur",
+   0.02241407775316383
+  ],
+  [
+   "dbytes",
+   0.014557360115589323
+  ],
+  [
+   "sloss",
+   0.01249609681421178
+  ],
+  [
+   "spkts",
+   0.009950195258947032
+  ],
+  [
+   "dloss",
+   0.009317775778307062
+  ],
+  [
+   "ct_ftp_cmd",
+   0.00849631289517507
+  ],
+  [
+   "djit",
+   0.006572887113270241
+  ],
+  [
+   "trans_depth",
+   0.005699533372576323
+  ],
+  [
+   "response_body_len",
+   0.005070139589968386
+  ],
+  [
+   "dpkts",
+   0.004410848022267005
+  ],
+  [
+   "dinpkt",
+   0.0029764983403365113
+  ],
+  [
+   "sbytes",
+   0.0023954546534449214
+  ],
+  [
+   "is_sm_ips_ports",
+   0.0021745230899844316
+  ],
+  [
+   "sjit",
+   0.00195048054510179
+  ]
+ ],
+ "fidelity": [
+  {
+   "k": 1,
+   "f1_full": 0.40987732905988883,
+   "f1_top_masked": 0.28790627716899875,
+   "f1_random_masked": 0.392202003759604,
+   "drop_top": 0.12197105189089008,
+   "drop_random": 0.017675325300284817
+  },
+  {
+   "k": 3,
+   "f1_full": 0.40987732905988883,
+   "f1_top_masked": 0.16811562035473449,
+   "f1_random_masked": 0.3997143529885111,
+   "drop_top": 0.24176170870515434,
+   "drop_random": 0.010162976071377727
+  },
+  {
+   "k": 5,
+   "f1_full": 0.40987732905988883,
+   "f1_top_masked": 0.15532357337006444,
+   "f1_random_masked": 0.36804790239989316,
+   "drop_top": 0.2545537556898244,
+   "drop_random": 0.04182942665999567
+  },
+  {
+   "k": 10,
+   "f1_full": 0.40987732905988883,
+   "f1_top_masked": 0.07538301132011235,
+   "f1_random_masked": 0.3019926014969928,
+   "drop_top": 0.33449431773977645,
+   "drop_random": 0.10788472756289602
+  }
+ ],
+ "stability": {
+  "k": 10,
+  "n_boot": 20,
+  "jaccard_mean": 1.0,
+  "jaccard_std": 0.0,
+  "jaccard_min": 1.0
+ },
+ "errors": {
+  "Analysis": {
+   "n_wrong": 12,
+   "n_total": 20,
+   "confused_with": {
+    "Backdoor": 9,
+    "Exploits": 2,
+    "Normal": 1
+   },
+   "misleading_features": [
+    [
+     "proto",
+     3.3761636401120807
+    ],
+    [
+     "service",
+     0.3680816968562682
+    ],
+    [
+     "swin",
+     0.3505682271315406
+    ],
+    [
+     "ct_dst_sport_ltm",
+     0.34252204001250547
+    ],
+    [
+     "sttl",
+     0.2554330767669873
+    ]
+   ]
+  },
+  "Backdoor": {
+   "n_wrong": 8,
+   "n_total": 20,
+   "confused_with": {
+    "Analysis": 5,
+    "Reconnaissance": 2,
+    "Worms": 1
+   },
+   "misleading_features": [
+    [
+     "proto",
+     4.832371487862695
+    ],
+    [
+     "sttl",
+     2.0064672777669097
+    ],
+    [
+     "state",
+     0.9219819063045358
+    ],
+    [
+     "ct_dst_sport_ltm",
+     0.9105038107199217
+    ],
+    [
+     "smean",
+     0.5070344584838514
+    ]
+   ]
+  },
+  "DoS": {
+   "n_wrong": 83,
+   "n_total": 83,
+   "confused_with": {
+    "Exploits": 26,
+    "Backdoor": 22,
+    "Analysis": 10
+   },
+   "misleading_features": [
+    [
+     "proto",
+     1.7472566624494974
+    ],
+    [
+     "sttl",
+     0.9736962594482429
+    ],
+    [
+     "dttl",
+     0.8256312385310022
+    ],
+    [
+     "service",
+     0.5986782647843217
+    ],
+    [
+     "smean",
+     0.3458788008030891
+    ]
+   ]
+  },
+  "Exploits": {
+   "n_wrong": 126,
+   "n_total": 346,
+   "confused_with": {
+    "Worms": 52,
+    "Fuzzers": 29,
+    "Reconnaissance": 14
+   },
+   "misleading_features": [
+    [
+     "sttl",
+     2.01543278083613
+    ],
+    [
+     "service",
+     0.98361388177818
+    ],
+    [
+     "proto",
+     0.7703402701301733
+    ],
+    [
+     "dttl",
+     0.6914072388027644
+    ],
+    [
+     "smean",
+     0.42707924903391037
+    ]
+   ]
+  },
+  "Fuzzers": {
+   "n_wrong": 135,
+   "n_total": 266,
+   "confused_with": {
+    "Normal": 82,
+    "Shellcode": 15,
+    "Reconnaissance": 15
+   },
+   "misleading_features": [
+    [
+     "proto",
+     0.9120396704553906
+    ],
+    [
+     "ct_dst_src_ltm",
+     0.4771695617052367
+    ],
+    [
+     "ct_srv_dst",
+     0.4503064354109064
+    ],
+    [
+     "service",
+     0.4198495504080713
+    ],
+    [
+     "smean",
+     0.2610235267193429
+    ]
+   ]
+  },
+  "Generic": {
+   "n_wrong": 12,
+   "n_total": 77,
+   "confused_with": {
+    "Worms": 4,
+    "Fuzzers": 3,
+    "Backdoor": 2
+   },
+   "misleading_features": [
+    [
+     "sttl",
+     1.8495034435290025
+    ],
+    [
+     "proto",
+     0.7500290196850536
+    ],
+    [
+     "dttl",
+     0.7160663968648575
+    ],
+    [
+     "service",
+     0.549248829077769
+    ],
+    [
+     "smean",
+     0.4002687983424639
+    ]
+   ]
+  },
+  "Normal": {
+   "n_wrong": 182,
+   "n_total": 1051,
+   "confused_with": {
+    "Fuzzers": 108,
+    "Analysis": 28,
+    "Reconnaissance": 20
+   },
+   "misleading_features": [
+    [
+     "sttl",
+     1.8765908164621325
+    ],
+    [
+     "dttl",
+     1.1601066739533945
+    ],
+    [
+     "smean",
+     0.8274217007997318
+    ],
+    [
+     "ct_state_ttl",
+     0.6361968059633138
+    ],
+    [
+     "service",
+     0.5833490878111967
+    ]
+   ]
+  },
+  "Reconnaissance": {
+   "n_wrong": 71,
+   "n_total": 119,
+   "confused_with": {
+    "Worms": 27,
+    "Backdoor": 17,
+    "Shellcode": 14
+   },
+   "misleading_features": [
+    [
+     "sttl",
+     2.0309259245777
+    ],
+    [
+     "proto",
+     1.5335604296916299
+    ],
+    [
+     "service",
+     1.137253530270098
+    ],
+    [
+     "dttl",
+     0.5259060601203467
+    ],
+    [
+     "dload",
+     0.222446311778589
+    ]
+   ]
+  }
+ },
+ "artefact_features_in_top10": [
+  "ct_state_ttl",
+  "dttl",
+  "sttl"
+ ],
+ "topk_sweep": [
+  {
+   "k": 5,
+   "macro_f1": 0.3131824814967591,
+   "accuracy": 0.5900376863837457,
+   "fpr": 0.3209550103044679,
+   "train_seconds": 6.046750099994824,
+   "latency_ms_per_flow": 0.21258210000087274,
+   "throughput_flows_s": 91506.7966907809,
+   "params": 42442,
+   "model_mb": 0.16958332061767578,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto"
+   ]
+  },
+  {
+   "k": 10,
+   "macro_f1": 0.40902722254532675,
+   "accuracy": 0.6972390627560217,
+   "fpr": 0.1464789827740405,
+   "train_seconds": 6.092066199998953,
+   "latency_ms_per_flow": 0.21236065000266535,
+   "throughput_flows_s": 84753.66348341636,
+   "params": 42442,
+   "model_mb": 0.16958332061767578,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto",
+    "smean",
+    "ct_state_ttl",
+    "ct_srv_dst",
+    "swin",
+    "ct_dst_src_ltm"
+   ]
+  },
+  {
+   "k": 15,
+   "macro_f1": 0.4289423749856027,
+   "accuracy": 0.6955595608717025,
+   "fpr": 0.23956915658902672,
+   "train_seconds": 6.067628899996635,
+   "latency_ms_per_flow": 0.22542574999533826,
+   "throughput_flows_s": 56534.22583412789,
+   "params": 58826,
+   "model_mb": 0.23208332061767578,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto",
+    "smean",
+    "ct_state_ttl",
+    "ct_srv_dst",
+    "swin",
+    "ct_dst_src_ltm",
+    "state",
+    "ct_srv_src",
+    "dmean",
+    "stcpb",
+    "ct_dst_sport_ltm"
+   ]
+  },
+  {
+   "k": 20,
+   "macro_f1": 0.4290334947072144,
+   "accuracy": 0.6799524823857119,
+   "fpr": 0.28249795854881987,
+   "train_seconds": 6.141704900001059,
+   "latency_ms_per_flow": 0.23956785000336822,
+   "throughput_flows_s": 43629.3512126684,
+   "params": 83402,
+   "model_mb": 0.3258333206176758,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto",
+    "smean",
+    "ct_state_ttl",
+    "ct_srv_dst",
+    "swin",
+    "ct_dst_src_ltm",
+    "state",
+    "ct_srv_src",
+    "dmean",
+    "stcpb",
+    "ct_dst_sport_ltm",
+    "dwin",
+    "ct_src_dport_ltm",
+    "dtcpb",
+    "rate",
+    "ct_flw_http_mthd"
+   ]
+  },
+  {
+   "k": 25,
+   "macro_f1": 0.42217872437278114,
+   "accuracy": 0.6831476323119777,
+   "fpr": 0.2691604775051522,
+   "train_seconds": 6.193534299993189,
+   "latency_ms_per_flow": 0.24737264999566833,
+   "throughput_flows_s": 37026.95747690959,
+   "params": 99786,
+   "model_mb": 0.3883333206176758,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto",
+    "smean",
+    "ct_state_ttl",
+    "ct_srv_dst",
+    "swin",
+    "ct_dst_src_ltm",
+    "state",
+    "ct_srv_src",
+    "dmean",
+    "stcpb",
+    "ct_dst_sport_ltm",
+    "dwin",
+    "ct_src_dport_ltm",
+    "dtcpb",
+    "rate",
+    "ct_flw_http_mthd",
+    "tcprtt",
+    "sload",
+    "ct_dst_ltm",
+    "ct_src_ltm",
+    "synack"
+   ]
+  },
+  {
+   "k": 42,
+   "macro_f1": 0.42195982026248535,
+   "accuracy": 0.6813247583155825,
+   "fpr": 0.24493525683400086,
+   "train_seconds": 6.165048599999864,
+   "latency_ms_per_flow": 0.23881065000023227,
+   "throughput_flows_s": 25298.618568924638,
+   "params": 173514,
+   "model_mb": 0.6695833206176758,
+   "features": [
+    "sttl",
+    "dttl",
+    "service",
+    "dload",
+    "proto",
+    "smean",
+    "ct_state_ttl",
+    "ct_srv_dst",
+    "swin",
+    "ct_dst_src_ltm",
+    "state",
+    "ct_srv_src",
+    "dmean",
+    "stcpb",
+    "ct_dst_sport_ltm",
+    "dwin",
+    "ct_src_dport_ltm",
+    "dtcpb",
+    "rate",
+    "ct_flw_http_mthd",
+    "tcprtt",
+    "sload",
+    "ct_dst_ltm",
+    "ct_src_ltm",
+    "synack",
+    "ackdat",
+    "sinpkt",
+    "is_ftp_login",
+    "dur",
+    "dbytes",
+    "sloss",
+    "spkts",
+    "dloss",
+    "ct_ftp_cmd",
+    "djit",
+    "trans_depth",
+    "response_body_len",
+    "dpkts",
+    "dinpkt",
+    "sbytes",
+    "is_sm_ips_ports",
+    "sjit"
+   ]
+  }
+ ]
+}

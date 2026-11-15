@@ -1,0 +1,10 @@
+"drift / unseen attacks (E3, E4)",scenarios,detected,mean_delay_windows,false_alarm_rate
+adwin,11,0.545,4.5,0.0
+confidence_ks,11,0.636,0.714,0.009
+ddm,11,0.364,0.0,0.327
+input_ks,11,0.909,0.1,0.0
+kswin,11,1.0,1.0,0.209
+shap,11,1.0,0.364,0.118
+shap_ks_only,11,1.0,0.545,0.009
+xda,11,1.0,0.273,0.164
+base paper,not evaluated,not evaluated,not evaluated,not evaluated

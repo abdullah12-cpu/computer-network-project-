@@ -1,0 +1,94 @@
+
+$ python scripts/run_drift.py --family Exploits DoS --seed 1 --max-epochs 10 --out results_quick/drift
+
+### E3 unsw leave-out family = Exploits, seed 1
+  epoch   1  loss 0.1085  val_f1 0.3732
+  epoch   2  loss 0.0915  val_f1 0.3877
+  epoch   3  loss 0.0852  val_f1 0.3327
+  epoch   4  loss 0.0808  val_f1 0.4169
+  epoch   5  loss 0.0792  val_f1 0.4330
+  epoch   6  loss 0.0784  val_f1 0.4164
+  epoch   7  loss 0.0767  val_f1 0.3454
+  epoch   8  loss 0.0749  val_f1 0.4402
+  epoch   9  loss 0.0726  val_f1 0.4291
+  epoch  10  loss 0.0730  val_f1 0.4533
+  w00 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.833
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.820
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.829
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.829
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.825
+  w05 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.833
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.833
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.823
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.832
+  w09 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.822
+  w10 DRIFT  xda=True  (concept)  shap=False inKS=True  kswin=True   adwin=True   det_acc=0.857
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.856
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.861
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.861
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.867
+  w15 DRIFT  xda=True  (concept)  shap=False inKS=True  kswin=False  adwin=False  det_acc=0.859
+  w16 DRIFT  xda=True  (concept)  shap=False inKS=True  kswin=False  adwin=False  det_acc=0.857
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.859
+  w18 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w19 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.862
+{"xda": [0, 0.2], "shap": [1, 0.2], "shap_ks_only": [1, 0.1], "input_ks": [0, 0.0], "confidence_ks": [0, 0.0], "kswin": [0, 0.2], "adwin": [0, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 1.0,
+ "localisation_mean": null,
+ "shap_seconds_per_window": 10.119883344999835,
+ "monitor_seconds_per_window": 0.43846136499705607,
+ "monitor_peak_mb": 0.40163421630859375,
+ "detector_acc_pre": 0.82804,
+ "detector_acc_post": 0.8600199999999999,
+ "online_knn_acc_post": 0.825,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E3 unsw leave-out family = DoS, seed 1
+  epoch   1  loss 0.0999  val_f1 0.4227
+  epoch   2  loss 0.0802  val_f1 0.3814
+  epoch   3  loss 0.0762  val_f1 0.4349
+  epoch   4  loss 0.0705  val_f1 0.3939
+  epoch   5  loss 0.0691  val_f1 0.4433
+  epoch   6  loss 0.0674  val_f1 0.4051
+  epoch   7  loss 0.0655  val_f1 0.4621
+  epoch   8  loss 0.0652  val_f1 0.4663
+  epoch   9  loss 0.0629  val_f1 0.4752
+  epoch  10  loss 0.0616  val_f1 0.4673
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.859
+  w02 clean  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.855
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.854
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.864
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.857
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.859
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w09 clean  xda=True  (scale  )  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.856
+  w10 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.879
+  w11 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=True   det_acc=0.881
+  w12 DRIFT  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.883
+  w13 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.881
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.884
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.880
+  w16 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.880
+  w17 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.871
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.881
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.881
+{"xda": [2, 0.2], "shap": [2, 0.2], "shap_ks_only": [4, 0.0], "input_ks": [null, 0.0], "confidence_ks": [0, 0.1], "kswin": [5, 0.3], "adwin": [1, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 0.8,
+ "localisation_mean": null,
+ "shap_seconds_per_window": 10.020272520000436,
+ "monitor_seconds_per_window": 0.5468163400008053,
+ "monitor_peak_mb": 0.4042806625366211,
+ "detector_acc_pre": 0.85868,
+ "detector_acc_post": 0.8801399999999999,
+ "online_knn_acc_post": 0.8353333333333334,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}

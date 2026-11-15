@@ -1,0 +1,1502 @@
+{
+ "scores": {
+  "xda": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.2,
+   "post_alarm_rate": 1.0
+  },
+  "shap": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.1,
+   "post_alarm_rate": 1.0
+  },
+  "shap_ks_only": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 1.0
+  },
+  "input_ks": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 1.0
+  },
+  "confidence_ks": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 2,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.6
+  },
+  "kswin": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.2,
+   "post_alarm_rate": 0.4
+  },
+  "adwin": {
+   "detected": false,
+   "missed": true,
+   "delay_windows": null,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.0
+  },
+  "ddm": {
+   "detected": false,
+   "missed": true,
+   "delay_windows": null,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.0
+  }
+ },
+ "summary": {
+  "diagnosis_accuracy": 0.1,
+  "localisation_mean": 0.82,
+  "shap_seconds_per_window": 10.000428170000669,
+  "monitor_seconds_per_window": 0.5825455600017448,
+  "monitor_peak_mb": 0.4190378189086914,
+  "detector_acc_pre": 0.8594000000000002,
+  "detector_acc_post": 0.8549599999999999,
+  "online_knn_acc_post": 0.8276666666666668,
+  "adapted_at": null,
+  "detector_acc_after_adapt": null,
+  "online_learner": "KNN (sliding window)"
+ },
+ "log": [
+  {
+   "window": 0,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.037083461325717826,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     5428047.96993727
+    ],
+    [
+     "sinpkt",
+     0.18987506125260412
+    ],
+    [
+     "ct_dst_src_ltm",
+     0.15204409020822088
+    ],
+    [
+     "djit",
+     0.14482807069226322
+    ],
+    [
+     "dpkts",
+     0.13502878688162775
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 5428047.96993727,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.8648,
+   "detector_attack_recall": 0.9805989034162801,
+   "detector_fpr": 0.2396348421453024,
+   "online_knn_acc_binary": 0.7733333333333333,
+   "shap_seconds": 9.968571100005647,
+   "monitor_seconds": 0.5754531999991741,
+   "monitor_peak_mb": 0.4190378189086914
+  },
+  {
+   "window": 1,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06343738328131358,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     5975888.860473969
+    ],
+    [
+     "sbytes",
+     0.31266226025618377
+    ],
+    [
+     "sinpkt",
+     0.23255609809505956
+    ],
+    [
+     "rate",
+     0.17261040581951348
+    ],
+    [
+     "dpkts",
+     0.1704972385424828
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 5975888.860473969,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.4,
+   "detector_acc_binary": 0.8558,
+   "detector_attack_recall": 0.9832214765100671,
+   "detector_fpr": 0.2603211009174312,
+   "online_knn_acc_binary": 0.7966666666666666,
+   "shap_seconds": 9.856765400007134,
+   "monitor_seconds": 0.5713687999959802,
+   "monitor_peak_mb": 0.39583492279052734
+  },
+  {
+   "window": 2,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.04954627223784653,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     15227725.465696616
+    ],
+    [
+     "sinpkt",
+     0.639408288761054
+    ],
+    [
+     "dpkts",
+     0.244878834998284
+    ],
+    [
+     "dbytes",
+     0.17072241670839683
+    ],
+    [
+     "sloss",
+     0.1703710215676268
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 15227725.465696616,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.4,
+   "detector_acc_binary": 0.8604,
+   "detector_attack_recall": 0.9761606022584692,
+   "detector_fpr": 0.24568800306630892,
+   "online_knn_acc_binary": 0.84,
+   "shap_seconds": 10.01587030000519,
+   "monitor_seconds": 0.5779582999966806,
+   "monitor_peak_mb": 0.39453697204589844
+  },
+  {
+   "window": 3,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.052430595821794185,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     6203284.440944296
+    ],
+    [
+     "sbytes",
+     0.28618938664361543
+    ],
+    [
+     "sinpkt",
+     0.2109185496788667
+    ],
+    [
+     "ct_dst_ltm",
+     0.18006726682551513
+    ],
+    [
+     "sloss",
+     0.17943037508057005
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 6203284.440944296,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.8646,
+   "detector_attack_recall": 0.9776748104465038,
+   "detector_fpr": 0.2376237623762376,
+   "online_knn_acc_binary": 0.8133333333333334,
+   "shap_seconds": 9.997741700004553,
+   "monitor_seconds": 0.5652568000077736,
+   "monitor_peak_mb": 0.3960886001586914
+  },
+  {
+   "window": 4,
+   "drifted": false,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.07816248385365633,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     5059751.202414381
+    ],
+    [
+     "sinpkt",
+     0.2960177105718232
+    ],
+    [
+     "ct_dst_sport_ltm",
+     0.20565236880876567
+    ],
+    [
+     "ct_state_ttl",
+     0.18488687432095668
+    ],
+    [
+     "proto",
+     0.17360087814095354
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 5059751.202414381,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.0,
+   "detector_acc_binary": 0.8574,
+   "detector_attack_recall": 0.9778817524457678,
+   "detector_fpr": 0.24952812382030956,
+   "online_knn_acc_binary": 0.8333333333333334,
+   "shap_seconds": 10.019492899999022,
+   "monitor_seconds": 0.5863895999937085,
+   "monitor_peak_mb": 0.3893146514892578
+  },
+  {
+   "window": 5,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.05914426804569471,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     4813950.744612714
+    ],
+    [
+     "sinpkt",
+     0.2668986328405603
+    ],
+    [
+     "ct_dst_src_ltm",
+     0.17715073677294807
+    ],
+    [
+     "sload",
+     0.1590846474918123
+    ],
+    [
+     "trans_depth",
+     0.14341464359231504
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 4813950.744612714,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.8604,
+   "detector_attack_recall": 0.9794959419051688,
+   "detector_fpr": 0.2444528018051899,
+   "online_knn_acc_binary": 0.8566666666666667,
+   "shap_seconds": 10.098168199998327,
+   "monitor_seconds": 0.5597895000100834,
+   "monitor_peak_mb": 0.39400768280029297
+  },
+  {
+   "window": 6,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06625220337371256,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     7921646.993234786
+    ],
+    [
+     "sinpkt",
+     0.5175716904822684
+    ],
+    [
+     "sloss",
+     0.16067665897954053
+    ],
+    [
+     "dpkts",
+     0.15984624235350367
+    ],
+    [
+     "rate",
+     0.14913624265295447
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 7921646.993234786,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.853,
+   "detector_attack_recall": 0.9770959377700951,
+   "detector_fpr": 0.2539091586001489,
+   "online_knn_acc_binary": 0.8666666666666667,
+   "shap_seconds": 9.933542500002659,
+   "monitor_seconds": 0.5783555000089109,
+   "monitor_peak_mb": 0.3907623291015625
+  },
+  {
+   "window": 7,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.05292929161401289,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     5190208.069328166
+    ],
+    [
+     "sinpkt",
+     0.2717515584657114
+    ],
+    [
+     "djit",
+     0.19884592808123236
+    ],
+    [
+     "sloss",
+     0.148247148479344
+    ],
+    [
+     "trans_depth",
+     0.14053760059907022
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 5190208.069328166,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.0,
+   "detector_acc_binary": 0.8596,
+   "detector_attack_recall": 0.9766666666666667,
+   "detector_fpr": 0.24846153846153846,
+   "online_knn_acc_binary": 0.8466666666666667,
+   "shap_seconds": 10.006246600009035,
+   "monitor_seconds": 0.5624999000137905,
+   "monitor_peak_mb": 0.395263671875
+  },
+  {
+   "window": 8,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.03437111849920755,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     4763303.787261198
+    ],
+    [
+     "sinpkt",
+     0.23645613714649796
+    ],
+    [
+     "trans_depth",
+     0.18746114410486822
+    ],
+    [
+     "dpkts",
+     0.18661658597392508
+    ],
+    [
+     "dloss",
+     0.14146780611444473
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 4763303.787261198,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.8632,
+   "detector_attack_recall": 0.982051282051282,
+   "detector_fpr": 0.24135338345864663,
+   "online_knn_acc_binary": 0.85,
+   "shap_seconds": 10.005052699998487,
+   "monitor_seconds": 0.5565037000051234,
+   "monitor_peak_mb": 0.39343738555908203
+  },
+  {
+   "window": 9,
+   "drifted": false,
+   "diagnosis": "scale",
+   "alarms": {
+    "xda": true,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 1,
+   "jaccard": 1.0,
+   "share_shift": 0.062203799556587606,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     3934552.234162847
+    ],
+    [
+     "dpkts",
+     0.3766145028531295
+    ],
+    [
+     "djit",
+     0.2403095512005454
+    ],
+    [
+     "sinpkt",
+     0.18675605954926516
+    ],
+    [
+     "ct_ftp_cmd",
+     0.1610099060044301
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 3934552.234162847,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 1,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.2,
+   "detector_acc_binary": 0.8548,
+   "detector_attack_recall": 0.9817945383615084,
+   "detector_fpr": 0.2539918306721129,
+   "online_knn_acc_binary": 0.82,
+   "shap_seconds": 10.09139280000818,
+   "monitor_seconds": 0.5552325999888126,
+   "monitor_peak_mb": 0.3980274200439453
+  },
+  {
+   "window": 10,
+   "drifted": true,
+   "diagnosis": "scale",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 1,
+   "n_input_shifted": 5,
+   "jaccard": 1.0,
+   "share_shift": 0.054622669685135704,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     8559901.433686454
+    ],
+    [
+     "sinpkt",
+     0.4304961588915529
+    ],
+    [
+     "dbytes",
+     0.25274576044801256
+    ],
+    [
+     "spkts",
+     0.24785502174533108
+    ],
+    [
+     "dpkts",
+     0.23252794409573552
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 1,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 8559901.433686454,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 5,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.6,
+   "detector_acc_binary": 0.857,
+   "detector_attack_recall": 0.985593220338983,
+   "detector_fpr": 0.25795454545454544,
+   "online_knn_acc_binary": 0.84,
+   "shap_seconds": 9.964442399999825,
+   "monitor_seconds": 0.5852196000050753,
+   "monitor_peak_mb": 0.3961811065673828
+  },
+  {
+   "window": 11,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 2,
+   "n_input_shifted": 8,
+   "jaccard": 1.0,
+   "share_shift": 0.0837769857856411,
+   "top_shifted": [
+    [
+     "smean",
+     0.4812270883061206
+    ],
+    [
+     "spkts",
+     0.4190981919314581
+    ],
+    [
+     "dmean",
+     0.3037299803465198
+    ],
+    [
+     "dpkts",
+     0.26913641197431526
+    ],
+    [
+     "sloss",
+     0.2661311004909894
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 2,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.4812270883061206,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.8,
+   "detector_acc_binary": 0.8576,
+   "detector_attack_recall": 0.9828986746472852,
+   "detector_fpr": 0.2525366403607666,
+   "online_knn_acc_binary": 0.8366666666666667,
+   "shap_seconds": 9.920440699992469,
+   "monitor_seconds": 0.5734300000040093,
+   "monitor_peak_mb": 0.4020414352416992
+  },
+  {
+   "window": 12,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 3,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.11083743029685071,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     14994350.47718386
+    ],
+    [
+     "smean",
+     0.7426507009282088
+    ],
+    [
+     "sinpkt",
+     0.7239694274789463
+    ],
+    [
+     "dpkts",
+     0.4609831614894842
+    ],
+    [
+     "dmean",
+     0.38957926704711104
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 3,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 14994350.47718386,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.6,
+   "detector_acc_binary": 0.8604,
+   "detector_attack_recall": 0.9926215277777778,
+   "detector_fpr": 0.2525964391691395,
+   "online_knn_acc_binary": 0.8433333333333334,
+   "shap_seconds": 9.97517799999332,
+   "monitor_seconds": 0.7432101000013063,
+   "monitor_peak_mb": 0.40564823150634766
+  },
+  {
+   "window": 13,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 4,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.12121693633919856,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     4352991.722989783
+    ],
+    [
+     "dpkts",
+     0.7193429943430711
+    ],
+    [
+     "smean",
+     0.7155727467205035
+    ],
+    [
+     "dmean",
+     0.5735253669596857
+    ],
+    [
+     "spkts",
+     0.47543232811129493
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 4,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 4352991.722989783,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.8,
+   "detector_acc_binary": 0.8528,
+   "detector_attack_recall": 0.9923142613151152,
+   "detector_fpr": 0.27012791572610984,
+   "online_knn_acc_binary": 0.83,
+   "shap_seconds": 9.983510899997782,
+   "monitor_seconds": 0.5849592000013217,
+   "monitor_peak_mb": 0.4045591354370117
+  },
+  {
+   "window": 14,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 4,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.21443380324024733,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     7294452.520087402
+    ],
+    [
+     "smean",
+     1.0787697100166496
+    ],
+    [
+     "dmean",
+     0.7111963255636969
+    ],
+    [
+     "dpkts",
+     0.596602122124214
+    ],
+    [
+     "dload",
+     0.527474779257131
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 4,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 7294452.520087402,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.8,
+   "detector_acc_binary": 0.8516,
+   "detector_attack_recall": 0.9887029288702929,
+   "detector_fpr": 0.2739463601532567,
+   "online_knn_acc_binary": 0.8166666666666667,
+   "shap_seconds": 10.352354300004663,
+   "monitor_seconds": 0.5903558999998495,
+   "monitor_peak_mb": 0.4045085906982422
+  },
+  {
+   "window": 15,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 5,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.1968478860287051,
+   "top_shifted": [
+    [
+     "dpkts",
+     1.1532478700888795
+    ],
+    [
+     "smean",
+     1.1278407828237862
+    ],
+    [
+     "sbytes",
+     1.0530386056835814
+    ],
+    [
+     "dmean",
+     0.6919352817494082
+    ],
+    [
+     "spkts",
+     0.520149982952752
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 5,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 1.1532478700888795,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 1.0,
+   "detector_acc_binary": 0.8482,
+   "detector_attack_recall": 0.9882501049097776,
+   "detector_fpr": 0.27932747420710735,
+   "online_knn_acc_binary": 0.82,
+   "shap_seconds": 9.873225199989974,
+   "monitor_seconds": 0.5633807999984128,
+   "monitor_peak_mb": 0.40169811248779297
+  },
+  {
+   "window": 16,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 6,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.18992653163563097,
+   "top_shifted": [
+    [
+     "dpkts",
+     1.2733226626119634
+    ],
+    [
+     "smean",
+     1.1985586177356147
+    ],
+    [
+     "sbytes",
+     0.9374985490979342
+    ],
+    [
+     "spkts",
+     0.6913037071191025
+    ],
+    [
+     "dmean",
+     0.6613647818376182
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 6,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 1.2733226626119634,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 1.0,
+   "detector_acc_binary": 0.8494,
+   "detector_attack_recall": 0.9907718120805369,
+   "detector_fpr": 0.279434250764526,
+   "online_knn_acc_binary": 0.81,
+   "shap_seconds": 9.925846700003603,
+   "monitor_seconds": 0.6012731999944663,
+   "monitor_peak_mb": 0.40083980560302734
+  },
+  {
+   "window": 17,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 6,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.25781134486647733,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     4807492.34041815
+    ],
+    [
+     "smean",
+     0.9875102207632798
+    ],
+    [
+     "dload",
+     0.9663155771284498
+    ],
+    [
+     "dpkts",
+     0.858445642828352
+    ],
+    [
+     "dmean",
+     0.7706243713541499
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 6,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 4807492.34041815,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.8,
+   "detector_acc_binary": 0.8586,
+   "detector_attack_recall": 0.9933938893476466,
+   "detector_fpr": 0.26803723816912334,
+   "online_knn_acc_binary": 0.8366666666666667,
+   "shap_seconds": 10.026876199990511,
+   "monitor_seconds": 0.5797863000043435,
+   "monitor_peak_mb": 0.4023103713989258
+  },
+  {
+   "window": 18,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 5,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.1637698427000876,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     4177121.411884782
+    ],
+    [
+     "dpkts",
+     1.2915334137115326
+    ],
+    [
+     "sbytes",
+     0.9893588102648879
+    ],
+    [
+     "smean",
+     0.903934654449837
+    ],
+    [
+     "spkts",
+     0.8041408479608578
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 5,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 4177121.411884782,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 0.8,
+   "detector_acc_binary": 0.8526,
+   "detector_attack_recall": 0.9913223140495868,
+   "detector_fpr": 0.2775193798449612,
+   "online_knn_acc_binary": 0.7966666666666666,
+   "shap_seconds": 10.061172900008387,
+   "monitor_seconds": 0.5710733000014443,
+   "monitor_peak_mb": 0.40099334716796875
+  },
+  {
+   "window": 19,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": true,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 6,
+   "n_input_shifted": 8,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.21724966695517525,
+   "top_shifted": [
+    [
+     "smean",
+     1.0861206805507655
+    ],
+    [
+     "dmean",
+     0.7729973350618472
+    ],
+    [
+     "sbytes",
+     0.6924959218999096
+    ],
+    [
+     "dpkts",
+     0.6912653212380319
+    ],
+    [
+     "spkts",
+     0.5801759508164166
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 6,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 1.0861206805507655,
+     "threshold": 18834398.625064626
+    },
+    "jaccard": {
+     "fired": true,
+     "value": 0.8181818181818182,
+     "threshold": 0.875757575757576
+    },
+    "input_ks": {
+     "fired": true,
+     "value": 8,
+     "threshold": 1
+    }
+   },
+   "localisation": 1.0,
+   "detector_acc_binary": 0.8614,
+   "detector_attack_recall": 0.988920804267542,
+   "detector_fpr": 0.25985173624658603,
+   "online_knn_acc_binary": 0.8466666666666667,
+   "shap_seconds": 9.932671899994602,
+   "monitor_seconds": 0.5694149000046309,
+   "monitor_peak_mb": 0.40160465240478516
+  }
+ ],
+ "config": {
+  "dataset": "unsw",
+  "window": 5000,
+  "sample": 300,
+  "explainer": "shap",
+  "seed": 1
+ }
+}

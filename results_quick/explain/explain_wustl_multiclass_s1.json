@@ -1,0 +1,430 @@
+{
+ "ranking": [
+  [
+   "dTtl",
+   0.41079336103029546
+  ],
+  [
+   "sTtl",
+   0.32239761123255556
+  ],
+  [
+   "pLoss",
+   0.26600542574108677
+  ],
+  [
+   "Max",
+   0.12254841134079396
+  ],
+  [
+   "RunTime",
+   0.06513205437236419
+  ],
+  [
+   "Sum",
+   0.040557963409529794
+  ],
+  [
+   "Min",
+   0.037404514404061714
+  ],
+  [
+   "SIntPkt",
+   0.029536299926513195
+  ],
+  [
+   "Proto",
+   0.024733447447692996
+  ],
+  [
+   "SrcJitter",
+   0.012726559552786678
+  ],
+  [
+   "SrcLoad",
+   0.008977824601480267
+  ],
+  [
+   "Mean",
+   0.008489021951825848
+  ],
+  [
+   "SrcJitAct",
+   0.00794711599893923
+  ],
+  [
+   "SAppBytes",
+   0.004989659624167854
+  ],
+  [
+   "SrcRate",
+   0.004865851294293648
+  ],
+  [
+   "Load",
+   0.004023298166285184
+  ],
+  [
+   "Rate",
+   0.0013916580005949545
+  ],
+  [
+   "TcpRtt",
+   0.0001736683443532145
+  ],
+  [
+   "SrcLoss",
+   9.776319266076147e-05
+  ],
+  [
+   "DIntPkt",
+   8.290498062334294e-05
+  ],
+  [
+   "IdleTime",
+   4.675567172378268e-05
+  ],
+  [
+   "SynAck",
+   4.0934709717919706e-05
+  ],
+  [
+   "DstLoss",
+   3.4476768304515474e-05
+  ],
+  [
+   "DstJitter",
+   3.011839732711066e-05
+  ],
+  [
+   "DstRate",
+   1.4030144984608532e-05
+  ],
+  [
+   "DstLoad",
+   9.677348611524526e-06
+  ],
+  [
+   "DAppBytes",
+   2.8988904260448615e-06
+  ],
+  [
+   "DstBytes",
+   8.802776174032218e-07
+  ],
+  [
+   "DstPkts",
+   8.474737929959486e-07
+  ],
+  [
+   "Loss",
+   2.997674772715819e-07
+  ],
+  [
+   "Dur",
+   1.9938268999098693e-07
+  ],
+  [
+   "TotPkts",
+   4.9456452449779764e-08
+  ],
+  [
+   "TotAppByte",
+   4.248614012931837e-08
+  ],
+  [
+   "TotBytes",
+   3.7579095281821284e-08
+  ],
+  [
+   "SrcBytes",
+   3.257876399151789e-08
+  ],
+  [
+   "SrcPkts",
+   2.630236711329429e-08
+  ],
+  [
+   "sDSb",
+   0.0
+  ],
+  [
+   "sTos",
+   0.0
+  ],
+  [
+   "DstJitAct",
+   0.0
+  ]
+ ],
+ "fidelity": [
+  {
+   "k": 1,
+   "f1_full": 0.9848040114963615,
+   "f1_top_masked": 0.3737834331165484,
+   "f1_random_masked": 0.8136143945698905,
+   "drop_top": 0.6110205783798132,
+   "drop_random": 0.17118961692647106
+  },
+  {
+   "k": 3,
+   "f1_full": 0.9848040114963615,
+   "f1_top_masked": 0.3241715900333933,
+   "f1_random_masked": 0.6909492299594904,
+   "drop_top": 0.6606324214629682,
+   "drop_random": 0.29385478153687117
+  },
+  {
+   "k": 5,
+   "f1_full": 0.9848040114963615,
+   "f1_top_masked": 0.24286448958601184,
+   "f1_random_masked": 0.5969032627706838,
+   "drop_top": 0.7419395219103497,
+   "drop_random": 0.3879007487256777
+  },
+  {
+   "k": 10,
+   "f1_full": 0.9848040114963615,
+   "f1_top_masked": 0.24286448958601184,
+   "f1_random_masked": 0.33381711821849364,
+   "drop_top": 0.7419395219103497,
+   "drop_random": 0.650986893277868
+  }
+ ],
+ "stability": {
+  "k": 10,
+  "n_boot": 20,
+  "jaccard_mean": 0.9818181818181818,
+  "jaccard_std": 0.05454545454545453,
+  "jaccard_min": 0.8181818181818182
+ },
+ "errors": {
+  "DoS": {
+   "n_wrong": 7,
+   "n_total": 95,
+   "confused_with": {
+    "Normal": 7
+   },
+   "misleading_features": [
+    [
+     "pLoss",
+     1.9153495170855197
+    ],
+    [
+     "RunTime",
+     0.37699400025251667
+    ],
+    [
+     "Mean",
+     0.02689096243119665
+    ],
+    [
+     "SIntPkt",
+     0.01812756808277694
+    ],
+    [
+     "SrcJitter",
+     0.004164512153812491
+    ]
+   ]
+  }
+ },
+ "artefact_features_in_top10": [
+  "dTtl",
+  "sTtl"
+ ],
+ "topk_sweep": [
+  {
+   "k": 5,
+   "macro_f1": 0.9313376657834095,
+   "accuracy": 0.998531052008233,
+   "fpr": 0.00012734990903577926,
+   "train_seconds": 41.00144769999315,
+   "latency_ms_per_flow": 0.21380209999915678,
+   "throughput_flows_s": 90604.74131761094,
+   "params": 42117,
+   "model_mb": 0.16836261749267578,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime"
+   ]
+  },
+  {
+   "k": 10,
+   "macro_f1": 0.9359971043880085,
+   "accuracy": 0.9971713408534272,
+   "fpr": 0.0008095815645845967,
+   "train_seconds": 40.58123839998734,
+   "latency_ms_per_flow": 0.2135673000011593,
+   "throughput_flows_s": 77078.41956485025,
+   "params": 42117,
+   "model_mb": 0.16836261749267578,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime",
+    "Sum",
+    "Min",
+    "SIntPkt",
+    "Proto",
+    "SrcJitter"
+   ]
+  },
+  {
+   "k": 15,
+   "macro_f1": 0.9320530170195782,
+   "accuracy": 0.9983125783343108,
+   "fpr": 0.0008702243784111583,
+   "train_seconds": 40.537450799994986,
+   "latency_ms_per_flow": 0.2292769500054419,
+   "throughput_flows_s": 56199.6661830539,
+   "params": 58501,
+   "model_mb": 0.23086261749267578,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime",
+    "Sum",
+    "Min",
+    "SIntPkt",
+    "Proto",
+    "SrcJitter",
+    "SrcLoad",
+    "Mean",
+    "SrcJitAct",
+    "SAppBytes",
+    "SrcRate"
+   ]
+  },
+  {
+   "k": 20,
+   "macro_f1": 0.8786756372393093,
+   "accuracy": 0.9992065956052296,
+   "fpr": 0.0005761067313523348,
+   "train_seconds": 42.14687589999812,
+   "latency_ms_per_flow": 0.2370685499990941,
+   "throughput_flows_s": 42010.62868868275,
+   "params": 83077,
+   "model_mb": 0.3246126174926758,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime",
+    "Sum",
+    "Min",
+    "SIntPkt",
+    "Proto",
+    "SrcJitter",
+    "SrcLoad",
+    "Mean",
+    "SrcJitAct",
+    "SAppBytes",
+    "SrcRate",
+    "Load",
+    "Rate",
+    "TcpRtt",
+    "SrcLoss",
+    "DIntPkt"
+   ]
+  },
+  {
+   "k": 25,
+   "macro_f1": 0.9106394710648182,
+   "accuracy": 0.9992468407556889,
+   "fpr": 0.0002971497877501516,
+   "train_seconds": 42.32032189999882,
+   "latency_ms_per_flow": 0.25062894999427954,
+   "throughput_flows_s": 36007.8785251261,
+   "params": 99461,
+   "model_mb": 0.3871126174926758,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime",
+    "Sum",
+    "Min",
+    "SIntPkt",
+    "Proto",
+    "SrcJitter",
+    "SrcLoad",
+    "Mean",
+    "SrcJitAct",
+    "SAppBytes",
+    "SrcRate",
+    "Load",
+    "Rate",
+    "TcpRtt",
+    "SrcLoss",
+    "DIntPkt",
+    "IdleTime",
+    "SynAck",
+    "DstLoss",
+    "DstJitter",
+    "DstRate"
+   ]
+  },
+  {
+   "k": 39,
+   "macro_f1": 0.9173125176696543,
+   "accuracy": 0.9989651247024733,
+   "fpr": 0.0008520315342631898,
+   "train_seconds": 41.559970500005875,
+   "latency_ms_per_flow": 0.22594314999878407,
+   "throughput_flows_s": 27239.828988153415,
+   "params": 156805,
+   "model_mb": 0.6058626174926758,
+   "features": [
+    "dTtl",
+    "sTtl",
+    "pLoss",
+    "Max",
+    "RunTime",
+    "Sum",
+    "Min",
+    "SIntPkt",
+    "Proto",
+    "SrcJitter",
+    "SrcLoad",
+    "Mean",
+    "SrcJitAct",
+    "SAppBytes",
+    "SrcRate",
+    "Load",
+    "Rate",
+    "TcpRtt",
+    "SrcLoss",
+    "DIntPkt",
+    "IdleTime",
+    "SynAck",
+    "DstLoss",
+    "DstJitter",
+    "DstRate",
+    "DstLoad",
+    "DAppBytes",
+    "DstBytes",
+    "DstPkts",
+    "Loss",
+    "Dur",
+    "TotPkts",
+    "TotAppByte",
+    "TotBytes",
+    "SrcBytes",
+    "SrcPkts",
+    "sDSb",
+    "sTos",
+    "DstJitAct"
+   ]
+  }
+ ]
+}

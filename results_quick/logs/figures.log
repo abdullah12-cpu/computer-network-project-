@@ -1,0 +1,27 @@
+
+$ python scripts/make_figures.py --results results_quick --out results_quick/figures
+wrote results_quick/figures\fig_confusion_unsw_binary.png
+wrote results_quick/figures\fig_recall_unsw_binary.png
+wrote results_quick/figures\fig_confusion_unsw_multiclass.png
+wrote results_quick/figures\fig_recall_unsw_multiclass.png
+wrote results_quick/figures\fig_confusion_wustl_binary.png
+wrote results_quick/figures\fig_recall_wustl_binary.png
+wrote results_quick/figures\fig_confusion_wustl_multiclass.png
+wrote results_quick/figures\fig_recall_wustl_multiclass.png
+wrote results_quick/figures\fig_drift_E3_unsw_DoS_s1.png
+wrote results_quick/figures\fig_drift_E3_unsw_Exploits_s1.png
+wrote results_quick/figures\fig_drift_E4_unsw_class_mix_DoS_s1.png
+wrote results_quick/figures\fig_drift_E4_unsw_gradual_s1.png
+wrote results_quick/figures\fig_drift_E4_unsw_incremental_s1.png
+wrote results_quick/figures\fig_drift_E4_unsw_recurring_s1.png
+wrote results_quick/figures\fig_drift_E4_unsw_sudden_s1.png
+wrote results_quick/figures\fig_drift_E4_wustl_chronological_s1.png
+wrote results_quick/figures\fig_drift_E4_wustl_gradual_s1.png
+wrote results_quick/figures\fig_drift_E4_wustl_incremental_s1.png
+wrote results_quick/figures\fig_drift_E4_wustl_recurring_s1.png
+wrote results_quick/figures\fig_drift_E4_wustl_sudden_s1.png
+wrote results_quick/figures\fig_monitors.png
+wrote results_quick/figures\fig_topk_unsw_multiclass_s1.png
+wrote results_quick/figures\fig_fidelity_unsw_multiclass_s1.png
+wrote results_quick/figures\fig_topk_wustl_multiclass_s1.png
+wrote results_quick/figures\fig_fidelity_wustl_multiclass_s1.png

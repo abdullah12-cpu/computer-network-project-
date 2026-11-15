@@ -1,0 +1,262 @@
+{
+ "accuracy": 0.7356627887923972,
+ "macro_f1": 0.4094481312495904,
+ "weighted_f1": 0.7213288689153877,
+ "macro_precision": 0.4590581817461804,
+ "macro_recall": 0.4274594679150117,
+ "mcc": 0.5963025575962766,
+ "fpr": 0.08682972352918303,
+ "detection_rate": 0.8077206041459298,
+ "pr_auc": 0.4452004639498613,
+ "per_class": {
+  "Analysis": {
+   "precision": 0.15688116486613435,
+   "recall": 0.5475409836065573,
+   "f1": 0.2438846294267981,
+   "support": 610
+  },
+  "Backdoor": {
+   "precision": 0.10462287104622871,
+   "recall": 0.07624113475177305,
+   "f1": 0.0882051282051282,
+   "support": 564
+  },
+  "DoS": {
+   "precision": 0.34375,
+   "recall": 0.006666666666666667,
+   "f1": 0.013079667063020214,
+   "support": 1650
+  },
+  "Exploits": {
+   "precision": 0.7486326079366926,
+   "recall": 0.7816524908869987,
+   "f1": 0.7647863044641265,
+   "support": 8230
+  },
+  "Fuzzers": {
+   "precision": 0.4540194255011366,
+   "recall": 0.3493956743002545,
+   "f1": 0.3948952997213984,
+   "support": 6288
+  },
+  "Generic": {
+   "precision": 0.9659340659340659,
+   "recall": 0.7710526315789473,
+   "f1": 0.8575609756097561,
+   "support": 2280
+  },
+  "Normal": {
+   "precision": 0.8409066494789988,
+   "recall": 0.9131702764708169,
+   "f1": 0.8755499217060622,
+   "support": 25717
+  },
+  "Reconnaissance": {
+   "precision": 0.5748088824171824,
+   "recall": 0.5268601935268602,
+   "f1": 0.549791086350975,
+   "support": 2997
+  },
+  "Shellcode": {
+   "precision": 0.33962264150943394,
+   "recall": 0.16475972540045766,
+   "f1": 0.2218798151001541,
+   "support": 437
+  },
+  "Worms": {
+   "precision": 0.06140350877192982,
+   "recall": 0.13725490196078433,
+   "f1": 0.08484848484848485,
+   "support": 51
+  }
+ },
+ "confusion_matrix": [
+  [
+   334,
+   31,
+   0,
+   40,
+   61,
+   0,
+   117,
+   21,
+   5,
+   1
+  ],
+  [
+   326,
+   43,
+   0,
+   42,
+   60,
+   0,
+   32,
+   51,
+   7,
+   3
+  ],
+  [
+   368,
+   87,
+   11,
+   802,
+   135,
+   1,
+   113,
+   108,
+   11,
+   14
+  ],
+  [
+   350,
+   95,
+   15,
+   6433,
+   476,
+   4,
+   536,
+   270,
+   20,
+   31
+  ],
+  [
+   362,
+   73,
+   1,
+   203,
+   2197,
+   25,
+   3143,
+   248,
+   22,
+   14
+  ],
+  [
+   43,
+   12,
+   2,
+   220,
+   157,
+   1758,
+   50,
+   32,
+   3,
+   3
+  ],
+  [
+   10,
+   15,
+   3,
+   378,
+   1522,
+   32,
+   23484,
+   257,
+   7,
+   9
+  ],
+  [
+   335,
+   55,
+   0,
+   400,
+   163,
+   0,
+   398,
+   1579,
+   65,
+   2
+  ],
+  [
+   1,
+   0,
+   0,
+   42,
+   62,
+   0,
+   50,
+   180,
+   72,
+   30
+  ],
+  [
+   0,
+   0,
+   0,
+   33,
+   6,
+   0,
+   4,
+   1,
+   0,
+   7
+  ]
+ ],
+ "latency_ms_per_flow": 0.22696805000305176,
+ "throughput_flows_s": 29913.162093474293,
+ "params": 157130,
+ "model_mb": 0.6070833206176758,
+ "dataset": "unsw",
+ "task": "multiclass",
+ "variant": "xda_no_cat",
+ "seed": 1,
+ "n_features": 39,
+ "n_train": 102528,
+ "n_test": 48824,
+ "epochs": 10,
+ "train_seconds": 6.359296800001175,
+ "test_seconds": 0.05542650001007132,
+ "class_names": [
+  "Analysis",
+  "Backdoor",
+  "DoS",
+  "Exploits",
+  "Fuzzers",
+  "Generic",
+  "Normal",
+  "Reconnaissance",
+  "Shellcode",
+  "Worms"
+ ],
+ "features": [
+  "dur",
+  "spkts",
+  "dpkts",
+  "sbytes",
+  "dbytes",
+  "rate",
+  "sttl",
+  "dttl",
+  "sload",
+  "dload",
+  "sloss",
+  "dloss",
+  "sinpkt",
+  "dinpkt",
+  "sjit",
+  "djit",
+  "swin",
+  "stcpb",
+  "dtcpb",
+  "dwin",
+  "tcprtt",
+  "synack",
+  "ackdat",
+  "smean",
+  "dmean",
+  "trans_depth",
+  "response_body_len",
+  "ct_srv_src",
+  "ct_state_ttl",
+  "ct_dst_ltm",
+  "ct_src_dport_ltm",
+  "ct_dst_sport_ltm",
+  "ct_dst_src_ltm",
+  "is_ftp_login",
+  "ct_ftp_cmd",
+  "ct_flw_http_mthd",
+  "ct_src_ltm",
+  "ct_srv_dst",
+  "is_sm_ips_ports"
+ ]
+}

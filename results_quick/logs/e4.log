@@ -1,0 +1,433 @@
+
+$ python scripts/run_drift.py --dataset unsw --drift sudden gradual incremental recurring --class-mix DoS --seed 1 --max-epochs 10 --out results_quick/drift
+  epoch   1  loss 0.1299  val_f1 0.3149
+  epoch   2  loss 0.1056  val_f1 0.3808
+  epoch   3  loss 0.1032  val_f1 0.3940
+  epoch   4  loss 0.0986  val_f1 0.3534
+  epoch   5  loss 0.0944  val_f1 0.3720
+  epoch   6  loss 0.0926  val_f1 0.4153
+  epoch   7  loss 0.0895  val_f1 0.4073
+  epoch   8  loss 0.0870  val_f1 0.4037
+  epoch   9  loss 0.0857  val_f1 0.3617
+  epoch  10  loss 0.0855  val_f1 0.4042
+
+### E4 unsw drift = sudden, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.865
+  w04 clean  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.857
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.853
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.863
+  w09 clean  xda=True  (scale  )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.855
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.850
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.853
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.857
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.852
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.852
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.848
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.849
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.859
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.853
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.861
+{"xda": [0, 0.2], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [0, 0.0], "kswin": [0, 0.2], "adwin": [null, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 0.0,
+ "localisation_mean": 0.8600000000000001,
+ "shap_seconds_per_window": 10.051963170000818,
+ "monitor_seconds_per_window": 0.5786945300023945,
+ "monitor_peak_mb": 0.4215564727783203,
+ "detector_acc_pre": 0.8594000000000002,
+ "detector_acc_post": 0.85334,
+ "online_knn_acc_post": 0.8253333333333334,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 unsw drift = gradual, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.865
+  w04 clean  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.857
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.853
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.863
+  w09 clean  xda=True  (scale  )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.855
+  w10 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.857
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.858
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.860
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.852
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.852
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.848
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.849
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.859
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.853
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.861
+{"xda": [1, 0.2], "shap": [1, 0.1], "shap_ks_only": [1, 0.0], "input_ks": [1, 0.0], "confidence_ks": [3, 0.0], "kswin": [0, 0.2], "adwin": [null, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 0.0,
+ "localisation_mean": 0.8444444444444444,
+ "shap_seconds_per_window": 9.995865689997299,
+ "monitor_seconds_per_window": 0.5770635149965528,
+ "monitor_peak_mb": 0.42256927490234375,
+ "detector_acc_pre": 0.8594000000000002,
+ "detector_acc_post": 0.8548399999999999,
+ "online_knn_acc_post": 0.827,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 unsw drift = incremental, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.865
+  w04 clean  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.857
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.853
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.863
+  w09 clean  xda=True  (scale  )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.855
+  w10 DRIFT  xda=True  (scale  )  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.857
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.858
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.860
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.853
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.852
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.848
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.849
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.859
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.853
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.861
+{"xda": [0, 0.2], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [2, 0.0], "kswin": [0, 0.2], "adwin": [null, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 0.1,
+ "localisation_mean": 0.82,
+ "shap_seconds_per_window": 10.000428170000669,
+ "monitor_seconds_per_window": 0.5825455600017448,
+ "monitor_peak_mb": 0.4190378189086914,
+ "detector_acc_pre": 0.8594000000000002,
+ "detector_acc_post": 0.8549599999999999,
+ "online_knn_acc_post": 0.8276666666666668,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 unsw drift = recurring, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.865
+  w04 clean  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.857
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.853
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.863
+  w09 clean  xda=True  (scale  )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.855
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.850
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.853
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.857
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.852
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.852
+  w15 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.853
+  w16 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.857
+  w17 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.863
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=0.854
+  w19 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.864
+{"xda": [0, 0.2], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [0, 0.0], "kswin": [0, 0.2], "adwin": [null, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 0.0,
+ "localisation_mean": 0.7333333333333334,
+ "shap_seconds_per_window": 10.037904825000442,
+ "monitor_seconds_per_window": 0.5754258349988959,
+ "monitor_peak_mb": 0.4194793701171875,
+ "detector_acc_pre": 0.8594000000000002,
+ "detector_acc_post": 0.85544,
+ "online_knn_acc_post": 0.8206666666666667,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 unsw drift = class_mix_DoS, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.865
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.856
+  w02 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.865
+  w04 clean  xda=True  (concept)  shap=True  inKS=False kswin=True   adwin=False  det_acc=0.857
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.853
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.860
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.863
+  w09 clean  xda=True  (scale  )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.855
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=True   det_acc=0.921
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.917
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.920
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.913
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.915
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.917
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.920
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.923
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.915
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.927
+{"xda": [0, 0.2], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [0, 0.0], "kswin": [3, 0.2], "adwin": [0, 0.0], "ddm": [null, 0.0]}
+{
+ "diagnosis_accuracy": 1.0,
+ "localisation_mean": null,
+ "shap_seconds_per_window": 9.978684069998417,
+ "monitor_seconds_per_window": 0.580551715000911,
+ "monitor_peak_mb": 0.42236804962158203,
+ "detector_acc_pre": 0.8594000000000002,
+ "detector_acc_post": 0.9187799999999999,
+ "online_knn_acc_post": 0.897,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+$ python scripts/run_drift.py --dataset wustl --drift sudden gradual incremental recurring --chrono --seed 1 --max-epochs 10 --out results_quick/drift
+  epoch   1  loss 0.0016  val_f1 0.9561
+  epoch   2  loss 0.0010  val_f1 0.7162
+  epoch   3  loss 0.0007  val_f1 0.7961
+  epoch   4  loss 0.0008  val_f1 0.7313
+  epoch   5  loss 0.0006  val_f1 0.8034
+  epoch   6  loss 0.0005  val_f1 0.8440
+  epoch   7  loss 0.0005  val_f1 0.9553
+  epoch   8  loss 0.0006  val_f1 0.9496
+  epoch   9  loss 0.0005  val_f1 0.8249
+  epoch  10  loss 0.0004  val_f1 0.9723
+
+### E4 wustl drift = sudden, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=1.000
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w02 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=1.000
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w09 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=True   det_acc=0.998
+{"xda": [0, 0.1], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [null, 0.0], "kswin": [0, 0.2], "adwin": [9, 0.0], "ddm": [0, 0.9]}
+{
+ "diagnosis_accuracy": 0.0,
+ "localisation_mean": 0.66,
+ "shap_seconds_per_window": 9.964990849999595,
+ "monitor_seconds_per_window": 0.2983770699982415,
+ "monitor_peak_mb": 0.4408893585205078,
+ "detector_acc_pre": 0.99964,
+ "detector_acc_post": 0.9985199999999999,
+ "online_knn_acc_post": 0.9946666666666666,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 wustl drift = gradual, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=1.000
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w02 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=1.000
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w09 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w11 DRIFT  xda=True  (scale  )  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w12 DRIFT  xda=True  (scale  )  shap=True  inKS=True  kswin=False  adwin=False  det_acc=1.000
+  w13 DRIFT  xda=True  (scale  )  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=True   det_acc=0.998
+{"xda": [0, 0.1], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [null, 0.0], "kswin": [3, 0.2], "adwin": [9, 0.0], "ddm": [0, 0.9]}
+{
+ "diagnosis_accuracy": 0.3,
+ "localisation_mean": 0.6599999999999999,
+ "shap_seconds_per_window": 10.158589104995917,
+ "monitor_seconds_per_window": 0.30371396000045936,
+ "monitor_peak_mb": 0.44069480895996094,
+ "detector_acc_pre": 0.99964,
+ "detector_acc_post": 0.99868,
+ "online_knn_acc_post": 0.9949999999999999,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 wustl drift = incremental, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=1.000
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w02 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=1.000
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w09 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w12 DRIFT  xda=True  (scale  )  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w15 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w17 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.998
+  w18 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=True   det_acc=0.998
+  w19 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+{"xda": [0, 0.1], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [null, 0.0], "kswin": [0, 0.2], "adwin": [8, 0.0], "ddm": [0, 0.9]}
+{
+ "diagnosis_accuracy": 0.1,
+ "localisation_mean": 0.62,
+ "shap_seconds_per_window": 9.988887525002792,
+ "monitor_seconds_per_window": 0.29841147000188356,
+ "monitor_peak_mb": 0.4389524459838867,
+ "detector_acc_pre": 0.99964,
+ "detector_acc_post": 0.9987,
+ "online_knn_acc_post": 0.9949999999999999,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 wustl drift = recurring, seed 1
+  w00 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=1.000
+  w01 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w02 clean  xda=True  (scale  )  shap=True  inKS=False kswin=False  adwin=False  det_acc=1.000
+  w03 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w04 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w05 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w06 clean  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w07 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w08 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=1.000
+  w09 clean  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w10 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w11 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w12 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.999
+  w13 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w14 DRIFT  xda=True  (concept)  shap=True  inKS=True  kswin=False  adwin=False  det_acc=0.998
+  w15 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w16 DRIFT  xda=True  (concept)  shap=True  inKS=False kswin=False  adwin=False  det_acc=1.000
+  w17 DRIFT  xda=False (none   )  shap=False inKS=False kswin=True   adwin=False  det_acc=0.999
+  w18 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+  w19 DRIFT  xda=False (none   )  shap=False inKS=False kswin=False  adwin=False  det_acc=0.999
+{"xda": [0, 0.1], "shap": [0, 0.1], "shap_ks_only": [0, 0.0], "input_ks": [0, 0.0], "confidence_ks": [null, 0.0], "kswin": [0, 0.2], "adwin": [null, 0.0], "ddm": [0, 0.9]}
+{
+ "diagnosis_accuracy": 0.0,
+ "localisation_mean": 0.6,
+ "shap_seconds_per_window": 10.093863015001261,
+ "monitor_seconds_per_window": 0.2955455800016352,
+ "monitor_peak_mb": 0.4411964416503906,
+ "detector_acc_pre": 0.99964,
+ "detector_acc_post": 0.9989399999999998,
+ "online_knn_acc_post": 0.9949999999999999,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}
+
+### E4 wustl drift = chronological, seed 1
+  w00 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w01 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w02 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w03 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w04 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w05 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w06 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w07 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w08 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w09 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w10 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w11 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w12 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w13 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w14 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w15 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w16 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w17 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w18 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w19 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w20 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w21 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w22 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w23 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w24 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w25 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w26 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w27 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=True   det_acc=0.997
+  w28 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=True   det_acc=0.993
+  w29 clean  xda=True  (scale  )  shap=True  inKS=True  kswin=True   adwin=True   det_acc=0.987
+  w30 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w31 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w32 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w33 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w34 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w35 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w36 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w37 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w38 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w39 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w40 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w41 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w42 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w43 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w44 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w45 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w46 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w47 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w48 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w49 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=0.999
+  w50 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w51 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w52 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w53 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w54 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w55 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w56 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w57 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w58 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w59 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w60 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w61 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w62 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w63 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w64 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w65 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w66 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w67 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+  w68 clean  xda=True  (concept)  shap=True  inKS=True  kswin=True   adwin=False  det_acc=1.000
+{"xda": [null, 1.0], "shap": [null, 1.0], "shap_ks_only": [null, 1.0], "input_ks": [null, 1.0], "confidence_ks": [null, 0.072], "kswin": [null, 1.0], "adwin": [null, 0.043], "ddm": [null, 0.188]}
+{
+ "diagnosis_accuracy": NaN,
+ "localisation_mean": null,
+ "shap_seconds_per_window": 9.831448226087756,
+ "monitor_seconds_per_window": 0.2897733289850083,
+ "monitor_peak_mb": 0.4441709518432617,
+ "detector_acc_pre": 0.9995188405797101,
+ "detector_acc_post": NaN,
+ "online_knn_acc_post": NaN,
+ "adapted_at": null,
+ "detector_acc_after_adapt": null,
+ "online_learner": "KNN (sliding window)"
+}

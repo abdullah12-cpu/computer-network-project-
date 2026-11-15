@@ -1,0 +1,8 @@
+,accuracy,accuracy,macro_f1,macro_f1,weighted_f1,weighted_f1,fpr,fpr,mcc,mcc,pr_auc,pr_auc,latency_ms_per_flow,latency_ms_per_flow,recall_Attack,recall_Attack,recall_Normal,recall_Normal
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+variant,,,,,,,,,,,,,,,,,,
+base_clean,0.8989,,0.8986,,0.8989,,0.0999,,0.7973,,0.9669,,0.2251,,0.8975,,0.9001,
+base_repro,0.9855,,0.9854,,0.9855,,0.0259,,0.9709,,0.9983,,0.2332,,0.9949,,0.9741,
+xda_full,0.8971,,0.897,,0.8972,,0.1188,,0.7948,,0.9688,,0.2424,,0.9147,,0.8812,
+xda_no_cat,0.8875,,0.8875,,0.8876,,0.135,,0.7765,,0.9593,,0.2267,,0.9125,,0.865,
+xda_no_focal,0.9016,,0.9014,,0.9016,,0.1082,,0.8033,,0.971,,0.2442,,0.9124,,0.8918,

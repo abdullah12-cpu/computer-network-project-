@@ -20,7 +20,8 @@ from .data import NORMAL, Dataset
 
 def clean(ds: Dataset, dedup: bool = True) -> Dataset:
     X = ds.X.replace([np.inf, -np.inf], np.nan)
-    keep = X.notna().all(axis=1).to_numpy()
+    # .copy(): with pandas copy-on-write the array from to_numpy() is read-only, so `&=` would fail.
+    keep = X.notna().all(axis=1).to_numpy().copy()
     if dedup:
         keep &= ~pd.concat([X, ds.y_multi.rename("__y")], axis=1).duplicated().to_numpy()
     out = Dataset(ds.name, X, ds.y_bin, ds.y_multi, ds.categorical, ds.time).subset(keep)

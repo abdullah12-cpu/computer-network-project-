@@ -1,0 +1,7 @@
+,accuracy,accuracy,macro_f1,macro_f1,weighted_f1,weighted_f1,fpr,fpr,mcc,mcc,pr_auc,pr_auc,latency_ms_per_flow,latency_ms_per_flow,recall_Analysis,recall_Analysis,recall_Backdoor,recall_Backdoor,recall_DoS,recall_DoS,recall_Exploits,recall_Exploits,recall_Fuzzers,recall_Fuzzers,recall_Generic,recall_Generic,recall_Normal,recall_Normal,recall_Reconnaissance,recall_Reconnaissance,recall_Shellcode,recall_Shellcode,recall_Worms,recall_Worms
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+variant,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+hybrid_rf_if,0.8127,,0.5431,,0.8074,,0.0686,,0.718,,0.6193,,14.9964,,0.0492,,0.1206,,0.2061,,0.8514,,0.6054,,0.8667,,0.9314,,0.7377,,0.6362,,0.2353,
+lstm,0.732,,0.3483,,0.703,,0.0786,,0.5865,,0.4246,,0.1762,,0.059,,0.0355,,0.0194,,0.8095,,0.2995,,0.8149,,0.9214,,0.5189,,0.0,,0.0,
+rf,0.8168,,0.5441,,0.8096,,0.0602,,0.7232,,0.6218,,7.2902,,0.0475,,0.1206,,0.2061,,0.8514,,0.6023,,0.8667,,0.9398,,0.7377,,0.6362,,0.2353,
+xgb,0.8232,,0.5842,,0.8186,,0.052,,0.7328,,0.6648,,2.8762,,0.1148,,0.1277,,0.22,,0.8499,,0.5948,,0.8811,,0.948,,0.7431,,0.7002,,0.5686,

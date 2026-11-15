@@ -1,0 +1,6 @@
+wustl binary,accuracy,"F1 (paper, avg unstated)",macro_f1,weighted_f1,fpr,mcc
+Paper reported (CNN),0.959,0.956,-,-,-,-
+Base paper's code output,-,-,-,-,-,-
+Ours: base_repro (n=1),1.000,-,1.000,1.000,0.000,1.000
+Ours: base_clean (n=1),1.000,-,0.999,1.000,0.000,0.998
+Ours: xda_full (n=1),1.000,-,0.999,1.000,0.000,0.998

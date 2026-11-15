@@ -1,0 +1,6 @@
+wustl multiclass,accuracy,"F1 (paper, avg unstated)",macro_f1,weighted_f1,fpr,mcc
+Paper reported (CNN),0.934,0.928,-,-,-,-
+Base paper's code output,1.000,-,0.95,1.00,-,-
+Ours: base_repro (n=1),1.000,-,0.934,1.000,0.000,0.999
+Ours: base_clean (n=1),1.000,-,0.947,1.000,0.000,0.997
+Ours: xda_full (n=1),0.999,-,0.940,0.999,0.000,0.989

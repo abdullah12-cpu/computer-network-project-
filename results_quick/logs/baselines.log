@@ -1,0 +1,81 @@
+
+$ python scripts/run_static.py --dataset unsw --task multiclass --variants lstm rf xgb hybrid_rf_if --seeds 1 --max-epochs 10 --out results_quick/static
+
+### unsw_multiclass_lstm_s1
+  epoch   1  loss 1.3701  val_f1 0.2382
+  epoch   2  loss 0.9319  val_f1 0.2609
+  epoch   3  loss 0.8440  val_f1 0.3100
+  epoch   4  loss 0.7994  val_f1 0.3226
+  epoch   5  loss 0.7730  val_f1 0.3320
+  epoch   6  loss 0.7581  val_f1 0.3540
+  epoch   7  loss 0.7444  val_f1 0.3279
+  epoch   8  loss 0.7360  val_f1 0.3390
+  epoch   9  loss 0.7275  val_f1 0.3354
+  epoch  10  loss 0.7204  val_f1 0.3563
+  acc 0.7320  macroF1 0.3483  weightedF1 0.7030  FPR 0.0786  test n=48824
+
+### unsw_multiclass_rf_s1
+  acc 0.8168  macroF1 0.5441  weightedF1 0.8096  FPR 0.0602  test n=48824
+
+### unsw_multiclass_xgb_s1
+  acc 0.8232  macroF1 0.5842  weightedF1 0.8186  FPR 0.0520  test n=48824
+
+### unsw_multiclass_hybrid_rf_if_s1
+  acc 0.8127  macroF1 0.5431  weightedF1 0.8074  FPR 0.0686  test n=48824
+
+variant                hybrid_rf_if    lstm      rf     xgb
+accuracy                     0.8127  0.7320  0.8168  0.8232
+macro_f1                     0.5431  0.3483  0.5441  0.5842
+weighted_f1                  0.8074  0.7030  0.8096  0.8186
+fpr                          0.0686  0.0786  0.0602  0.0520
+mcc                          0.7180  0.5865  0.7232  0.7328
+pr_auc                       0.6193  0.4246  0.6218  0.6648
+latency_ms_per_flow         14.9964  0.1762  7.2902  2.8762
+recall_Analysis              0.0492  0.0590  0.0475  0.1148
+recall_Backdoor              0.1206  0.0355  0.1206  0.1277
+recall_DoS                   0.2061  0.0194  0.2061  0.2200
+recall_Exploits              0.8514  0.8095  0.8514  0.8499
+recall_Fuzzers               0.6054  0.2995  0.6023  0.5948
+recall_Generic               0.8667  0.8149  0.8667  0.8811
+recall_Normal                0.9314  0.9214  0.9398  0.9480
+recall_Reconnaissance        0.7377  0.5189  0.7377  0.7431
+recall_Shellcode             0.6362  0.0000  0.6362  0.7002
+recall_Worms                 0.2353  0.0000  0.2353  0.5686
+
+$ python scripts/run_static.py --dataset wustl --task multiclass --variants lstm rf xgb hybrid_rf_if --seeds 1 --max-epochs 10 --out results_quick/static
+
+### wustl_multiclass_lstm_s1
+  epoch   1  loss 0.0871  val_f1 0.7569
+  epoch   2  loss 0.0157  val_f1 0.9384
+  epoch   3  loss 0.0058  val_f1 0.9554
+  epoch   4  loss 0.0044  val_f1 0.9564
+  epoch   5  loss 0.0038  val_f1 0.9560
+  epoch   6  loss 0.0034  val_f1 0.9564
+  epoch   7  loss 0.0031  val_f1 0.9645
+  epoch   8  loss 0.0028  val_f1 0.9652
+  epoch   9  loss 0.0026  val_f1 0.9642
+  epoch  10  loss 0.0025  val_f1 0.9650
+  acc 0.9994  macroF1 0.9200  weightedF1 0.9994  FPR 0.0002  test n=347868
+
+### wustl_multiclass_rf_s1
+  acc 0.9999  macroF1 0.9635  weightedF1 0.9999  FPR 0.0000  test n=347868
+
+### wustl_multiclass_xgb_s1
+  acc 1.0000  macroF1 0.9795  weightedF1 0.9999  FPR 0.0000  test n=347868
+
+### wustl_multiclass_hybrid_rf_if_s1
+  acc 0.9906  macroF1 0.7994  weightedF1 0.9951  FPR 0.0098  test n=347868
+
+variant              hybrid_rf_if    lstm      rf     xgb
+accuracy                   0.9906  0.9994  0.9999  1.0000
+macro_f1                   0.7994  0.9200  0.9635  0.9795
+weighted_f1                0.9951  0.9994  0.9999  0.9999
+fpr                        0.0098  0.0002  0.0000  0.0000
+mcc                        0.9166  0.9936  0.9992  0.9995
+pr_auc                     0.8814  0.9368  0.9741  0.9958
+latency_ms_per_flow       14.7882  0.1798  7.1858  0.3828
+recall_Backdoor            0.7656  0.5625  0.7656  0.8281
+recall_CommInj             0.9740  0.8182  0.9740  1.0000
+recall_DoS                 0.9997  0.9937  0.9997  0.9998
+recall_Normal              0.9902  0.9998  1.0000  1.0000
+recall_Reconn              0.9990  0.9990  0.9990  0.9990

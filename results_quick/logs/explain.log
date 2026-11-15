@@ -1,0 +1,181 @@
+
+$ python scripts/run_explain.py --dataset unsw --task multiclass --seed 1 --max-epochs 10 --out results_quick/explain
+  epoch   1  loss 0.1299  val_f1 0.3364
+  epoch   2  loss 0.1056  val_f1 0.3783
+  epoch   3  loss 0.1025  val_f1 0.3866
+  epoch   4  loss 0.0986  val_f1 0.3655
+  epoch   5  loss 0.0947  val_f1 0.3953
+  epoch   6  loss 0.0919  val_f1 0.4098
+  epoch   7  loss 0.0889  val_f1 0.4124
+  epoch   8  loss 0.0865  val_f1 0.4073
+  epoch   9  loss 0.0840  val_f1 0.4042
+  epoch  10  loss 0.0859  val_f1 0.4049
+Top-10: ['sttl', 'dttl', 'service', 'dload', 'proto', 'smean', 'ct_state_ttl', 'ct_srv_dst', 'swin', 'ct_dst_src_ltm']
+ k  f1_full  f1_top_masked  f1_random_masked  drop_top  drop_random
+ 1   0.4099         0.2879            0.3922    0.1220       0.0177
+ 3   0.4099         0.1681            0.3997    0.2418       0.0102
+ 5   0.4099         0.1553            0.3680    0.2546       0.0418
+10   0.4099         0.0754            0.3020    0.3345       0.1079
+stability: {'k': 10, 'n_boot': 20, 'jaccard_mean': 1.0, 'jaccard_std': 0.0, 'jaccard_min': 1.0}
+  Analysis: 12 wrong, confused with {'Backdoor': 9, 'Exploits': 2, 'Normal': 1}, misleading features ['proto', 'service', 'swin']
+  Backdoor: 8 wrong, confused with {'Analysis': 5, 'Reconnaissance': 2, 'Worms': 1}, misleading features ['proto', 'sttl', 'state']
+  DoS: 83 wrong, confused with {'Exploits': 26, 'Backdoor': 22, 'Analysis': 10}, misleading features ['proto', 'sttl', 'dttl']
+  Exploits: 126 wrong, confused with {'Worms': 52, 'Fuzzers': 29, 'Reconnaissance': 14}, misleading features ['sttl', 'service', 'proto']
+  Fuzzers: 135 wrong, confused with {'Normal': 82, 'Shellcode': 15, 'Reconnaissance': 15}, misleading features ['proto', 'ct_dst_src_ltm', 'ct_srv_dst']
+  Generic: 12 wrong, confused with {'Worms': 4, 'Fuzzers': 3, 'Backdoor': 2}, misleading features ['sttl', 'proto', 'dttl']
+  Normal: 182 wrong, confused with {'Fuzzers': 108, 'Analysis': 28, 'Reconnaissance': 20}, misleading features ['sttl', 'dttl', 'smean']
+  Reconnaissance: 71 wrong, confused with {'Worms': 27, 'Backdoor': 17, 'Shellcode': 14}, misleading features ['sttl', 'proto', 'service']
+  WARNING: known testbed-artefact features in top-10: ['ct_state_ttl', 'dttl', 'sttl']
+  epoch   1  loss 0.1270  val_f1 0.3042
+  epoch   2  loss 0.1117  val_f1 0.3041
+  epoch   3  loss 0.1094  val_f1 0.3142
+  epoch   4  loss 0.1080  val_f1 0.2648
+  epoch   5  loss 0.1074  val_f1 0.3074
+  epoch   6  loss 0.1064  val_f1 0.2700
+  epoch   7  loss 0.1066  val_f1 0.3133
+  epoch   8  loss 0.1060  val_f1 0.2703
+  epoch   9  loss 0.1054  val_f1 0.3058
+  epoch  10  loss 0.1053  val_f1 0.3162
+  k=  5  macroF1 0.3132  acc 0.5900  latency 0.213 ms
+  epoch   1  loss 0.1220  val_f1 0.3644
+  epoch   2  loss 0.0994  val_f1 0.3963
+  epoch   3  loss 0.0951  val_f1 0.3469
+  epoch   4  loss 0.0908  val_f1 0.3829
+  epoch   5  loss 0.0884  val_f1 0.4035
+  epoch   6  loss 0.0881  val_f1 0.4208
+  epoch   7  loss 0.0849  val_f1 0.4116
+  epoch   8  loss 0.0839  val_f1 0.4079
+  epoch   9  loss 0.0827  val_f1 0.4131
+  epoch  10  loss 0.0829  val_f1 0.4065
+  k= 10  macroF1 0.4090  acc 0.6972  latency 0.212 ms
+  epoch   1  loss 0.1215  val_f1 0.3594
+  epoch   2  loss 0.0978  val_f1 0.3806
+  epoch   3  loss 0.0938  val_f1 0.3822
+  epoch   4  loss 0.0891  val_f1 0.3995
+  epoch   5  loss 0.0860  val_f1 0.3741
+  epoch   6  loss 0.0837  val_f1 0.4255
+  epoch   7  loss 0.0823  val_f1 0.4228
+  epoch   8  loss 0.0815  val_f1 0.3680
+  epoch   9  loss 0.0805  val_f1 0.4132
+  epoch  10  loss 0.0788  val_f1 0.4259
+  k= 15  macroF1 0.4289  acc 0.6956  latency 0.225 ms
+  epoch   1  loss 0.1269  val_f1 0.3530
+  epoch   2  loss 0.1017  val_f1 0.3574
+  epoch   3  loss 0.0955  val_f1 0.3717
+  epoch   4  loss 0.0897  val_f1 0.4087
+  epoch   5  loss 0.0879  val_f1 0.4170
+  epoch   6  loss 0.0856  val_f1 0.4217
+  epoch   7  loss 0.0825  val_f1 0.4166
+  epoch   8  loss 0.0821  val_f1 0.4366
+  epoch   9  loss 0.0797  val_f1 0.4261
+  epoch  10  loss 0.0793  val_f1 0.4299
+  k= 20  macroF1 0.4290  acc 0.6800  latency 0.240 ms
+  epoch   1  loss 0.1288  val_f1 0.3886
+  epoch   2  loss 0.1030  val_f1 0.4056
+  epoch   3  loss 0.0971  val_f1 0.3746
+  epoch   4  loss 0.0923  val_f1 0.4124
+  epoch   5  loss 0.0907  val_f1 0.4140
+  epoch   6  loss 0.0881  val_f1 0.4163
+  epoch   7  loss 0.0866  val_f1 0.4211
+  epoch   8  loss 0.0839  val_f1 0.4204
+  epoch   9  loss 0.0831  val_f1 0.4282
+  epoch  10  loss 0.0812  val_f1 0.4290
+  k= 25  macroF1 0.4222  acc 0.6831  latency 0.247 ms
+  epoch   1  loss 0.1312  val_f1 0.3941
+  epoch   2  loss 0.1073  val_f1 0.3911
+  epoch   3  loss 0.1003  val_f1 0.3949
+  epoch   4  loss 0.0974  val_f1 0.3906
+  epoch   5  loss 0.0931  val_f1 0.3569
+  epoch   6  loss 0.0901  val_f1 0.4170
+  epoch   7  loss 0.0864  val_f1 0.4092
+  epoch   8  loss 0.0843  val_f1 0.4240
+  epoch   9  loss 0.0831  val_f1 0.4081
+  epoch  10  loss 0.0801  val_f1 0.3965
+  k= 42  macroF1 0.4220  acc 0.6813  latency 0.239 ms
+
+$ python scripts/run_explain.py --dataset wustl --task multiclass --seed 1 --max-epochs 10 --out results_quick/explain
+  epoch   1  loss 0.0017  val_f1 0.9619
+  epoch   2  loss 0.0009  val_f1 0.8111
+  epoch   3  loss 0.0007  val_f1 0.7959
+  epoch   4  loss 0.0006  val_f1 0.9603
+  epoch   5  loss 0.0007  val_f1 0.8039
+  epoch   6  loss 0.0005  val_f1 0.8285
+  epoch   7  loss 0.0006  val_f1 0.8374
+  epoch   8  loss 0.0004  val_f1 0.8354
+  epoch   9  loss 0.0004  val_f1 0.7422
+  epoch  10  loss 0.0004  val_f1 0.9197
+Top-10: ['dTtl', 'sTtl', 'pLoss', 'Max', 'RunTime', 'Sum', 'Min', 'SIntPkt', 'Proto', 'SrcJitter']
+ k  f1_full  f1_top_masked  f1_random_masked  drop_top  drop_random
+ 1   0.9848         0.3738            0.8136    0.6110       0.1712
+ 3   0.9848         0.3242            0.6909    0.6606       0.2939
+ 5   0.9848         0.2429            0.5969    0.7419       0.3879
+10   0.9848         0.2429            0.3338    0.7419       0.6510
+stability: {'k': 10, 'n_boot': 20, 'jaccard_mean': 0.9818181818181818, 'jaccard_std': 0.05454545454545453, 'jaccard_min': 0.8181818181818182}
+  DoS: 7 wrong, confused with {'Normal': 7}, misleading features ['pLoss', 'RunTime', 'Mean']
+  WARNING: known testbed-artefact features in top-10: ['dTtl', 'sTtl']
+  epoch   1  loss 0.0012  val_f1 0.8239
+  epoch   2  loss 0.0006  val_f1 0.9710
+  epoch   3  loss 0.0005  val_f1 0.8278
+  epoch   4  loss 0.0006  val_f1 0.8064
+  epoch   5  loss 0.0006  val_f1 0.8994
+  epoch   6  loss 0.0004  val_f1 0.8347
+  epoch   7  loss 0.0004  val_f1 0.9567
+  epoch   8  loss 0.0004  val_f1 0.9155
+  epoch   9  loss 0.0003  val_f1 0.9687
+  epoch  10  loss 0.0004  val_f1 0.8329
+  k=  5  macroF1 0.9313  acc 0.9985  latency 0.214 ms
+  epoch   1  loss 0.0017  val_f1 0.8953
+  epoch   2  loss 0.0008  val_f1 0.8314
+  epoch   3  loss 0.0006  val_f1 0.8650
+  epoch   4  loss 0.0005  val_f1 0.7031
+  epoch   5  loss 0.0005  val_f1 0.8333
+  epoch   6  loss 0.0005  val_f1 0.8167
+  epoch   7  loss 0.0004  val_f1 0.8302
+  epoch   8  loss 0.0003  val_f1 0.9646
+  epoch   9  loss 0.0004  val_f1 0.8675
+  epoch  10  loss 0.0004  val_f1 0.8106
+  k= 10  macroF1 0.9360  acc 0.9972  latency 0.214 ms
+  epoch   1  loss 0.0021  val_f1 0.9058
+  epoch   2  loss 0.0009  val_f1 0.7149
+  epoch   3  loss 0.0007  val_f1 0.8468
+  epoch   4  loss 0.0007  val_f1 0.9625
+  epoch   5  loss 0.0005  val_f1 0.9288
+  epoch   6  loss 0.0005  val_f1 0.9428
+  epoch   7  loss 0.0005  val_f1 0.8439
+  epoch   8  loss 0.0004  val_f1 0.8442
+  epoch   9  loss 0.0003  val_f1 0.8383
+  epoch  10  loss 0.0004  val_f1 0.8388
+  k= 15  macroF1 0.9321  acc 0.9983  latency 0.229 ms
+  epoch   1  loss 0.0022  val_f1 0.7904
+  epoch   2  loss 0.0010  val_f1 0.7339
+  epoch   3  loss 0.0006  val_f1 0.8584
+  epoch   4  loss 0.0006  val_f1 0.8832
+  epoch   5  loss 0.0003  val_f1 0.7677
+  epoch   6  loss 0.0004  val_f1 0.8423
+  epoch   7  loss 0.0004  val_f1 0.8771
+  epoch   8  loss 0.0004  val_f1 0.8183
+  epoch   9  loss 0.0003  val_f1 0.8451
+  epoch  10  loss 0.0004  val_f1 0.8964
+  k= 20  macroF1 0.8787  acc 0.9992  latency 0.237 ms
+  epoch   1  loss 0.0021  val_f1 0.6700
+  epoch   2  loss 0.0011  val_f1 0.6479
+  epoch   3  loss 0.0008  val_f1 0.8157
+  epoch   4  loss 0.0006  val_f1 0.7223
+  epoch   5  loss 0.0006  val_f1 0.7381
+  epoch   6  loss 0.0006  val_f1 0.7772
+  epoch   7  loss 0.0005  val_f1 0.9598
+  epoch   8  loss 0.0004  val_f1 0.9532
+  epoch   9  loss 0.0004  val_f1 0.8459
+  epoch  10  loss 0.0004  val_f1 0.8460
+  k= 25  macroF1 0.9106  acc 0.9992  latency 0.251 ms
+  epoch   1  loss 0.0025  val_f1 0.7502
+  epoch   2  loss 0.0012  val_f1 0.7805
+  epoch   3  loss 0.0009  val_f1 0.8074
+  epoch   4  loss 0.0009  val_f1 0.8036
+  epoch   5  loss 0.0007  val_f1 0.9424
+  epoch   6  loss 0.0006  val_f1 0.8468
+  epoch   7  loss 0.0006  val_f1 0.9441
+  epoch   8  loss 0.0005  val_f1 0.8869
+  epoch   9  loss 0.0006  val_f1 0.8519
+  epoch  10  loss 0.0004  val_f1 0.8421
+  k= 39  macroF1 0.9173  acc 0.9990  latency 0.226 ms

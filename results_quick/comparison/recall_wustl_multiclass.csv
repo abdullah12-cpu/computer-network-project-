@@ -1,0 +1,6 @@
+wustl multiclass recall,paper (Fig.),base_repro,base_clean,xda_full,xda_full - base_clean
+Backdoor,0.762,0.688,0.719,0.719,+0.000
+CommInj,0.942,0.923,0.896,0.896,+0.000
+DoS,1.000,1.000,0.999,0.985,-0.014
+Normal,1.000,1.000,1.000,1.000,-0.000
+Reconn,0.998,1.000,0.999,0.999,+0.000

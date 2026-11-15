@@ -1,0 +1,1502 @@
+{
+ "scores": {
+  "xda": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 2,
+   "false_alarm_rate": 0.2,
+   "post_alarm_rate": 0.5
+  },
+  "shap": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 2,
+   "false_alarm_rate": 0.2,
+   "post_alarm_rate": 0.5
+  },
+  "shap_ks_only": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 4,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.3
+  },
+  "input_ks": {
+   "detected": false,
+   "missed": true,
+   "delay_windows": null,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.0
+  },
+  "confidence_ks": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 0,
+   "false_alarm_rate": 0.1,
+   "post_alarm_rate": 0.9
+  },
+  "kswin": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 5,
+   "false_alarm_rate": 0.3,
+   "post_alarm_rate": 0.3
+  },
+  "adwin": {
+   "detected": true,
+   "missed": false,
+   "delay_windows": 1,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.1
+  },
+  "ddm": {
+   "detected": false,
+   "missed": true,
+   "delay_windows": null,
+   "false_alarm_rate": 0.0,
+   "post_alarm_rate": 0.0
+  }
+ },
+ "summary": {
+  "diagnosis_accuracy": 0.8,
+  "localisation_mean": null,
+  "shap_seconds_per_window": 10.020272520000436,
+  "monitor_seconds_per_window": 0.5468163400008053,
+  "monitor_peak_mb": 0.4042806625366211,
+  "detector_acc_pre": 0.85868,
+  "detector_acc_post": 0.8801399999999999,
+  "online_knn_acc_post": 0.8353333333333334,
+  "adapted_at": null,
+  "detector_acc_after_adapt": null,
+  "online_learner": "KNN (sliding window)"
+ },
+ "log": [
+  {
+   "window": 0,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06500558182161552,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.7827201316554832
+    ],
+    [
+     "response_body_len",
+     0.4860680443960625
+    ],
+    [
+     "dbytes",
+     0.25068656201058287
+    ],
+    [
+     "dur",
+     0.21676895447999214
+    ],
+    [
+     "dtcpb",
+     0.1921794675648029
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.7827201316554832,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8654,
+   "detector_attack_recall": 0.8720316622691293,
+   "detector_fpr": 0.1401320616287601,
+   "online_knn_acc_binary": 0.8266666666666667,
+   "shap_seconds": 10.146957400007523,
+   "monitor_seconds": 0.447061599988956,
+   "monitor_peak_mb": 0.39610958099365234
+  },
+  {
+   "window": 1,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06942137273636784,
+   "top_shifted": [
+    [
+     "response_body_len",
+     0.9766050844667316
+    ],
+    [
+     "sbytes",
+     0.3039361100470733
+    ],
+    [
+     "is_sm_ips_ports",
+     0.2773443461330012
+    ],
+    [
+     "spkts",
+     0.19716724187508425
+    ],
+    [
+     "dbytes",
+     0.16498888539695863
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.9766050844667316,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8592,
+   "detector_attack_recall": 0.8744003488879197,
+   "detector_fpr": 0.1536756557074252,
+   "online_knn_acc_binary": 0.7933333333333333,
+   "shap_seconds": 9.95184049999807,
+   "monitor_seconds": 0.5778711000020849,
+   "monitor_peak_mb": 0.4017200469970703
+  },
+  {
+   "window": 2,
+   "drifted": false,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.09146899189166321,
+   "top_shifted": [
+    [
+     "response_body_len",
+     2.2544915415567957
+    ],
+    [
+     "is_sm_ips_ports",
+     0.3027426259065302
+    ],
+    [
+     "dbytes",
+     0.2788829360465958
+    ],
+    [
+     "dpkts",
+     0.27553624373229185
+    ],
+    [
+     "sload",
+     0.22029267734321994
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": true,
+     "value": 2.2544915415567957,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8552,
+   "detector_attack_recall": 0.8650793650793651,
+   "detector_fpr": 0.15300146412884333,
+   "online_knn_acc_binary": 0.8333333333333334,
+   "shap_seconds": 10.14509970000654,
+   "monitor_seconds": 0.5624380000081146,
+   "monitor_peak_mb": 0.39691638946533203
+  },
+  {
+   "window": 3,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.06099882866278312,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.9015214084821828
+    ],
+    [
+     "dpkts",
+     0.2978685232984608
+    ],
+    [
+     "response_body_len",
+     0.2952174503029209
+    ],
+    [
+     "spkts",
+     0.17631748584294496
+    ],
+    [
+     "sload",
+     0.16785538691128798
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.9015214084821828,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8542,
+   "detector_attack_recall": 0.85359477124183,
+   "detector_fpr": 0.14528650646950092,
+   "online_knn_acc_binary": 0.7833333333333333,
+   "shap_seconds": 10.134663499993621,
+   "monitor_seconds": 0.5800791999936337,
+   "monitor_peak_mb": 0.4014158248901367
+  },
+  {
+   "window": 4,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06162650239344255,
+   "top_shifted": [
+    [
+     "tcprtt",
+     0.19965921601141368
+    ],
+    [
+     "response_body_len",
+     0.1812525018004282
+    ],
+    [
+     "ct_src_ltm",
+     0.1662173930818475
+    ],
+    [
+     "sload",
+     0.1586757212373648
+    ],
+    [
+     "ackdat",
+     0.15213152258270407
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.19965921601141368,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8644,
+   "detector_attack_recall": 0.8675819309123117,
+   "detector_fpr": 0.13822027716994895,
+   "online_knn_acc_binary": 0.8366666666666667,
+   "shap_seconds": 9.94474929998978,
+   "monitor_seconds": 0.44132579999859445,
+   "monitor_peak_mb": 0.37975597381591797
+  },
+  {
+   "window": 5,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06323340298038745,
+   "top_shifted": [
+    [
+     "is_sm_ips_ports",
+     0.28335835704397244
+    ],
+    [
+     "dbytes",
+     0.2625232775639615
+    ],
+    [
+     "ct_srv_dst",
+     0.1710864478375524
+    ],
+    [
+     "sload",
+     0.16861151947583267
+    ],
+    [
+     "sbytes",
+     0.16372395642533663
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.28335835704397244,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8572,
+   "detector_attack_recall": 0.8739383102369245,
+   "detector_fpr": 0.1563517915309446,
+   "online_knn_acc_binary": 0.7833333333333333,
+   "shap_seconds": 9.983611200004816,
+   "monitor_seconds": 0.5690223999990849,
+   "monitor_peak_mb": 0.4038715362548828
+  },
+  {
+   "window": 6,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.05428680065438987,
+   "top_shifted": [
+    [
+     "response_body_len",
+     1.2204366258847474
+    ],
+    [
+     "sload",
+     0.22734123893124702
+    ],
+    [
+     "rate",
+     0.19219481464867968
+    ],
+    [
+     "dbytes",
+     0.16113417654948625
+    ],
+    [
+     "stcpb",
+     0.1504399578913639
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 1.2204366258847474,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8594,
+   "detector_attack_recall": 0.8656515897895208,
+   "detector_fpr": 0.1456451029996386,
+   "online_knn_acc_binary": 0.8333333333333334,
+   "shap_seconds": 9.964010499999858,
+   "monitor_seconds": 0.5651098000089405,
+   "monitor_peak_mb": 0.3998432159423828
+  },
+  {
+   "window": 7,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.06639469153318031,
+   "top_shifted": [
+    [
+     "dbytes",
+     0.28641009978972315
+    ],
+    [
+     "sload",
+     0.2670873169046232
+    ],
+    [
+     "ackdat",
+     0.1595532449737989
+    ],
+    [
+     "smean",
+     0.15803808472539255
+    ],
+    [
+     "rate",
+     0.14701537857695557
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.28641009978972315,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8556,
+   "detector_attack_recall": 0.866783523225241,
+   "detector_fpr": 0.15378955114054452,
+   "online_knn_acc_binary": 0.81,
+   "shap_seconds": 10.039336600006209,
+   "monitor_seconds": 0.5760720999969635,
+   "monitor_peak_mb": 0.3963003158569336
+  },
+  {
+   "window": 8,
+   "drifted": false,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.05751413210943783,
+   "top_shifted": [
+    [
+     "rate",
+     0.24343890029525664
+    ],
+    [
+     "proto",
+     0.14689262358267371
+    ],
+    [
+     "is_sm_ips_ports",
+     0.142091324361949
+    ],
+    [
+     "dbytes",
+     0.13797386562987493
+    ],
+    [
+     "ct_flw_http_mthd",
+     0.13538477684198424
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.24343890029525664,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8604,
+   "detector_attack_recall": 0.8670520231213873,
+   "detector_fpr": 0.1450381679389313,
+   "online_knn_acc_binary": 0.8433333333333334,
+   "shap_seconds": 10.097700400001486,
+   "monitor_seconds": 0.44392510000034235,
+   "monitor_peak_mb": 0.3798198699951172
+  },
+  {
+   "window": 9,
+   "drifted": false,
+   "diagnosis": "scale",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.05497519240491732,
+   "top_shifted": [
+    [
+     "response_body_len",
+     2.8525513874361805
+    ],
+    [
+     "dbytes",
+     0.33924949238098917
+    ],
+    [
+     "synack",
+     0.24965221757261194
+    ],
+    [
+     "dpkts",
+     0.22135069548894135
+    ],
+    [
+     "sload",
+     0.21477948328114627
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": true,
+     "value": 2.8525513874361805,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8558,
+   "detector_attack_recall": 0.8551380715255772,
+   "detector_fpr": 0.14367610175564313,
+   "online_knn_acc_binary": 0.8533333333333334,
+   "shap_seconds": 9.968690299996524,
+   "monitor_seconds": 0.595677599994815,
+   "monitor_peak_mb": 0.4042806625366211
+  },
+  {
+   "window": 10,
+   "drifted": true,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.1273795335029648,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.5394675439977038
+    ],
+    [
+     "response_body_len",
+     0.25974744455693394
+    ],
+    [
+     "proto",
+     0.2394866011728432
+    ],
+    [
+     "tcprtt",
+     0.22998587502832019
+    ],
+    [
+     "dur",
+     0.21316785333550803
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.5394675439977038,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8788,
+   "detector_attack_recall": 0.8924541607898449,
+   "detector_fpr": 0.13909426987061,
+   "online_knn_acc_binary": 0.8066666666666666,
+   "shap_seconds": 9.819883600008325,
+   "monitor_seconds": 0.5649534000112908,
+   "monitor_peak_mb": 0.3937530517578125
+  },
+  {
+   "window": 11,
+   "drifted": true,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": true,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.12822583292407103,
+   "top_shifted": [
+    [
+     "rate",
+     0.2817509541212381
+    ],
+    [
+     "proto",
+     0.2707377666887025
+    ],
+    [
+     "sload",
+     0.2420162345902471
+    ],
+    [
+     "ackdat",
+     0.19957692672129387
+    ],
+    [
+     "dtcpb",
+     0.19690844714636924
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.2817509541212381,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8808,
+   "detector_attack_recall": 0.9031451036454611,
+   "detector_fpr": 0.14759309718437782,
+   "online_knn_acc_binary": 0.8333333333333334,
+   "shap_seconds": 9.89090140000917,
+   "monitor_seconds": 0.5660482000093907,
+   "monitor_peak_mb": 0.39357471466064453
+  },
+  {
+   "window": 12,
+   "drifted": true,
+   "diagnosis": "scale",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": false,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.06468378590601902,
+   "top_shifted": [
+    [
+     "response_body_len",
+     2.934512233460613
+    ],
+    [
+     "sbytes",
+     0.26635520428635645
+    ],
+    [
+     "spkts",
+     0.20552182303327957
+    ],
+    [
+     "dbytes",
+     0.20237861150008996
+    ],
+    [
+     "dpkts",
+     0.1630152177340571
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": true,
+     "value": 2.934512233460613,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8828,
+   "detector_attack_recall": 0.9098837209302325,
+   "detector_fpr": 0.15035587188612098,
+   "online_knn_acc_binary": 0.87,
+   "shap_seconds": 10.198588899991591,
+   "monitor_seconds": 0.42950610000116285,
+   "monitor_peak_mb": 0.3798198699951172
+  },
+  {
+   "window": 13,
+   "drifted": true,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.12956130176252828,
+   "top_shifted": [
+    [
+     "response_body_len",
+     0.9765667912865192
+    ],
+    [
+     "sbytes",
+     0.7508870719572036
+    ],
+    [
+     "dbytes",
+     0.3370288211009928
+    ],
+    [
+     "dpkts",
+     0.2569322457285507
+    ],
+    [
+     "smean",
+     0.2509257217779331
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.9765667912865192,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8814,
+   "detector_attack_recall": 0.8993978037548707,
+   "detector_fpr": 0.14193844740468534,
+   "online_knn_acc_binary": 0.85,
+   "shap_seconds": 9.941592000002856,
+   "monitor_seconds": 0.5618154999974649,
+   "monitor_peak_mb": 0.39285755157470703
+  },
+  {
+   "window": 14,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 1,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.11681058124012134,
+   "top_shifted": [
+    [
+     "dbytes",
+     0.38581100756545267
+    ],
+    [
+     "response_body_len",
+     0.3729117895223199
+    ],
+    [
+     "rate",
+     0.2949047371153862
+    ],
+    [
+     "sload",
+     0.27360946173358397
+    ],
+    [
+     "proto",
+     0.26506409975245504
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 1,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.38581100756545267,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8838,
+   "detector_attack_recall": 0.9035460992907801,
+   "detector_fpr": 0.14174311926605504,
+   "online_knn_acc_binary": 0.8466666666666667,
+   "shap_seconds": 10.040715299997828,
+   "monitor_seconds": 0.5791360000002896,
+   "monitor_peak_mb": 0.3910503387451172
+  },
+  {
+   "window": 15,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 1,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.13614417471587717,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.45733427473144744
+    ],
+    [
+     "response_body_len",
+     0.28877733997471083
+    ],
+    [
+     "proto",
+     0.27127409623043
+    ],
+    [
+     "rate",
+     0.25098667062035607
+    ],
+    [
+     "sload",
+     0.23306648652513706
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 1,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.45733427473144744,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8802,
+   "detector_attack_recall": 0.903832505322924,
+   "detector_fpr": 0.15032080659945005,
+   "online_knn_acc_binary": 0.83,
+   "shap_seconds": 9.995224400001462,
+   "monitor_seconds": 0.5675562999967951,
+   "monitor_peak_mb": 0.3904867172241211
+  },
+  {
+   "window": 16,
+   "drifted": true,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.13343938483657572,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.8192595672356086
+    ],
+    [
+     "response_body_len",
+     0.5249566980707837
+    ],
+    [
+     "proto",
+     0.33600575600645705
+    ],
+    [
+     "spkts",
+     0.26487120744944515
+    ],
+    [
+     "rate",
+     0.24000184663833846
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.8192595672356086,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8804,
+   "detector_attack_recall": 0.9069121222646752,
+   "detector_fpr": 0.15558698727015557,
+   "online_knn_acc_binary": 0.8566666666666667,
+   "shap_seconds": 9.91836150000745,
+   "monitor_seconds": 0.5920923000085168,
+   "monitor_peak_mb": 0.3967733383178711
+  },
+  {
+   "window": 17,
+   "drifted": true,
+   "diagnosis": "none",
+   "alarms": {
+    "xda": false,
+    "shap": false,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 0.8181818181818182,
+   "share_shift": 0.14447247027555904,
+   "top_shifted": [
+    [
+     "response_body_len",
+     0.9684967943059618
+    ],
+    [
+     "dloss",
+     0.8959546500869026
+    ],
+    [
+     "dbytes",
+     0.8811380225827179
+    ],
+    [
+     "sbytes",
+     0.5558328444001562
+    ],
+    [
+     "dpkts",
+     0.4513501822348992
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.9684967943059618,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 0.8181818181818182,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.871,
+   "detector_attack_recall": 0.9016508605549701,
+   "detector_fpr": 0.1695308871342313,
+   "online_knn_acc_binary": 0.82,
+   "shap_seconds": 9.976584499992896,
+   "monitor_seconds": 0.5826804999960586,
+   "monitor_peak_mb": 0.3907947540283203
+  },
+  {
+   "window": 18,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": false,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": false,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 0,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.100537766421011,
+   "top_shifted": [
+    [
+     "response_body_len",
+     2.4932062981764087
+    ],
+    [
+     "sbytes",
+     0.8761274496719283
+    ],
+    [
+     "sload",
+     0.28549980460428986
+    ],
+    [
+     "dpkts",
+     0.1949379282169432
+    ],
+    [
+     "rate",
+     0.18795752691899573
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": true,
+     "value": 2.4932062981764087,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8808,
+   "detector_attack_recall": 0.9015597920277296,
+   "detector_fpr": 0.1475177304964539,
+   "online_knn_acc_binary": 0.8066666666666666,
+   "shap_seconds": 10.306024099991191,
+   "monitor_seconds": 0.5725278000027174,
+   "monitor_peak_mb": 0.3960304260253906
+  },
+  {
+   "window": 19,
+   "drifted": true,
+   "diagnosis": "concept",
+   "alarms": {
+    "xda": true,
+    "shap": true,
+    "shap_ks_only": true,
+    "input_ks": false,
+    "confidence_ks": true,
+    "kswin": true,
+    "adwin": false,
+    "ddm": false
+   },
+   "n_shap_shifted": 1,
+   "n_input_shifted": 0,
+   "jaccard": 1.0,
+   "share_shift": 0.09570281218256718,
+   "top_shifted": [
+    [
+     "sbytes",
+     0.27378284614474774
+    ],
+    [
+     "proto",
+     0.24144255255047992
+    ],
+    [
+     "sload",
+     0.23120038718551558
+    ],
+    [
+     "rate",
+     0.22751792082396813
+    ],
+    [
+     "ct_dst_sport_ltm",
+     0.20260003487963005
+    ]
+   ],
+   "signals": {
+    "ks": {
+     "fired": true,
+     "value": 1,
+     "threshold": 1
+    },
+    "wasserstein": {
+     "fired": false,
+     "value": 0.27378284614474774,
+     "threshold": 1.5020713311356262
+    },
+    "jaccard": {
+     "fired": false,
+     "value": 1.0,
+     "threshold": 0.8181818181818182
+    },
+    "input_ks": {
+     "fired": false,
+     "value": 0,
+     "threshold": 1
+    }
+   },
+   "localisation": NaN,
+   "detector_acc_binary": 0.8814,
+   "detector_attack_recall": 0.9031578947368422,
+   "detector_fpr": 0.1474418604651163,
+   "online_knn_acc_binary": 0.8333333333333334,
+   "shap_seconds": 9.940915300001507,
+   "monitor_seconds": 0.5614280000008876,
+   "monitor_peak_mb": 0.39332008361816406
+  }
+ ],
+ "config": {
+  "dataset": "unsw",
+  "window": 5000,
+  "sample": 300,
+  "explainer": "shap",
+  "seed": 1
+ }
+}

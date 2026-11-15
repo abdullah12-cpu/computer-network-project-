@@ -1,0 +1,152 @@
+
+$ python scripts/analyze_errors.py --static results_quick/static --drift results_quick/drift
+
+== unsw_binary_base_clean_s1: largest confusions (true -> predicted)
+  Attack          -> Normal           10.2%  (2368 flows)
+  Normal          -> Attack           10.0%  (2569 flows)
+
+== unsw_multiclass_base_clean_s1: largest confusions (true -> predicted)
+  Worms           -> Exploits         74.5%  (38 flows)
+  Shellcode       -> Reconnaissance   73.0%  (319 flows)
+  DoS             -> Exploits         63.6%  (1050 flows)
+  Backdoor        -> Exploits         44.0%  (248 flows)
+  Analysis        -> Exploits         39.7%  (242 flows)
+  Backdoor        -> Reconnaissance   34.0%  (192 flows)
+  Analysis        -> Reconnaissance   24.4%  (149 flows)
+  Fuzzers         -> Normal           23.7%  (1491 flows)
+
+== wustl_binary_base_clean_s1: largest confusions (true -> predicted)
+  Attack          -> Normal            0.1%  (24 flows)
+  Normal          -> Attack            0.0%  (49 flows)
+
+== wustl_multiclass_base_clean_s1: largest confusions (true -> predicted)
+  Backdoor        -> Normal           20.3%  (13 flows)
+  Backdoor        -> CommInj           7.8%  (5 flows)
+  CommInj         -> Reconn            7.8%  (6 flows)
+  CommInj         -> Normal            2.6%  (2 flows)
+  Reconn          -> Normal            0.1%  (1 flows)
+  DoS             -> Normal            0.1%  (16 flows)
+  Normal          -> DoS               0.0%  (67 flows)
+  DoS             -> Reconn            0.0%  (2 flows)
+
+== unsw_binary_xda_full_s1: largest confusions (true -> predicted)
+  Normal          -> Attack           11.9%  (3055 flows)
+  Attack          -> Normal            8.5%  (1970 flows)
+
+== unsw_multiclass_xda_full_s1: largest confusions (true -> predicted)
+  Backdoor        -> Analysis         72.7%  (410 flows)
+  DoS             -> Exploits         33.7%  (556 flows)
+  DoS             -> Analysis         31.8%  (524 flows)
+  Shellcode       -> Fuzzers          26.8%  (117 flows)
+  Shellcode       -> Reconnaissance   26.5%  (116 flows)
+  Normal          -> Fuzzers          23.1%  (5935 flows)
+  Reconnaissance  -> Worms            19.4%  (580 flows)
+  Reconnaissance  -> Fuzzers          16.6%  (498 flows)
+
+== wustl_binary_xda_full_s1: largest confusions (true -> predicted)
+  Attack          -> Normal            0.1%  (20 flows)
+  Normal          -> Attack            0.0%  (51 flows)
+
+== wustl_multiclass_xda_full_s1: largest confusions (true -> predicted)
+  Backdoor        -> Normal           18.8%  (12 flows)
+  Backdoor        -> CommInj           7.8%  (5 flows)
+  CommInj         -> Reconn            7.8%  (6 flows)
+  CommInj         -> Normal            2.6%  (2 flows)
+  Backdoor        -> DoS               1.6%  (1 flows)
+  DoS             -> Normal            1.5%  (257 flows)
+  Reconn          -> Normal            0.1%  (1 flows)
+  Normal          -> DoS               0.0%  (85 flows)
+
+== XDA monitor misses
+  none
+
+== XDA false alarms (pre-onset windows)
+                 scenario  window                 signals  max_rel_margin                                         class                                  top_shifted
+           E3_unsw_DoS_s1       2             wasserstein           0.501               clear shift (benign variation?) [response_body_len, is_sm_ips_ports, dbytes]
+           E3_unsw_DoS_s1       9             wasserstein           0.899               clear shift (benign variation?)          [response_body_len, dbytes, synack]
+      E3_unsw_Exploits_s1       0             wasserstein           0.029 near threshold (sampling noise / calibration)                   [trans_depth, sloss, djit]
+      E3_unsw_Exploits_s1       5                      ks           0.000 near threshold (sampling noise / calibration)                 [trans_depth, stcpb, ackdat]
+ E4_unsw_class_mix_DoS_s1       4                 jaccard           0.066 near threshold (sampling noise / calibration)  [is_sm_ips_ports, sinpkt, ct_dst_sport_ltm]
+ E4_unsw_class_mix_DoS_s1       9                input_ks           0.000 near threshold (sampling noise / calibration)               [is_sm_ips_ports, dpkts, djit]
+       E4_unsw_gradual_s1       4                 jaccard           0.066 near threshold (sampling noise / calibration)  [is_sm_ips_ports, sinpkt, ct_dst_sport_ltm]
+       E4_unsw_gradual_s1       9                input_ks           0.000 near threshold (sampling noise / calibration)               [is_sm_ips_ports, dpkts, djit]
+   E4_unsw_incremental_s1       4                 jaccard           0.066 near threshold (sampling noise / calibration)  [is_sm_ips_ports, sinpkt, ct_dst_sport_ltm]
+   E4_unsw_incremental_s1       9                input_ks           0.000 near threshold (sampling noise / calibration)               [is_sm_ips_ports, dpkts, djit]
+     E4_unsw_recurring_s1       4                 jaccard           0.066 near threshold (sampling noise / calibration)  [is_sm_ips_ports, sinpkt, ct_dst_sport_ltm]
+     E4_unsw_recurring_s1       9                input_ks           0.000 near threshold (sampling noise / calibration)               [is_sm_ips_ports, dpkts, djit]
+        E4_unsw_sudden_s1       4                 jaccard           0.066 near threshold (sampling noise / calibration)  [is_sm_ips_ports, sinpkt, ct_dst_sport_ltm]
+        E4_unsw_sudden_s1       9                input_ks           0.000 near threshold (sampling noise / calibration)               [is_sm_ips_ports, dpkts, djit]
+E4_wustl_chronological_s1       0             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, SynAck, Loss]
+E4_wustl_chronological_s1       1             ks,input_ks           0.000 near threshold (sampling noise / calibration)                    [dTtl, DstJitter, SynAck]
+E4_wustl_chronological_s1       2             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, SynAck, pLoss]
+E4_wustl_chronological_s1       3             ks,input_ks           0.000 near threshold (sampling noise / calibration)                    [dTtl, SynAck, DstJitter]
+E4_wustl_chronological_s1       4             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, pLoss, SynAck]
+E4_wustl_chronological_s1       5             ks,input_ks           0.000 near threshold (sampling noise / calibration)                       [dTtl, SynAck, TcpRtt]
+E4_wustl_chronological_s1       6             ks,input_ks           0.000 near threshold (sampling noise / calibration)                   [TotBytes, SrcBytes, dTtl]
+E4_wustl_chronological_s1       7             ks,input_ks           0.000 near threshold (sampling noise / calibration)                       [dTtl, DstLoss, pLoss]
+E4_wustl_chronological_s1       8             ks,input_ks           0.000 near threshold (sampling noise / calibration)                   [dTtl, DstJitter, DstLoss]
+E4_wustl_chronological_s1       9             ks,input_ks           0.000 near threshold (sampling noise / calibration)                 [TotBytes, dTtl, TotAppByte]
+E4_wustl_chronological_s1      10             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, SynAck, Loss]
+E4_wustl_chronological_s1      11             ks,input_ks           0.000 near threshold (sampling noise / calibration)                      [dTtl, SynAck, DIntPkt]
+E4_wustl_chronological_s1      12             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [dTtl, DIntPkt, DstLoss]
+E4_wustl_chronological_s1      13             ks,input_ks           1.000               clear shift (benign variation?)                   [DstLoad, DstRate, SynAck]
+E4_wustl_chronological_s1      14             ks,input_ks           0.000 near threshold (sampling noise / calibration)                      [SynAck, DstRate, dTtl]
+E4_wustl_chronological_s1      15             ks,input_ks           0.000 near threshold (sampling noise / calibration)                    [TcpRtt, SynAck, DIntPkt]
+E4_wustl_chronological_s1      16     ks,jaccard,input_ks           0.185 near threshold (sampling noise / calibration)                    [TcpRtt, SynAck, DIntPkt]
+E4_wustl_chronological_s1      17             ks,input_ks           0.000 near threshold (sampling noise / calibration)                    [TcpRtt, SynAck, DIntPkt]
+E4_wustl_chronological_s1      18             ks,input_ks           2.000               clear shift (benign variation?)                     [dTtl, SrcLoss, DstLoss]
+E4_wustl_chronological_s1      19             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, Sum, SrcLoss]
+E4_wustl_chronological_s1      20             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, SynAck, pLoss]
+E4_wustl_chronological_s1      21             ks,input_ks           0.000 near threshold (sampling noise / calibration)                       [dTtl, TcpRtt, SynAck]
+E4_wustl_chronological_s1      22             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, SynAck, pLoss]
+E4_wustl_chronological_s1      23             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, SynAck, pLoss]
+E4_wustl_chronological_s1      24             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, SynAck, Loss]
+E4_wustl_chronological_s1      25             ks,input_ks           1.000               clear shift (benign variation?)                       [TcpRtt, dTtl, SynAck]
+E4_wustl_chronological_s1      26 ks,wasserstein,input_ks           1.000               clear shift (benign variation?)                           [sDSb, sTos, dTtl]
+E4_wustl_chronological_s1      27             ks,input_ks          35.000               clear shift (benign variation?)                    [TcpRtt, DIntPkt, SynAck]
+E4_wustl_chronological_s1      28             ks,input_ks          35.000               clear shift (benign variation?)                      [DstLoad, Max, DstRate]
+E4_wustl_chronological_s1      29 ks,wasserstein,input_ks          35.000               clear shift (benign variation?)                           [sDSb, sTos, dTtl]
+E4_wustl_chronological_s1      30             ks,input_ks          34.000               clear shift (benign variation?)                  [SIntPkt, pLoss, SrcJitter]
+E4_wustl_chronological_s1      31             ks,input_ks          34.000               clear shift (benign variation?)                    [pLoss, DstPkts, SIntPkt]
+E4_wustl_chronological_s1      32             ks,input_ks           1.000               clear shift (benign variation?)                  [SIntPkt, SrcJitter, pLoss]
+E4_wustl_chronological_s1      33             ks,input_ks           1.000               clear shift (benign variation?)                         [dTtl, Loss, SynAck]
+E4_wustl_chronological_s1      34             ks,input_ks           2.000               clear shift (benign variation?)                    [TotAppByte, dTtl, pLoss]
+E4_wustl_chronological_s1      35             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [dTtl, DIntPkt, DstLoss]
+E4_wustl_chronological_s1      36             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, Loss, SynAck]
+E4_wustl_chronological_s1      37             ks,input_ks           1.000               clear shift (benign variation?)                     [dTtl, DstLoss, DIntPkt]
+E4_wustl_chronological_s1      38             ks,input_ks          10.000               clear shift (benign variation?)                   [DstJitter, dTtl, DIntPkt]
+E4_wustl_chronological_s1      39 ks,wasserstein,input_ks           8.000               clear shift (benign variation?)                      [sDSb, sTos, DstJitter]
+E4_wustl_chronological_s1      40             ks,input_ks          14.000               clear shift (benign variation?)                [TotBytes, SrcBytes, TotPkts]
+E4_wustl_chronological_s1      41             ks,input_ks           1.000               clear shift (benign variation?)                       [dTtl, TcpRtt, SynAck]
+E4_wustl_chronological_s1      42             ks,input_ks           2.000               clear shift (benign variation?)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      43             ks,input_ks           0.000 near threshold (sampling noise / calibration)                      [dTtl, DstJitter, Loss]
+E4_wustl_chronological_s1      44             ks,input_ks           0.000 near threshold (sampling noise / calibration)                   [TotBytes, SrcBytes, dTtl]
+E4_wustl_chronological_s1      45             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [dTtl, DstLoss, SrcLoss]
+E4_wustl_chronological_s1      46             ks,input_ks           1.000               clear shift (benign variation?)                      [TcpRtt, dTtl, DstLoss]
+E4_wustl_chronological_s1      47     ks,jaccard,input_ks           0.185 near threshold (sampling noise / calibration)              [DstBytes, TotBytes, DAppBytes]
+E4_wustl_chronological_s1      48             ks,input_ks           3.000               clear shift (benign variation?)                     [dTtl, DstLoss, SrcLoss]
+E4_wustl_chronological_s1      49             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [SrcLoss, DstLoss, dTtl]
+E4_wustl_chronological_s1      50             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [dTtl, DIntPkt, DstLoss]
+E4_wustl_chronological_s1      51             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      52             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      53             ks,input_ks           0.000 near threshold (sampling noise / calibration)                      [dTtl, SynAck, DIntPkt]
+E4_wustl_chronological_s1      54             ks,input_ks           0.000 near threshold (sampling noise / calibration)                     [dTtl, DstLoss, SrcLoss]
+E4_wustl_chronological_s1      55             ks,input_ks           0.000 near threshold (sampling noise / calibration)                   [TotBytes, SrcBytes, dTtl]
+E4_wustl_chronological_s1      56             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, Loss, DstLoss]
+E4_wustl_chronological_s1      57             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      58             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      59             ks,input_ks           0.000 near threshold (sampling noise / calibration)                         [dTtl, SynAck, Loss]
+E4_wustl_chronological_s1      60             ks,input_ks           1.000               clear shift (benign variation?)                        [dTtl, DstLoss, Loss]
+E4_wustl_chronological_s1      61             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, pLoss, Loss]
+E4_wustl_chronological_s1      62             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, pLoss, Loss]
+E4_wustl_chronological_s1      63 ks,wasserstein,input_ks           3.675               clear shift (benign variation?)                           [sDSb, sTos, dTtl]
+E4_wustl_chronological_s1      64             ks,input_ks           0.000 near threshold (sampling noise / calibration)                   [dTtl, DIntPkt, DstJitter]
+E4_wustl_chronological_s1      65             ks,input_ks           0.000 near threshold (sampling noise / calibration)                          [dTtl, Loss, pLoss]
+E4_wustl_chronological_s1      66             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, Loss, DstLoss]
+E4_wustl_chronological_s1      67             ks,input_ks           0.000 near threshold (sampling noise / calibration)                        [dTtl, Loss, DstLoss]
+E4_wustl_chronological_s1      68             ks,input_ks           0.000 near threshold (sampling noise / calibration)                       [dTtl, TcpRtt, SynAck]
+      E4_wustl_gradual_s1       2             wasserstein           3.598               clear shift (benign variation?)                            [sDSb, sTos, Sum]
+  E4_wustl_incremental_s1       2             wasserstein           3.598               clear shift (benign variation?)                            [sDSb, sTos, Sum]
+    E4_wustl_recurring_s1       2             wasserstein           3.598               clear shift (benign variation?)                            [sDSb, sTos, Sum]
+       E4_wustl_sudden_s1       2             wasserstein           3.598               clear shift (benign variation?)                            [sDSb, sTos, Sum]
+report saved to results_quick\failure_analysis.txt

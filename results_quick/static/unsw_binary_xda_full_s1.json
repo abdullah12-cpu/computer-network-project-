@@ -1,0 +1,97 @@
+{
+ "accuracy": 0.8970793052597084,
+ "macro_f1": 0.8969787975010433,
+ "weighted_f1": 0.8971508140584962,
+ "macro_precision": 0.8968706596550966,
+ "macro_recall": 0.8979757167205611,
+ "mcc": 0.7948456082072768,
+ "fpr": 0.11879301629272465,
+ "detection_rate": 0.9147444497338468,
+ "pr_auc": 0.9688040900853425,
+ "per_class": {
+  "Attack": {
+   "precision": 0.8737185846560847,
+   "recall": 0.9147444497338468,
+   "f1": 0.8937609674623143,
+   "support": 23107
+  },
+  "Normal": {
+   "precision": 0.9200227346541084,
+   "recall": 0.8812069837072753,
+   "f1": 0.9001966275397724,
+   "support": 25717
+  }
+ },
+ "confusion_matrix": [
+  [
+   21137,
+   1970
+  ],
+  [
+   3055,
+   22662
+  ]
+ ],
+ "latency_ms_per_flow": 0.24240570000256412,
+ "throughput_flows_s": 26969.007217755017,
+ "params": 172994,
+ "model_mb": 0.6676301956176758,
+ "dataset": "unsw",
+ "task": "binary",
+ "variant": "xda_full",
+ "seed": 1,
+ "n_features": 42,
+ "n_train": 102528,
+ "n_test": 48824,
+ "epochs": 10,
+ "train_seconds": 6.371755499989376,
+ "test_seconds": 0.05763630000001285,
+ "class_names": [
+  "Attack",
+  "Normal"
+ ],
+ "features": [
+  "dur",
+  "proto",
+  "service",
+  "state",
+  "spkts",
+  "dpkts",
+  "sbytes",
+  "dbytes",
+  "rate",
+  "sttl",
+  "dttl",
+  "sload",
+  "dload",
+  "sloss",
+  "dloss",
+  "sinpkt",
+  "dinpkt",
+  "sjit",
+  "djit",
+  "swin",
+  "stcpb",
+  "dtcpb",
+  "dwin",
+  "tcprtt",
+  "synack",
+  "ackdat",
+  "smean",
+  "dmean",
+  "trans_depth",
+  "response_body_len",
+  "ct_srv_src",
+  "ct_state_ttl",
+  "ct_dst_ltm",
+  "ct_src_dport_ltm",
+  "ct_dst_sport_ltm",
+  "ct_dst_src_ltm",
+  "is_ftp_login",
+  "ct_ftp_cmd",
+  "ct_flw_http_mthd",
+  "ct_src_ltm",
+  "ct_srv_dst",
+  "is_sm_ips_ports"
+ ]
+}

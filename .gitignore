@@ -4,5 +4,6 @@ __pycache__/
 .DS_Store
 
 # outputs (datasets are fetched from Kaggle into the kagglehub cache)
+# results_quick/ (the Phase 3 quick run, ~36 MB) is committed so the report's numbers can be checked;
+# the full 5-seed run stays local.
 results/
-results_quick/

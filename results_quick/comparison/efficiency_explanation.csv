@@ -1,0 +1,7 @@
+efficiency / explanation,paper,XDA-IDS
+latency (ms/flow),2.18 (hardware not stated),0.239 ± 0.004 (1 CPU thread)
+model size (MB),22.1 (runtime memory),0.669 ± 0.001 (weights file)
+parameters (M),1.02,0.173 ± 0.000
+"fidelity: F1 drop, top-3 masked",0.086 (F1 0.960 -> 0.874),0.242 (random-3 control: 0.010)
+stability: top-10 Jaccard,0.84-0.89 (5 bootstraps),1.00 ± 0.00 (20 bootstraps)
+SHAP Top-10 model,"F1 0.932, single k","macro-F1 0.409; full sweep k = 5, 10, 15, 20, 25, 42"

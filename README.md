@@ -2,8 +2,8 @@
 
 Phase 3 implementation of the methodology. It extends the base paper: Udurume, Shakhov & Koo, *Scientific Reports* 16:32576, 2026 (https://doi.org/10.1038/s41598-025-34334-3; code at github.com/Mi12Mi12Cu/Explainable-IoT-IDS).
 
-## Quick start (local NVIDIA GPU, e.g. GTX 1650 Super)
-Requirements: Python 3.11 (on Windows tick "Add python.exe to PATH"), a recent NVIDIA driver (`nvidia-smi` works) and internet access for the first run.
+## Quick start (local NVIDIA GPU, e.g. GTX 1650 Super or GTX 1660 Ti)
+Requirements: Python 3.11 (on Windows tick "Add python.exe to PATH"), a recent NVIDIA driver (`nvidia-smi` works) and internet access for the first run. `requirements.txt` pins pandas below 3; the reported runs used pandas 2.3.3.
 
 Windows (Command Prompt), inside this folder:
 ```
@@ -26,9 +26,26 @@ python run_all.py
 3. `run_all.py --quick` does a first pass on the real data (1 seed, 10 epochs) and writes to `results_quick/`.
 4. `run_all.py` runs the full protocol (5 seeds, early stopping) and writes to `results/`.
 
+Measured on a GTX 1660 Ti (Ryzen 5 3600, 16 GB RAM): the smoke test takes about 11 minutes and `run_all.py --quick` about 2.7 hours. The full protocol is estimated at more than 12 hours.
+
 Datasets are never downloaded by hand: `kagglehub` fetches them on first use and caches them (about 750 MB).
 Finished runs are skipped, so an interrupted run resumes when you run the same command again.
 `python run_all.py --list` shows the stages; `--stages static e3` runs only some of them.
+
+## Phase 3 results (quick run)
+`results_quick/` holds the run used in the Phase 3 report (`docs/`): 1 seed, at most 10 epochs, batch size 512, learning rate 2e-3 (`configs/default.yaml`; the base paper used 128 and 1e-3). Headline numbers, from `results_quick/comparison/comparison.md`:
+
+| | base_repro (with leaks) | base_clean (leak-free) | xda_full |
+|---|---|---|---|
+| UNSW binary, Macro-F1 | 0.985 | 0.899 | 0.897 |
+| UNSW multiclass, Macro-F1 | 0.433 | 0.356 | 0.409 |
+| UNSW multiclass, FPR | 0.021 | 0.145 | 0.264 |
+| WUSTL multiclass, Macro-F1 | 0.934 | 0.947 | 0.940 |
+
+- Focal loss raises UNSW recall for Worms, Analysis and Shellcode from 0 to 0.88, 0.80 and 0.45, but raises FPR.
+- XGBoost is the strongest detector baseline (UNSW multiclass Macro-F1 0.584); XDA-IDS is 12x faster per flow (0.24 ms) and 22x smaller.
+- The XDA monitor detects all 11 injected drift / unseen-family scenarios without labels (mean delay 0.27 windows, false-alarm rate 0.164); the SHAP-KS-only variant reaches a 0.009 false-alarm rate.
+- Known weaknesses: the diagnosis rule labels scale drift as concept drift, and UNSW-to-CICIoT2023 transfer fails in both directions.
 
 ## Datasets (from Kaggle, see `configs/default.yaml`)
 | Dataset | Used for | Kaggle source |
@@ -36,6 +53,8 @@ Finished runs are skipped, so an interrupted run resumes when you run the same c
 | UNSW-NB15 (training + testing set) | base reproduction, E1-E4 | `mrwellsdavid/unsw-nb15` |
 | WUSTL-IIoT-2021 | base reproduction, E1, E2, E4 | `annaamalaiu/wustl-iiot-2021-dataset` (fallback `mostafa2372/wustl-iiot-2021`) |
 | CICIoT2023 (1M-row sample) | E5 cross-dataset transfer | `ioannispan/ciciot2023-1m` (fallback `himadri07/ciciot2023`) |
+
+**UNSW file names in the Kaggle mirror.** In `mrwellsdavid/unsw-nb15`, `UNSW_NB15_training-set.csv` has 82,332 rows and `UNSW_NB15_testing-set.csv` has 175,341, the reverse of the official release. The XDA protocol concatenates both, so it is unaffected, but `base_repro` (which loads `unsw_train` only) trains on 82,332 rows rather than the 175,341 the base paper used. To match the paper exactly, point `data.unsw_train.file` at `UNSW_NB15_testing-set.csv`.
 
 If Kaggle asks for a login: `python -c "import kagglehub; kagglehub.login()"`.
 
@@ -68,6 +87,8 @@ If Kaggle asks for a login: `python -c "import kagglehub; kagglehub.login()"`.
 
 ## Code layout
 ```
+docs/                      Phase 3 report (DOCX and PDF)
+results_quick/             outputs of the Phase 3 quick run
 run_all.py                 runs every stage in order
 setup_gpu.bat / .sh        one-time install (CUDA PyTorch + requirements.txt)
 configs/default.yaml       hyperparameters and dataset sources

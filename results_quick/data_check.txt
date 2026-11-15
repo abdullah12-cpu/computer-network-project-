@@ -1,0 +1,46 @@
+Downloading to D:\kagglehub-cache\datasets\mrwellsdavid\unsw-nb15\1.archive...
+Extracting files...
+
+=== unsw_train: 82,332 rows, 43 columns
+                count  share_%
+attack_cat                    
+Normal          37000   44.940
+Generic         18871   22.921
+Exploits        11132   13.521
+Fuzzers          6062    7.363
+DoS              4089    4.966
+Reconnaissance   3496    4.246
+Analysis          677    0.822
+Backdoor          583    0.708
+Shellcode         378    0.459
+Worms              44    0.053
+duplicate rows (ignoring id): 32.0%
+corr(id, label) = -0.387   (far from 0 => 'id' leaks the label)
+
+=== unsw_test: 175,341 rows, 43 columns
+                count  share_%
+attack_cat                    
+Normal          56000   31.938
+Generic         40000   22.813
+Exploits        33393   19.045
+Fuzzers         18184   10.371
+DoS             12264    6.994
+Reconnaissance  10491    5.983
+Analysis         2000    1.141
+Backdoor         1746    0.996
+Shellcode        1133    0.646
+Worms             130    0.074
+duplicate rows (ignoring id): 38.6%
+corr(id, label) = +0.727   (far from 0 => 'id' leaks the label)
+Downloading to D:\kagglehub-cache\datasets\annaamalaiu\wustl-iiot-2021-dataset\1.archive...
+Extracting files...
+
+=== wustl: 1,194,464 rows, 44 columns
+            count  share_%
+Traffic                   
+Normal    1107448   92.715
+DoS         78305    6.556
+Reconn       8240    0.690
+CommInj       259    0.022
+Backdoor      212    0.018
+'Target' equals the binary label on 100.00% of rows (=> leakage if used as input)
