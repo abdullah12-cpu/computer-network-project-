@@ -1,6 +1,18 @@
-%% XDA-IDS research paper -- Springer Nature LaTeX template (sn-jnl, Version 3.1 December 2024).
+%Version 3.1 December 2024
+%% Springer Nature LaTeX template (sn-article.tex), used for the XDA-IDS paper.
 %% Build: pdflatex main && bibtex main && pdflatex main && pdflatex main
-\documentclass[pdflatex,iicol,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style; iicol = two-column layout
+
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+
+%%=======================================================%%
+%% Single-column layout as in the template. The class lays pages out for two-sided
+%% printing (text block shifted by a binding offset on odd/even pages); the line below
+%% keeps Springer's text width and height but uses the same centred margins on every page.
+%%=======================================================%%
+\geometry{twoside=false,bindingoffset=0pt,hcentering}
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
 
 \usepackage{graphicx}%
 \usepackage{multirow}%
@@ -15,16 +27,15 @@
 \usepackage{algorithm}%
 \usepackage{algorithmicx}%
 \usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%% Additional packages used by this paper
 \usepackage{array}%
 \usepackage{tikz}%
 \usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric}
+%%%%
 
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newcommand{\paperval}{$^{*}$}            % value taken from the original paper
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3.2pt}
-
-\raggedbottom
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}% ragged-right text columns in tables
+\newcommand{\paperval}{$^{*}$}% value taken from the original paper
 
 \begin{document}
 
@@ -74,25 +85,24 @@ A recent study~\cite{shapdrift} shows that SHAP distributions can help separate 
 
 Table~\ref{tab:related} summarises the key studies. XDA-IDS is the only one that validates its explanations, uses them as a label-free monitoring signal and tests unseen attack families, injected drift and cross-dataset transfer together.
 
-\begin{table*}[t]
-\caption{Summary of key related studies (results as reported by their authors) and the capabilities each evaluates}
-\label{tab:related}
-\centering\footnotesize
-\begin{tabular}{@{}L{2.5cm}L{2.4cm}L{2.4cm}L{2.2cm}cccc@{}}
+\begin{table}[!htbp]
+\caption{Summary of key related studies and the capabilities each evaluates}\label{tab:related}%
+\begin{tabular}{@{}L{2.4cm}L{2.9cm}L{2.8cm}cccc@{}}
 \toprule
-Study & Method & Dataset(s) & Reported result & \shortstack{XAI\\valid.} & \shortstack{Drift\\test} & \shortstack{Unseen\\family} & \shortstack{Label-free\\monitor} \\
+Study & Method & Dataset(s) & C1 & C2 & C3 & C4\\
 \midrule
-Udurume \textit{et al.} 2026~\cite{udurume2026} & 1D-CNN + SHAP & UNSW-NB15, WUSTL-IIoT & F1 97.5\% (UNSW bin.) & \checkmark & -- & -- & -- \\
-Obaidat \textit{et al.} 2026~\cite{obaidat2026} & RF + IF + input KS & CICIoT2023 & Acc 99.73\%, FPR 4.77\% & -- & partial & 1 family & partial \\
-Aly \& Alotaibi 2025~\cite{aly2025} & Transformer--GWO--Boosting + SHAP & Smart-factory sensors & Acc 98.2\% & -- & synthetic & -- & partial \\
-Sharma \textit{et al.} 2025~\cite{sharma2025} & Self-attention DNN + SHAP/LIME & BoT-IoT, N-BaIoT, UNSW & Acc 97.9\% (UNSW) & partial & -- & -- & -- \\
-Nasir \textit{et al.} 2026~\cite{nasir2026} & BiGRU + attention + GWO & UNSW, CICIDS-2017, ToN-IoT & Acc 92.1\% (UNSW) & -- & -- & -- & -- \\
-Agbedanu \textit{et al.} 2025~\cite{agbedanu2025} & Adaptive SAM-KNN & 3 NetFlow datasets & Zero-day DR 1.00 & -- & \checkmark & \checkmark & -- \\
-Guo \textit{et al.} 2026~\cite{guo2026} & DNN + BiGRU + attention & Edge-IIoTset & Acc 96.88\% & -- & -- & -- & -- \\
-\textbf{XDA-IDS (this work)} & 1D-CNN + focal loss + SHAP monitor & UNSW, WUSTL-IIoT, CICIoT2023 & Table~\ref{tab:detect} & \checkmark & \checkmark & 3 families & \checkmark \\
-\bottomrule
+Udurume \textit{et al.} 2026~\cite{udurume2026} & 1D-CNN + SHAP & UNSW-NB15, WUSTL-IIoT & \checkmark & -- & -- & -- \\
+Obaidat \textit{et al.} 2026~\cite{obaidat2026} & RF + Isolation Forest + input KS & CICIoT2023 & -- & $\circ$ & $\circ$ & $\circ$ \\
+Aly \& Alotaibi 2025~\cite{aly2025} & Transformer--GWO--Boosting + SHAP & Smart-factory sensors & -- & $\circ$ & -- & $\circ$ \\
+Sharma \textit{et al.} 2025~\cite{sharma2025} & Self-attention DNN + SHAP/LIME & BoT-IoT, N-BaIoT, UNSW-NB15 & $\circ$ & -- & -- & -- \\
+Nasir \textit{et al.} 2026~\cite{nasir2026} & BiGRU + attention + GWO & UNSW-NB15, CICIDS-2017, ToN-IoT & -- & -- & -- & -- \\
+Agbedanu \textit{et al.} 2025~\cite{agbedanu2025} & Adaptive SAM-KNN & 3 NetFlow datasets & -- & \checkmark & \checkmark & -- \\
+Guo \textit{et al.} 2026~\cite{guo2026} & DNN + BiGRU + attention & Edge-IIoTset & -- & -- & -- & -- \\
+\textbf{XDA-IDS (this work)} & 1D-CNN + focal loss + SHAP monitor & UNSW-NB15, WUSTL-IIoT, CICIoT2023 & \checkmark & \checkmark & \checkmark & \checkmark \\
+\botrule
 \end{tabular}
-\end{table*}
+\footnotetext{C1: explanation quality validated; C2: drift tested; C3: unseen attack family tested; C4: label-free drift monitor. \checkmark{} = evaluated, $\circ$ = partial or limited, -- = absent. The results reported by each study are compared in Section~\ref{sec:base}.}
+\end{table}
 
 % ============================================================== METHOD
 \section{Proposed Methodology}\label{sec:method}
@@ -102,9 +112,9 @@ A flow record is a vector $\mathbf{x}\in\mathbb{R}^{d}$ of $d$ statistical featu
 \subsection{Architecture}
 Fig.~\ref{fig:arch} shows the architecture. Module A classifies every flow on the detection path. Modules B and C operate on a sample of each window off the detection path, so they add no per-flow latency. A concept-drift alarm triggers the retraining loop.
 
-\begin{figure*}[t]
+\begin{figure}[!htbp]
 \centering
-\resizebox{0.7\textwidth}{!}{%
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[font=\footnotesize, node distance=4mm and 5mm,
   box/.style={draw=black!60, rounded corners=2pt, align=left, inner sep=3pt, text width=3.05cm, minimum height=1.25cm},
   core/.style={box, draw=blue!70!black, fill=blue!7, line width=0.8pt},
@@ -129,9 +139,8 @@ Fig.~\ref{fig:arch} shows the architecture. Module A classifies every flow on th
 \draw[arr] (concept.east) -- ++(3mm,0) |- (A.east);
 \node[below=0.5mm of alarm, font=\scriptsize, text=black!60] {no: next window};
 \end{tikzpicture}}
-\caption{XDA-IDS architecture. Module A runs on the real-time detection path; Modules B and C monitor sampled flows without labels, and only a concept-drift alarm triggers retraining.}
-\label{fig:arch}
-\end{figure*}
+\caption{XDA-IDS architecture. Module A runs on the real-time detection path; Modules B and C monitor sampled flows without labels, and only a concept-drift alarm triggers retraining.}\label{fig:arch}%
+\end{figure}
 
 \subsection{Module A: rare-class-aware detector}
 The detector keeps the base paper's architecture for comparability: Conv1D(64, $k{=}3$)--BN--ReLU--MaxPool(2)--Conv1D(128, $k{=}3$)--BN--ReLU--Dropout(0.5)--Dense(64)--ReLU--Dropout(0.5)--Dense($C$). Each flow is treated as a one-channel sequence of length $d$.
@@ -154,10 +163,7 @@ where $N$ is the number of flows in a batch, $\gamma=2$ focuses training on hard
 \subsection{Module B: SHAP explainer}
 For a flow $\mathbf{x}$ with predicted class $\hat{c}$, the attribution of feature $j$ is computed with expected gradients~\cite{erion2021}, the SHAP approximation implemented by \texttt{GradientExplainer}:
 \begin{equation}
-\begin{split}
-\phi_j(\mathbf{x}) = {}& \mathbb{E}_{\mathbf{x}'\sim\mathcal{B},\,\lambda\sim U(0,1)}\Big[(x_j-x'_j)\\
-&\times\frac{\partial f_\theta(\mathbf{x}'+\lambda(\mathbf{x}-\mathbf{x}'))_{\hat{c}}}{\partial x_j}\Big],
-\end{split}
+\phi_j(\mathbf{x}) = \mathbb{E}_{\mathbf{x}'\sim\mathcal{B},\,\lambda\sim U(0,1)}\!\left[(x_j-x'_j)\,\frac{\partial f_\theta(\mathbf{x}'+\lambda(\mathbf{x}-\mathbf{x}'))_{\hat{c}}}{\partial x_j}\right],
 \end{equation}
 where $\mathcal{B}$ is a background set of 100 training flows and the expectation is estimated with 50 samples. A \textit{reference profile} is built from $n_r=500$ drift-free validation flows. It stores their attribution matrix $\Phi_{\text{ref}}\in\mathbb{R}^{n_r\times d}$, their predicted classes, the per-feature standard deviation $\sigma_j$ of the attributions, the importance shares $s_j=\overline{|\phi_j|}/\sum_{j'}\overline{|\phi_{j'}|}$ and the top-10 feature set $T_{\text{ref}}$.
 
@@ -175,10 +181,8 @@ a_t = [K_t\ge m]\lor[D_t>\omega]\lor[J_t<\tau]\lor[K^{\text{in}}_t\ge m_{\text{i
 \end{equation}
 The thresholds $m$, $\omega$, $\tau$ and $m_{\text{in}}$ are set on 20 drift-free calibration windows, disjoint from the reference profile, as quantiles that split a target false-alarm rate (FAR) of 0.05 across the SHAP signals. Because raw attributions move whenever inputs move, the diagnosis compares importance shares rather than raw values: an alarm is diagnosed as concept drift if $\|\mathbf{s}_t-\mathbf{s}_{\text{ref}}\|_1$ exceeds its calibrated threshold or $J_t<\tau$, and as scale drift otherwise. The alarm reports $\mathcal{S}_t$, the five features with the largest normalised Wasserstein distance. Algorithm~\ref{alg:monitor} summarises the procedure.
 
-\begin{algorithm*}[t]
-\caption{SHAP-drift monitoring of one window}
-\label{alg:monitor}
-\small
+\begin{algorithm}
+\caption{SHAP-drift monitoring of one window}\label{alg:monitor}
 \begin{algorithmic}[1]
 \Require window $W_t$; detector $f_\theta$; explainer; reference profile $(\Phi_{\text{ref}},T_{\text{ref}},\mathbf{s}_{\text{ref}},\boldsymbol\sigma)$; thresholds $m,\omega,\tau,m_{\text{in}},\rho$
 \Ensure alarm $a_t$, shifted features $\mathcal{S}_t$, diagnosis $\delta_t$
@@ -195,7 +199,7 @@ The thresholds $m$, $\omega$, $\tau$ and $m_{\text{in}}$ are set on 20 drift-fre
 \State $\mathcal{S}_t\gets$ top-5 features by $W_1/\sigma_j$
 \State \Return $(a_t,\mathcal{S}_t,\delta_t)$
 \end{algorithmic}
-\end{algorithm*}
+\end{algorithm}
 
 \subsection{Retraining loop}
 After a concept-drift alarm, an analyst labels the alarmed window. If it contains a new attack family, the output layer is extended by one unit per new class while existing weights are kept. The detector is then fine-tuned for 5 epochs at learning rate $10^{-4}$ on the labelled window mixed with an equal-sized replay sample of the original training data, and the reference profile is rebuilt.
@@ -208,10 +212,8 @@ Feedback on the methodology asked for a fuller set of evaluation metrics. The ba
 \subsection{Datasets}
 Table~\ref{tab:data} lists the datasets, all obtained from public Kaggle mirrors. UNSW-NB15 and WUSTL-IIoT-2021~\cite{zolanvari2021} are the base paper's datasets; CICIoT2023~\cite{neto2023} adds recent IoT traffic for transfer experiments. Class imbalance is severe: Worms are 0.07\% of the larger UNSW-NB15 partition, and Backdoor and Command Injection are about 0.02\% each of WUSTL-IIoT-2021.
 
-\begin{table*}[t]
-\caption{Datasets used}
-\label{tab:data}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Datasets used}\label{tab:data}%
 \begin{tabular}{@{}lrcl@{}}
 \toprule
 Dataset & Raw flows & Classes & Use \\
@@ -219,9 +221,9 @@ Dataset & Raw flows & Classes & Use \\
 UNSW-NB15 (both partitions) & 257{,}673 & 10 & E1--E4 \\
 WUSTL-IIoT-2021 & 1{,}194{,}464 & 5 & E1, E2, E4 \\
 CICIoT2023 (1\,M sample) & 1{,}000{,}000 & 8 & E5 \\
-\bottomrule
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Preprocessing and leakage audit}\label{subsec:prep}
 Before training, a data audit checked each dataset for label leakage. It found three problems in the protocol used by the base paper: (i) the UNSW-NB15 \texttt{id} column, a row index, correlates with the label ($r=-0.39$ and $+0.73$ in the two partitions) because rows are ordered by class; (ii) the WUSTL-IIoT-2021 \texttt{Target} column equals the binary label on 100\% of rows; and (iii) 32.0\% and 38.6\% of UNSW-NB15 rows are exact duplicates. The XDA protocol therefore removes infinite and missing values and duplicate rows, drops \texttt{id}, \texttt{Target}, timestamps, IP addresses and ports, frequency-encodes categorical fields, and fits MinMax scaling on the training split only. Outlier removal is not applied, because attacks are often outliers. To quantify the leakage, the base paper's protocol is also reproduced exactly (\textit{base\_repro}: index and label columns kept, categorical fields dropped, scaler fitted on all rows, no deduplication).
@@ -247,10 +249,8 @@ Detection is measured by accuracy, Macro-F1 (primary, because of class imbalance
 \subsection{Implementation and reproducibility}
 XDA-IDS is implemented in Python 3.11.9 with PyTorch 2.11.0 (CUDA 12.8)~\cite{paszke2019}, scikit-learn 1.9.1, XGBoost 3.2.0, SHAP 0.51.0, River 0.27.0 and pandas 2.3.3. Experiments ran on an AMD Ryzen 5 3600 CPU (6 cores), 16\,GB RAM and an NVIDIA GTX 1660 Ti GPU (6\,GB) under Windows 11. Table~\ref{tab:hyper} lists the hyperparameters. All reported results use random seed 1, a maximum of 10 epochs with patience 10 and batch size 512; the complete pipeline ran in 2.71 hours. Code, configuration, per-run results and logs are public~\cite{repo}; \texttt{python run\_all.py -{}-quick} reproduces every number in this paper.
 
-\begin{table*}[t]
-\caption{Hyperparameters}
-\label{tab:hyper}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Hyperparameters}\label{tab:hyper}%
 \begin{tabular}{@{}ll@{}}
 \toprule
 Parameter & Value \\
@@ -264,19 +264,17 @@ Window $n$; family-wise $\alpha$; target FAR & 5{,}000; 0.01; 0.05 \\
 Fine-tuning epochs; learning rate & 5; $10^{-4}$ \\
 RF trees; XGBoost trees, depth, rate & 100; 300, 8, 0.1 \\
 Isolation Forest contamination & 0.01 \\
-\bottomrule
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 % ============================================================== RESULTS
 \section{Results and Analysis}\label{sec:results}
 \subsection{Static detection (E1)}
 Table~\ref{tab:detect} reports multiclass results. On UNSW-NB15, XGBoost is the most accurate detector (Macro-F1 0.584). XDA-IDS has the highest detection rate of all models (0.980) and the highest macro recall among the CNN-based models (0.554), but the lowest accuracy (0.668) and the highest FPR (0.264). On WUSTL-IIoT-2021 every model exceeds 0.99 accuracy; Macro-F1 differences come from the 64 Backdoor and 77 Command Injection test flows. On the binary tasks, XDA-IDS reaches Macro-F1 0.897 on UNSW-NB15 (\textit{base\_clean}: 0.899) and 0.999 on WUSTL-IIoT-2021. XDA-IDS processes a flow in 0.24\,ms, 12$\times$ faster than XGBoost and 31$\times$ faster than Random Forest, with a 0.67\,MB model.
 
-\begin{table*}[t]
-\caption{Multiclass detection results on Split A (seed 1). Best value per column in bold.}
-\label{tab:detect}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Multiclass detection results on Split A (seed 1). Best value per column in bold.}\label{tab:detect}%
 \begin{tabular}{@{}lcccccc@{}}
 \toprule
 Model & Acc & Macro-F1 & Macro-R & FPR & DR & ms/flow \\
@@ -296,36 +294,31 @@ Random Forest & \textbf{1.000} & 0.964 & 0.948 & \textbf{0.000} & 0.999 & 7.186 
 RF + IF~\cite{obaidat2026} & 0.991 & 0.799 & 0.946 & 0.010 & 0.999 & 14.788 \\
 XGBoost & \textbf{1.000} & \textbf{0.980} & \textbf{0.965} & \textbf{0.000} & 0.999 & 0.383 \\
 XDA-IDS & 0.999 & 0.940 & 0.920 & \textbf{0.000} & 0.985 & 0.236 \\
-\bottomrule
-\multicolumn{7}{@{}l}{\scriptsize Macro-R: macro recall; DR: detection rate. $^\dagger$Highest among CNN-based models;}\\
-\multicolumn{7}{@{}l}{\scriptsize XGBoost's 0.575 is higher overall.}
+\botrule
 \end{tabular}
-\end{table*}
+\footnotetext{Macro-R: macro recall; DR: detection rate. $^\dagger$Highest among the CNN-based models; XGBoost's 0.575 is higher overall.}
+\end{table}
 
 \subsection{Rare-class detection (E2)}
 Fig.~\ref{fig:recall} shows per-class recall on UNSW-NB15. Four classes that the leak-free base CNN never detects gain recall with XDA-IDS: Worms (0.88), Analysis (0.81), Shellcode (0.45) and Backdoor (0.08). The base paper's own confusion matrix also shows zero recall for Backdoor, Shellcode and Worms. The cost falls on Normal ($-0.12$), Exploits ($-0.19$) and Reconnaissance ($-0.50$). Fig.~\ref{fig:confusion} shows why: the base CNN collapses rare classes into Exploits and Reconnaissance (75\% of Worms become Exploits), whereas XDA-IDS separates them but sends 23\% of Normal flows to Fuzzers and 73\% of Backdoor flows to Analysis. Focal loss thus moves errors from \textit{rare class missed} to \textit{rare classes confused with each other} and \textit{normal traffic flagged}.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_recall.pdf}
-\caption{Per-class recall on UNSW-NB15 multiclass, sorted by the change from the leak-free base CNN (right column). $^{*}$Values read from the base paper's confusion matrix~\cite{udurume2026}.}
-\label{fig:recall}
+\includegraphics[width=0.8\textwidth]{figures/fig_recall.pdf}
+\caption{Per-class recall on UNSW-NB15 multiclass, sorted by the change from the leak-free base CNN (right column). $^{*}$Values read from the base paper's confusion matrix~\cite{udurume2026}.}\label{fig:recall}%
 \end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/fig_confusion.pdf}
-\caption{Row-normalised confusion matrices on UNSW-NB15 multiclass (values $\ge0.05$ shown). (a) The leak-free base CNN maps rare classes to Exploits and Reconnaissance. (b) XDA-IDS recovers Analysis and Worms but confuses Backdoor with Analysis and Normal with Fuzzers.}
-\label{fig:confusion}
-\end{figure*}
+\includegraphics[width=\textwidth]{figures/fig_confusion.pdf}
+\caption{Row-normalised confusion matrices on UNSW-NB15 multiclass (values $\ge0.05$ shown). (a) The leak-free base CNN maps rare classes to Exploits and Reconnaissance. (b) XDA-IDS recovers Analysis and Worms but confuses Backdoor with Analysis and Normal with Fuzzers.}\label{fig:confusion}%
+\end{figure}
 
 \subsection{Drift and unseen-attack detection (E3, E4)}
 Table~\ref{tab:monitor} and Fig.~\ref{fig:monitors} compare the monitors over the 11 scenarios with a known onset. All three SHAP-based monitors detect every scenario. Input KS misses the unseen DoS family, because DoS flows resemble known traffic in raw features; SHAP KS detects it once the model's reasoning changes. KSWIN also detects all scenarios but with a 0.209 FAR. The label-based ADWIN and DDM detect only 6 and 4 scenarios. Fig.~\ref{fig:timeline} shows the unseen-DoS stream window by window. The full XDA monitor raises 2 false alarms before onset there, which illustrates its main weakness: a FAR of 0.164 against the 0.05 target. Its KS-only variant meets the target (0.009).
 
-\begin{table*}[t]
-\caption{Drift monitors over 11 scenarios with known onset (E3, E4)}
-\label{tab:monitor}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Drift monitors over 11 scenarios with known onset (E3, E4)}\label{tab:monitor}%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Monitor & Labels & Detected & Delay (win.) & FAR \\
@@ -338,31 +331,27 @@ Confidence KS & no & 7/11 & 0.71 & 0.009 \\
 KSWIN~\cite{raab2020} & no & \textbf{11/11} & 1.00 & 0.209 \\
 ADWIN~\cite{bifet2007} & yes & 6/11 & 4.50 & \textbf{0.000} \\
 DDM~\cite{gama2004} & yes & 4/11 & 0.00 & 0.327 \\
-\bottomrule
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_monitors.pdf}
-\caption{Detection delay against false-alarm rate for each monitor over 11 scenarios (lower left is better; marker size grows with the number of scenarios detected). Blue: SHAP-based monitors. Dotted line: the 0.05 target FAR.}
-\label{fig:monitors}
+\includegraphics[width=0.8\textwidth]{figures/fig_monitors.pdf}
+\caption{Detection delay against false-alarm rate for each monitor over 11 scenarios (lower left is better; marker size grows with the number of scenarios detected). Blue: SHAP-based monitors. Dotted line: the 0.05 target FAR.}\label{fig:monitors}%
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_timeline.pdf}
-\caption{Alarms per window in the unseen-DoS stream on UNSW-NB15 (E3). Input KS never fires; the SHAP monitors fire after onset, and the full XDA monitor also fires twice before it.}
-\label{fig:timeline}
+\includegraphics[width=0.8\textwidth]{figures/fig_timeline.pdf}
+\caption{Alarms per window in the unseen-DoS stream on UNSW-NB15 (E3). Input KS never fires; the SHAP monitors fire after onset, and the full XDA monitor also fires twice before it.}\label{fig:timeline}%
 \end{figure}
 
 \subsection{Diagnosis and localisation}
 Table~\ref{tab:diag} reports, for the XDA monitor, how often its diagnosis is correct and how many of its reported shifted features were actually perturbed. Unseen attack families are diagnosed as concept drift in 80--100\% of windows, and 60--86\% of the reported features are the ones that were scaled. However, scale drift is diagnosed correctly in only 0--30\% of windows: scaling the volume features also changes their share of the model's attributions, which the rule reads as a change in reasoning. On the WUSTL-IIoT-2021 stream in natural time order, every SHAP and input monitor alarms in all windows, led by the TTL feature \texttt{dTtl}; this stream drifts continuously and needs a refreshed reference profile.
 
-\begin{table*}[t]
-\caption{XDA monitor diagnosis and localisation per scenario}
-\label{tab:diag}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{XDA monitor diagnosis and localisation per scenario}\label{tab:diag}%
 \begin{tabular}{@{}llccc@{}}
 \toprule
 Dataset & Scenario & Delay & Diagnosis correct & Localised \\
@@ -374,9 +363,9 @@ UNSW & sudden / gradual & 0 / 1 & 0\% / 0\% & 86\% / 84\% \\
 UNSW & incremental / recurring & 0 / 0 & 10\% / 0\% & 82\% / 73\% \\
 WUSTL & sudden / gradual & 0 / 0 & 0\% / 30\% & 66\% / 66\% \\
 WUSTL & incremental / recurring & 0 / 0 & 10\% / 0\% & 62\% / 60\% \\
-\bottomrule
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Explanation quality}
 Masking the top-1, 3 and 5 SHAP features lowers UNSW-NB15 Macro-F1 by 0.122, 0.242 and 0.255, against 0.018, 0.010 and 0.042 for the same number of random features; on WUSTL-IIoT-2021 the drops are 0.611, 0.661 and 0.742 against 0.171, 0.294 and 0.388. The explanations are therefore faithful. The top-10 set is identical across 20 bootstraps on UNSW-NB15 (Jaccard 1.00) and nearly so on WUSTL-IIoT-2021 (mean 0.98, minimum 0.82). The top-ranked features are TTL values on both datasets (\texttt{sttl}, \texttt{dttl} on UNSW-NB15; \texttt{dTtl}, \texttt{sTtl} on WUSTL-IIoT-2021), which reflect how each testbed was built rather than attack behaviour.
@@ -395,27 +384,27 @@ Because all results come from one seed, uncertainty is estimated on the test set
 \subsection{Base papers}
 XDA-IDS builds on two base papers (Table~\ref{tab:base}): Udurume \textit{et al.}~\cite{udurume2026}, whose explainable 1D-CNN is the detector XDA-IDS extends, and Obaidat \textit{et al.}~\cite{obaidat2026}, whose hybrid RF + Isolation Forest + input-KS system is the closest drift-aware IDS and is re-implemented here as a baseline.
 
-\begin{table*}[t]
-\caption{Summary of the base papers (results as reported by their authors)}
-\label{tab:base}
-\centering\footnotesize
-\begin{tabular}{@{}L{1.9cm}L{1.6cm}L{2.2cm}L{1.6cm}L{1.6cm}L{2.0cm}L{2.3cm}@{}}
+\begin{table}[!htbp]
+\caption{Summary of the base papers (results as reported by their authors)}\label{tab:base}%
+\begin{tabular}{@{}L{2.2cm}L{4.9cm}L{4.9cm}@{}}
 \toprule
-Base paper & Problem & Method & Dataset & Metrics & Reported results & Key limitations \\
+ & Udurume, Shakhov \& Koo, 2026~\cite{udurume2026} & Obaidat, Abouali \& Shakeel, 2026~\cite{obaidat2026}\\
 \midrule
-Udurume, Shakhov \& Koo, 2026~\cite{udurume2026} & Lightweight, explainable IoT/IIoT IDS & 1D-CNN vs LSTM; SHAP DeepExplainer; fidelity and stability tests; top-$k$ pruning & UNSW-NB15, WUSTL-IIoT-2021 & Acc, P, R, F1; time, memory & F1 97.5\% / 94.0\% (UNSW bin./multi); 2.18\,ms; 22.1\,MB & Static split; label leakage; rare classes at 0 recall; 8.4\% FPR; SHAP offline only \\
-Obaidat, Abouali \& Shakeel, 2026~\cite{obaidat2026} & Drift-aware IoT IDS & RF + benign-only Isolation Forest + KS on inputs; one held-out family & CICIoT2023 (3.89\,M flows) & Acc, P, R, F1, FPR, balanced acc. & Acc 99.73\%, FPR 4.77\%; 85.26\% detection of held-out family & Binary only; one dataset; hybrid below RF alone; input-only drift signal; no XAI \\
-\bottomrule
+Problem & Lightweight, explainable IoT/IIoT IDS & Drift-aware IoT IDS \\
+Method & 1D-CNN vs LSTM; SHAP DeepExplainer; fidelity and stability tests; top-$k$ feature pruning & Random Forest + benign-only Isolation Forest + KS test on inputs; one held-out attack family \\
+Dataset & UNSW-NB15, WUSTL-IIoT-2021 & CICIoT2023 (3.89\,M flows) \\
+Metrics & Accuracy, precision, recall, F1; training and inference time, memory & Accuracy, precision, recall, F1, FPR, balanced accuracy \\
+Reported results & F1 97.5\% / 94.0\% (UNSW binary / multiclass); 2.18\,ms per flow; 22.1\,MB & Accuracy 99.73\%, FPR 4.77\%; 85.26\% detection of the held-out family \\
+Key limitations & Static random split; label leakage; zero recall on rare classes; 8.4\% FPR; SHAP used offline only & Binary only; one dataset; hybrid below RF alone; input-only drift signal; no explanations \\
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Quantitative comparison}
 Table~\ref{tab:quant} places XDA-IDS beside the base paper on UNSW-NB15. Values marked $^{*}$ are taken from the original paper. Values marked $^{\ddagger}$ come from running the base paper's published notebooks unchanged, apart from loading data from Kaggle. All other values were produced in this work: \textit{base\_repro} re-implements the base protocol, and \textit{base\_clean} applies the leak-free protocol to the same CNN.
 
-\begin{table*}[t]
-\caption{Comparison with the base paper~\cite{udurume2026} on UNSW-NB15}
-\label{tab:quant}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Comparison with the base paper~\cite{udurume2026} on UNSW-NB15}\label{tab:quant}%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 & \multicolumn{2}{c}{Binary} & \multicolumn{2}{c}{Multiclass} & \\
@@ -427,10 +416,10 @@ Base paper, its code & 0.968$^{\ddagger}$ & -- & 0.810$^{\ddagger}$ & 0.41$^{\dd
 base\_repro (leaky) & 0.986 & 0.026 & 0.857 & 0.433 & 0.240 \\
 base\_clean (leak-free) & 0.899 & 0.100 & 0.744 & 0.356 & 0.224 \\
 \textbf{XDA-IDS} & 0.897 & 0.119 & 0.668 & 0.409 & 0.235 \\
-\bottomrule
-\multicolumn{6}{@{}l}{\scriptsize $^{*}$From~\cite{udurume2026}. $^{\ddagger}$Base paper's notebooks run by us. $^{\S}$Averaging not stated.}
+\botrule
 \end{tabular}
-\end{table*}
+\footnotetext{$^{*}$Taken from~\cite{udurume2026}. $^{\ddagger}$Base paper's published notebooks, run by the authors of this work. $^{\S}$Averaging not stated in~\cite{udurume2026}.}
+\end{table}
 
 \subsection{Methodological comparison}
 XDA-IDS differs from Udurume \textit{et al.} in four ways, each aimed at one of its limitations: (i) a leak-free protocol replaces a split in which the label is partly encoded in the inputs; (ii) a class-balanced focal loss replaces cross-entropy, addressing zero rare-class recall; (iii) categorical fields are encoded rather than dropped; and (iv) SHAP becomes an online monitoring signal instead of an offline report. Compared with Obaidat \textit{et al.}, XDA-IDS monitors the model's attributions rather than only its inputs, which allows it to detect attacks that look normal in raw features and to name the features whose role changed; it also handles multiclass detection and is evaluated on three datasets and three held-out families instead of one.
@@ -451,10 +440,8 @@ Among the studies in Table~\ref{tab:related}, only Sharma \textit{et al.}~\cite{
 \subsection{Detector components}
 Table~\ref{tab:ablation} changes one component at a time. Removing leakage costs 0.086 binary Macro-F1 on UNSW-NB15 (0.985 to 0.899), showing that most of the base protocol's advantage is leakage. Focal loss is the component that recovers rare classes: it adds $+0.053$ multiclass Macro-F1 over \textit{base\_clean} and is the only change that lifts Worms and Analysis recall above zero. Frequency encoding alone adds $+0.029$ Macro-F1 and halves FPR (0.145 to 0.073), but adds nothing on top of focal loss and, combined with it, triples FPR (0.087 to 0.264). Local SHAP explanations of errors point to the encoded \texttt{proto} field, which DoS, Analysis and Backdoor share. On binary tasks and on WUSTL-IIoT-2021 all variants lie within 0.014 Macro-F1; WUSTL-IIoT-2021 has no categorical fields left after identifiers are dropped.
 
-\begin{table*}[t]
-\caption{Detector ablation (Macro-F1 unless stated). LF: leak-free; FE: frequency encoding; FL: focal loss.}
-\label{tab:ablation}
-\centering\footnotesize
+\begin{table}[!htbp]
+\caption{Detector ablation (Macro-F1 unless stated). LF: leak-free; FE: frequency encoding; FL: focal loss.}\label{tab:ablation}%
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
 Variant & LF & FE & FL & \shortstack{UNSW\\bin.} & \shortstack{UNSW\\multi} & \shortstack{UNSW\\FPR} & \shortstack{WUSTL\\multi} \\
@@ -464,9 +451,9 @@ base\_clean & \checkmark & -- & -- & 0.899 & 0.356 & 0.145 & \textbf{0.947} \\
 no focal loss & \checkmark & \checkmark & -- & \textbf{0.901} & 0.385 & \textbf{0.073} & 0.942 \\
 no encoding & \checkmark & -- & \checkmark & 0.887 & \textbf{0.409} & 0.087 & 0.943 \\
 XDA-IDS (full) & \checkmark & \checkmark & \checkmark & 0.897 & \textbf{0.409} & 0.264 & 0.940 \\
-\bottomrule
+\botrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Monitor components}
 Table~\ref{tab:monitor} doubles as the monitor ablation. Removing the Wasserstein and Jaccard signals (SHAP KS only) keeps 11/11 detections and lowers FAR from 0.118 to 0.009 at about 0.2 windows more delay, so those two signals add false alarms rather than detections in this setting. Adding input KS to the SHAP signals (full XDA) shortens the delay from 0.36 to 0.27 windows but raises FAR to 0.164. Removing SHAP entirely (input KS only) loses the unseen DoS family.
@@ -474,11 +461,10 @@ Table~\ref{tab:monitor} doubles as the monitor ablation. Removing the Wasserstei
 \subsection{Feature subset}
 Fig.~\ref{fig:topk} retrains the detector on the top-$k$ SHAP features. On UNSW-NB15 the top 15 features reach Macro-F1 0.429, above all 42 features (0.422), with 58.8\,K parameters instead of 173.5\,K and twice the throughput. On WUSTL-IIoT-2021 the top 5 features (0.931) exceed all 39 (0.917).
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_topk.pdf}
-\caption{Macro-F1 of the detector retrained on the top-$k$ SHAP features. Dotted line: all features. Blue: smallest $k$ that matches or exceeds it.}
-\label{fig:topk}
+\includegraphics[width=0.8\textwidth]{figures/fig_topk.pdf}
+\caption{Macro-F1 of the detector retrained on the top-$k$ SHAP features. Dotted line: all features. Blue: smallest $k$ that matches or exceeds it.}\label{fig:topk}%
 \end{figure}
 
 % ============================================================== DISCUSSION
@@ -511,17 +497,17 @@ The authors thank the course instructor of Computer Networks at FAST-NUCES Islam
 \section*{Declarations}
 
 \begin{itemize}
-\item \textbf{Funding:} This research received no external funding.
-\item \textbf{Conflict of interest:} The authors declare no conflict of interest.
-\item \textbf{Ethics approval and consent to participate:} Not applicable. The study uses only public network-traffic datasets and involves no human participants.
-\item \textbf{Consent for publication:} Not applicable.
-\item \textbf{Data availability:} UNSW-NB15, WUSTL-IIoT-2021 and CICIoT2023 are publicly available on Kaggle (mirrors \texttt{mrwellsdavid/unsw-nb15}, \texttt{annaamalaiu/wustl-iiot-2021-dataset} and \texttt{ioannispan/ciciot2023-1m}). All per-run results and logs are available at~\cite{repo}.
-\item \textbf{Materials availability:} Not applicable.
-\item \textbf{Code availability:} Source code, configuration and figure scripts are available at~\cite{repo}.
-\item \textbf{Author contribution:} Both authors contributed to the research design, implementation, experiments, analysis and writing, and approved the final manuscript.
-\item \textbf{Use of AI tools:} The authors used Claude (Anthropic), an AI assistant, to help set up the software environment, run the experiment pipeline, analyse result files, generate figures and draft and edit the text of this paper. The authors designed the research, reviewed all generated content, verified every reported number against the experiment outputs and take full responsibility for the paper.
+\item Funding: This research received no external funding.
+\item Conflict of interest/Competing interests: The authors declare no conflict of interest.
+\item Ethics approval and consent to participate: Not applicable. The study uses only public network-traffic datasets and involves no human participants.
+\item Consent for publication: Not applicable.
+\item Data availability: UNSW-NB15, WUSTL-IIoT-2021 and CICIoT2023 are publicly available on Kaggle (mirrors \texttt{mrwellsdavid/unsw-nb15}, \texttt{annaamalaiu/wustl-iiot-2021-dataset} and \texttt{ioannispan/ciciot2023-1m}). All per-run results and logs are available at~\cite{repo}.
+\item Materials availability: Not applicable.
+\item Code availability: Source code, configuration and figure scripts are available at~\cite{repo}.
+\item Author contribution: Both authors contributed to the research design, implementation, experiments, analysis and writing, and approved the final manuscript.
+\item Use of AI tools: The authors used Claude (Anthropic), an AI assistant, to help set up the software environment, run the experiment pipeline, analyse result files, generate figures and draft and edit the text of this paper. The authors designed the research, reviewed all generated content, verified every reported number against the experiment outputs and take full responsibility for the paper.
 \end{itemize}
 
-\bibliography{refs}
+\bibliography{refs}% common bib file
 
 \end{document}
