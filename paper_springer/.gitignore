@@ -1,0 +1,9 @@
+# LaTeX build by-products (rebuild with pdflatex + bibtex)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+main.pdf
+figures/*_preview.png
